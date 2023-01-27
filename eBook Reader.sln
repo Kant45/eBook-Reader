@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBook Reader", "eBook Reader\eBook Reader.csproj", "{1F97A296-8BAA-4B2E-852E-2C85121D195A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F97A296-8BAA-4B2E-852E-2C85121D195A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F97A296-8BAA-4B2E-852E-2C85121D195A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F97A296-8BAA-4B2E-852E-2C85121D195A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F97A296-8BAA-4B2E-852E-2C85121D195A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {23CA2F16-E563-4418-92D4-8D4A48D48B4C}
+	EndGlobalSection
+EndGlobal
