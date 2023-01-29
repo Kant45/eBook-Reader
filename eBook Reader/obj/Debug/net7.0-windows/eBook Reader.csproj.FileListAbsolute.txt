@@ -1,0 +1,25 @@
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\MainWindow.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\App.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader_MarkupCompile.cache
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader_MarkupCompile.lref
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\eBook Reader.exe
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\eBook Reader.deps.json
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\eBook Reader.runtimeconfig.json
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\eBook Reader.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\eBook Reader.pdb
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\NuGet.Common.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\NuGet.Frameworks.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\VersOne.Epub.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\MainWindow.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.g.resources
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.AssemblyInfo.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.csproj.CopyComplete
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\refint\eBook Reader.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.pdb
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.genruntimeconfig.cache
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\ref\eBook Reader.dll

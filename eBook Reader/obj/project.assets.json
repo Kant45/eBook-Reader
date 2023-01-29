@@ -20,6 +20,35 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "NuGet.Common/6.4.0": {
+        "type": "package",
+        "dependencies": {
+          "NuGet.Frameworks": "6.4.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/NuGet.Common.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/NuGet.Common.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NuGet.Frameworks/6.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NuGet.Frameworks.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/NuGet.Frameworks.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "runtime.native.System/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -346,6 +375,40 @@
         "microsoft.netcore.targets.1.1.0.nupkg.sha512",
         "microsoft.netcore.targets.nuspec",
         "runtime.json"
+      ]
+    },
+    "NuGet.Common/6.4.0": {
+      "sha512": "srECugLk+LB1bXelDCDhHoi6do/EYTXzuntKhjHraS4roVB3NfWohEdCSiAPdpSV9M40Q6jo6MV2Srml9e+jHQ==",
+      "type": "package",
+      "path": "nuget.common/6.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net472/NuGet.Common.dll",
+        "lib/net472/NuGet.Common.xml",
+        "lib/netstandard2.0/NuGet.Common.dll",
+        "lib/netstandard2.0/NuGet.Common.xml",
+        "nuget.common.6.4.0.nupkg.sha512",
+        "nuget.common.nuspec"
+      ]
+    },
+    "NuGet.Frameworks/6.4.0": {
+      "sha512": "qcufbjJIDtyY/Hah7JJfcRVpRYM3scgPqYBnukjO9kfADCFGr2azvVBozuwzljA6w/cR3w8bXLq6vW5xGrsmHw==",
+      "type": "package",
+      "path": "nuget.frameworks/6.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net472/NuGet.Frameworks.dll",
+        "lib/net472/NuGet.Frameworks.xml",
+        "lib/netstandard2.0/NuGet.Frameworks.dll",
+        "lib/netstandard2.0/NuGet.Frameworks.xml",
+        "nuget.frameworks.6.4.0.nupkg.sha512",
+        "nuget.frameworks.nuspec"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -1542,6 +1605,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
+      "NuGet.Common >= 6.4.0",
       "VersOne.Epub >= 3.2.0"
     ]
   },
@@ -1588,6 +1652,10 @@
       "net7.0-windows7.0": {
         "targetAlias": "net7.0-windows",
         "dependencies": {
+          "NuGet.Common": {
+            "target": "Package",
+            "version": "[6.4.0, )"
+          },
           "VersOne.Epub": {
             "target": "Package",
             "version": "[3.2.0, )"
