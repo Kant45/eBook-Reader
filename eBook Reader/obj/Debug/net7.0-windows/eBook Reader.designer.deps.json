@@ -8,6 +8,25 @@
     ".NETCoreApp,Version=v7.0": {
       "Microsoft.NETCore.Platforms/1.1.0": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
+      "NuGet.Common/6.4.0": {
+        "dependencies": {
+          "NuGet.Frameworks": "6.4.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/NuGet.Common.dll": {
+            "assemblyVersion": "6.4.0.123",
+            "fileVersion": "6.4.0.123"
+          }
+        }
+      },
+      "NuGet.Frameworks/6.4.0": {
+        "runtime": {
+          "lib/netstandard2.0/NuGet.Frameworks.dll": {
+            "assemblyVersion": "6.4.0.123",
+            "fileVersion": "6.4.0.123"
+          }
+        }
+      },
       "runtime.native.System/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -213,6 +232,20 @@
       "sha512": "sha512-aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
       "path": "microsoft.netcore.targets/1.1.0",
       "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
+    },
+    "NuGet.Common/6.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-srECugLk+LB1bXelDCDhHoi6do/EYTXzuntKhjHraS4roVB3NfWohEdCSiAPdpSV9M40Q6jo6MV2Srml9e+jHQ==",
+      "path": "nuget.common/6.4.0",
+      "hashPath": "nuget.common.6.4.0.nupkg.sha512"
+    },
+    "NuGet.Frameworks/6.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qcufbjJIDtyY/Hah7JJfcRVpRYM3scgPqYBnukjO9kfADCFGr2azvVBozuwzljA6w/cR3w8bXLq6vW5xGrsmHw==",
+      "path": "nuget.frameworks/6.4.0",
+      "hashPath": "nuget.frameworks.6.4.0.nupkg.sha512"
     },
     "runtime.native.System/4.3.0": {
       "type": "package",

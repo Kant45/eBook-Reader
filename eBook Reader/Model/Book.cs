@@ -1,32 +1,28 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Xml.Linq;
+using VersOne.Epub;
 
 namespace eBook_Reader.Model {
     public class Book : INotifyPropertyChanged {
-        private Int32 m_bookId;
         private String m_title;
         private String m_author;
-        private Int32 m_wordCount;
-        private Boolean m_isFaforite;
-        private List<Note> m_notes;
-        private DateTime m_createTime;
         private String m_description;
-        private String m_path;
+        private Byte[] m_coverImage;
+        private List<EpubNavigationItem> m_navigation;
+        private List<EpubTextContentFile> m_readingOrder;
+        private EpubContent m_content;
+        private EpubSchema m_schema;
 
-        public Int32 BookId {
-            get { return m_bookId; }
-            set {
-                m_bookId= value;
-                OnPropertyChanged("BookId");
-            }
-        }
         public String Title {
             get { return m_title; }
             set {
@@ -41,32 +37,11 @@ namespace eBook_Reader.Model {
                 OnPropertyChanged("Author");
             }
         }
-        public Int32 WordCount {
-            get { return m_wordCount; }
-            set {
-                m_wordCount = value;
-                OnPropertyChanged("WordCount");
-            }
-        }
-        public Boolean IsFavorite {
-            get { return m_isFaforite; }
-            set {
-                m_isFaforite = value;
-                OnPropertyChanged("IsFavorite");
-            }
-        }
-        public List<Note> Notes {
-            get { return m_notes; }
-            set {
-                m_notes = value;
-                OnPropertyChanged("Notes");
-            }
-        }
-        public DateTime CreateTime {
-            get { return m_createTime; }
-            set {
-                m_createTime = value;
-                OnPropertyChanged("CreateTime");
+        public Byte[] CoverImage {
+            get { return m_coverImage; }
+            set { 
+                m_coverImage = value;
+                OnPropertyChanged("CoverImage");
             }
         }
         public String Description {
@@ -76,12 +51,8 @@ namespace eBook_Reader.Model {
                 OnPropertyChanged("Description");
             }
         }
-        public String Path {
-            get { return m_path; }
-            set {
-                m_path = value;
-                OnPropertyChanged("Path");
-            }
+        public List<EpubNavigationItem> Navigation {
+            get { return m_navigation; }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -89,6 +60,18 @@ namespace eBook_Reader.Model {
             if(PropertyChanged!= null) {
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
+        }
+
+        public Book(String bookPath) {
+            EpubBook epubBook = EpubReader.ReadBook(bookPath);
+            m_title = epubBook.Title;
+            m_description = epubBook.Description;
+            m_author = epubBook.Author;
+            m_coverImage = epubBook.CoverImage;
+            m_navigation = epubBook.Navigation;
+            m_readingOrder = epubBook.ReadingOrder;
+            m_content = epubBook.Content;
+            m_schema = epubBook.Schema;
         }
     }
 }
