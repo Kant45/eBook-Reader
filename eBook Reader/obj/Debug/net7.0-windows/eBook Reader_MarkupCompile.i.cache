@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\User\source\repos\eBook Reader\eBook Reader\App.xaml
-11407045341
+3286142180
 
-14-759583997
+18-1201982978
 2011295890188
-MainWindow.xaml;
+View\AllBooksPage.xaml;View\MainMenuPage.xaml;View\MainWindow.xaml;
 
-False
+True
 

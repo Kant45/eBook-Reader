@@ -1,5 +1,4 @@
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.csproj.AssemblyReference.cache
-C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\MainWindow.g.cs
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\App.g.cs
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader_MarkupCompile.cache
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader_MarkupCompile.lref
@@ -11,7 +10,6 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\eB
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\NuGet.Common.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\NuGet.Frameworks.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\VersOne.Epub.dll
-C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\MainWindow.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.g.resources
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.AssemblyInfoInputs.cache
@@ -23,3 +21,9 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\re
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.pdb
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader.genruntimeconfig.cache
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\ref\eBook Reader.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\MainWindow.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\MainWindow.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\MainMenuPage.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\MainMenuPage.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\AllBooksPage.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\AllBooksPage.baml

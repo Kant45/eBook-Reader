@@ -14,45 +14,15 @@ using VersOne.Epub;
 
 namespace eBook_Reader.Model {
     public class Book : INotifyPropertyChanged {
-        private String m_title;
-        private String m_author;
-        private String m_description;
-        private Byte[] m_coverImage;
-        private List<EpubNavigationItem> m_navigation;
-        private List<EpubTextContentFile> m_readingOrder;
-        private EpubContent m_content;
-        private EpubSchema m_schema;
+        private EpubBook m_epubBook;
+        private String m_bookPath;
 
-        public String Title {
-            get { return m_title; }
-            set {
-                m_title = value;
-                OnPropertyChanged("Title");
-            }
-        }
-        public String Author {
-            get { return m_author; }
-            set {
-                m_author = value;
-                OnPropertyChanged("Author");
-            }
-        }
-        public Byte[] CoverImage {
-            get { return m_coverImage; }
+        public String BookPath {
+            get { return m_bookPath; }
             set { 
-                m_coverImage = value;
-                OnPropertyChanged("CoverImage");
+                m_bookPath = value;
+                OnPropertyChanged("BookPath");
             }
-        }
-        public String Description {
-            get { return m_description; }
-            set { 
-                m_description = value;
-                OnPropertyChanged("Description");
-            }
-        }
-        public List<EpubNavigationItem> Navigation {
-            get { return m_navigation; }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -63,15 +33,8 @@ namespace eBook_Reader.Model {
         }
 
         public Book(String bookPath) {
-            EpubBook epubBook = EpubReader.ReadBook(bookPath);
-            m_title = epubBook.Title;
-            m_description = epubBook.Description;
-            m_author = epubBook.Author;
-            m_coverImage = epubBook.CoverImage;
-            m_navigation = epubBook.Navigation;
-            m_readingOrder = epubBook.ReadingOrder;
-            m_content = epubBook.Content;
-            m_schema = epubBook.Schema;
+            m_epubBook = EpubReader.ReadBook(bookPath);
+            m_bookPath = bookPath;
         }
     }
 }
