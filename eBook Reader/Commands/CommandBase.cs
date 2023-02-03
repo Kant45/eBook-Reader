@@ -1,22 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace eBook_Reader.Commands {
-    public abstract class CommandBase : ICommand {
-        public event EventHandler? CanExecuteChanged;
+namespace eBook_Reader.Commands; 
 
-        public virtual Boolean CanExecute(Object? parameter) {
-            return true;
-        }
+public abstract class CommandBase : ICommand {
+    public event EventHandler CanExecuteChanged;
+    public virtual bool CanExecute(object parameter) {
+        return true;
+    }
 
-        public abstract void Execute(Object? parameter);
+    public abstract void Execute(object parameter);
 
-        protected void OnCanExecuteChanged(Object? parameter) {
-            CanExecuteChanged?.Invoke(this, new EventArgs());
-        }
+    protected void OnCanExecutedChanged() {
+        CanExecuteChanged?.Invoke(this, new EventArgs());
     }
 }

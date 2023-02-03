@@ -23,6 +23,8 @@ namespace eBook_Reader.View
         public MenuPage()
         {
             InitializeComponent();
+
+            MenuFrame.Content = new View.AllBooksPage();
         }
     }
 }

@@ -10,11 +10,8 @@
 
   <ItemGroup>
     <PackageReference Include="NuGet.Common" Version="6.4.0" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
     <PackageReference Include="VersOne.Epub" Version="3.2.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="LIbrary\" />
   </ItemGroup>
 
 </Project>

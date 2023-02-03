@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eBook_Reader.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,9 @@ namespace eBook_Reader.View
         public AllBooksPage()
         {
             InitializeComponent();
+            MainViewModel mainViewModel = new MainViewModel();
+
+            bookList.ItemsSource = mainViewModel.BookList;
         }
     }
 }

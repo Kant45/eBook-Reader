@@ -47,6 +47,10 @@
               "target": "Package",
               "version": "[6.4.0, )"
             },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "VersOne.Epub": {
               "target": "Package",
               "version": "[3.2.0, )"

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using eBook_Reader.View;
+using eBook_Reader.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +23,7 @@ namespace eBook_Reader {
         public MainWindow() {
             InitializeComponent();
 
-            MainFrame.Content = new View.MenuPage();
+            MainFrame.Content = new View.MenuPage();           
         }
     }
 }
