@@ -18,30 +18,11 @@ namespace eBook_Reader.ViewModel {
     public class MainViewModel : ViewModelBase {
         private Book m_selectedBook;
         private static ObservableCollection<Model.Book> m_bookList;
-
-        public ICommand AddBookCommand { get; }
-
-        public ObservableCollection<Model.Book> BookList {
-            get { return m_bookList; }
-            set {
-                m_bookList = value;
-                OnPropertyChanged("BookList");
-            }
-        }
-
-        public Book SelectedBook {
-            get { return m_selectedBook; }
-            set {
-                m_selectedBook = value;
-                OnPropertyChanged("SlectedPhone");
-            }
-        }
-
         public MainViewModel() {
+            AddEpubBookCommand = new AddBookCommand();
+
             m_bookList = new ObservableCollection<Model.Book>();
-            
-            AddBookCommand = new AddBookCommand();
-            
+
             String[] filePaths = Directory.GetFiles("C:/Users/User/source/repos/eBook Reader/eBook Reader/Library");
 
             foreach(String fPath in filePaths) {
@@ -51,18 +32,18 @@ namespace eBook_Reader.ViewModel {
             }
         }
 
-        public void AddBook() {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            String filePath = openFileDialog.FileName;
-            String fileName = Path.GetFileNameWithoutExtension(filePath);
+        public AddBookCommand AddEpubBookCommand { get; protected set; }
 
-            File.Copy(filePath, "C:/Users/User/source/repos/eBook Reader/eBook Reader/Library");
+        public ObservableCollection<Model.Book> BookList {
+            get { return m_bookList; }
+        }
 
-            Model.Book book = new Model.Book(filePath);
-
-            book.BookPath = Path.Combine("C:/Users/User/source/repos/eBook Reader/eBook Reader/Library", fileName + ".epub");
-
-            BookList.Add(book);
+        public Book SelectedBook {
+            get { return m_selectedBook; }
+            set {
+                m_selectedBook = value;
+                OnPropertyChanged("SlectedPhone");
+            }
         }
     }
 }

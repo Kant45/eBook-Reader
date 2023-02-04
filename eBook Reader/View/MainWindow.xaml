@@ -5,6 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:eBook_Reader"
         mc:Ignorable="d"
-        Title="eBook reader" Height="450" Width="800">
+        Title="eBook reader" Height="600" Width="1000">
     <Frame Name="MainFrame" Background="White" NavigationUIVisibility="Hidden"/>
 </Window>
