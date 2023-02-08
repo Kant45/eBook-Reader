@@ -13,15 +13,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using eBook_Reader.Commands;
+using eBook_Reader.Stores;
 
 namespace eBook_Reader.ViewModel {
     public class MainViewModel : ViewModelBase {
-        public ViewModelBase CurrentViewModel { get; }
+        public ViewModelBase CurrentViewModel => m_navigationStore.CurrentViewModel;
         private Book m_selectedBook;
         private static ObservableCollection<Model.Book> m_bookList;
-        public MainViewModel() {
+        private readonly NavigationStore m_navigationStore;
+        
+        public MainViewModel(NavigationStore NavigationStore) {
+            CurrentViewModel = new MainMenuViewModel();
+            m_navigationStore = NavigationStore;
             AddEpubBookCommand = new AddBookCommand();
+        }
 
+        static MainViewModel() {
             m_bookList = new ObservableCollection<Model.Book>();
 
             String[] filePaths = Directory.GetFiles("C:/Users/User/source/repos/eBook Reader/eBook Reader/Library");

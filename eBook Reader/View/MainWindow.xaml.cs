@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using eBook_Reader.Stores;
 
 namespace eBook_Reader {
     /// <summary>
@@ -23,7 +24,7 @@ namespace eBook_Reader {
         public MainWindow() {
             InitializeComponent();
 
-            MainFrame.Content = new View.MenuPage();           
+            DataContext = new MainViewModel(new NavigationStore());
         }
     }
 }

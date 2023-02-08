@@ -28,3 +28,6 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Vi
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\MainMenuPage.g.cs
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\MainMenuPage.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\AllBooksPage.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\ReadBookPage.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\ReadBookPage.baml

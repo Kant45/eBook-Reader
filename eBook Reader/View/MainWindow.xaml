@@ -3,10 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:eBook_Reader.View"
+        xmlns:vms="clr-namespace:eBook_Reader.ViewModel"
         xmlns:local="clr-namespace:eBook_Reader"
         mc:Ignorable="d"
         Title="eBook reader" Height="700" Width="1000">
-    <Frame Name="MainFrame" Background="White" NavigationUIVisibility="Hidden">
-        
+    
+    <Frame Name="MainFrame" Content="{Binding Path=CurrentViewModel}"
+           Background="White" NavigationUIVisibility="Hidden">
+        <Frame.Resources>
+            <DataTemplate DataType="{x:Type vms:MainMenuViewModel}">
+                <views:MenuPage />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:ReadBookViewModel}">
+                <views:ReadBookPage />
+            </DataTemplate>
+        </Frame.Resources>
     </Frame>
 </Window>

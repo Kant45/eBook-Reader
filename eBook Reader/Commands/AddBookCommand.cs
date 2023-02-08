@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 using System.Windows;
 using System.Windows.Data;
+using eBook_Reader.Stores;
 using eBook_Reader.ViewModel;
 using Microsoft.Win32;
 
@@ -24,7 +25,7 @@ public class AddBookCommand : CommandBase {
 
         File.Copy(sourceFilePath, Path.Combine(@"C:\Users\User\source\repos\eBook Reader\eBook Reader\Library\", fileName + ".epub"), true);
 
-        MainViewModel mainViewModel = new MainViewModel();
+        MainViewModel mainViewModel = new MainViewModel(new NavigationStore());
 
         Model.Book book = new Model.Book(@"C:\Users\User\source\repos\eBook Reader\eBook Reader\Library\" + fileName + ".epub");
         
