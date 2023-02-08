@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.IO;
 using System.Windows;
+using System.Windows.Data;
 using eBook_Reader.ViewModel;
 using Microsoft.Win32;
 
@@ -8,7 +10,7 @@ namespace eBook_Reader.Commands;
 
 public class AddBookCommand : CommandBase {
     [STAThread]
-    public override void Execute(object parameter) {
+    public override void Execute(Object parameter) {
         OpenFileDialog openFileDialog = new OpenFileDialog();
 
         String sourceFilePath = null;

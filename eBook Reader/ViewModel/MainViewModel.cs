@@ -16,6 +16,7 @@ using eBook_Reader.Commands;
 
 namespace eBook_Reader.ViewModel {
     public class MainViewModel : ViewModelBase {
+        public ViewModelBase CurrentViewModel { get; }
         private Book m_selectedBook;
         private static ObservableCollection<Model.Book> m_bookList;
         public MainViewModel() {

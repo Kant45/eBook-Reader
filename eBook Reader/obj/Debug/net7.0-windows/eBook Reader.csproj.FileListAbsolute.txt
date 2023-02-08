@@ -23,8 +23,8 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eB
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\ref\eBook Reader.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\MainWindow.g.cs
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\MainWindow.baml
-C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\AllBooksPage.g.cs
-C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\AllBooksPage.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\DevExpress.Data.v22.2.dll
-C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\MainWindowPages\MainMenuPage.g.cs
-C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\MainWindowPages\MainMenuPage.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\AllBooksPage.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\MainMenuPage.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\MainMenuPage.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\AllBooksPage.baml
