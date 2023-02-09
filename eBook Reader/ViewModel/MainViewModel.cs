@@ -11,20 +11,16 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 using eBook_Reader.Commands;
-using eBook_Reader.Stores;
 
 namespace eBook_Reader.ViewModel {
     public class MainViewModel : ViewModelBase {
-        public ViewModelBase CurrentViewModel => m_navigationStore.CurrentViewModel;
         private Book m_selectedBook;
         private static ObservableCollection<Model.Book> m_bookList;
-        private readonly NavigationStore m_navigationStore;
-        
-        public MainViewModel(NavigationStore NavigationStore) {
-            CurrentViewModel = new MainMenuViewModel();
-            m_navigationStore = NavigationStore;
+
+        public MainViewModel() {
             AddEpubBookCommand = new AddBookCommand();
         }
 
