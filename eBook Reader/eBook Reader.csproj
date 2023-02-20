@@ -10,7 +10,9 @@
 
   <ItemGroup>
     <PackageReference Include="DevExpress.Data" Version="22.2.4" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
     <PackageReference Include="NuGet.Common" Version="6.4.0" />
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
     <PackageReference Include="VersOne.Epub" Version="3.2.0" />
   </ItemGroup>

@@ -30,6 +30,9 @@ namespace eBook_Reader.Model {
             m_title = m_epubBook.Title;
             m_author = m_epubBook.Author;
         }
+        public EpubBook EBook {
+            get => m_epubBook;
+        }
         public String Title {
             get { return m_title; }
         }

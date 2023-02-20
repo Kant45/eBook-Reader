@@ -9,9 +9,7 @@ namespace eBook_Reader.Commands
 {
     public class AllBooksCommand : CommandBase {
         public override void Execute(Object parameter) {
-            View.MenuPage menuPage = new View.MenuPage();
 
-            menuPage.MenuFrame.Content = new View.AllBooksPage();
         }
     }
 }

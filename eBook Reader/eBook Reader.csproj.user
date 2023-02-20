@@ -7,21 +7,27 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="View\AllBooksPage.xaml.cs">
+    <Compile Update="View\AllBooksView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\MainMenuPage.xaml.cs">
+    <Compile Update="View\MainMenuView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ReadBookView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="View\AllBooksPage.xaml">
+    <Page Update="View\AllBooksView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\MainMenuView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\MainMenuPage.xaml">
+    <Page Update="View\ReadBookView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

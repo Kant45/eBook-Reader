@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.IO;
-using System.Windows;
-using System.Windows.Data;
 using eBook_Reader.Stores;
 using eBook_Reader.ViewModel;
 using Microsoft.Win32;
@@ -10,6 +7,15 @@ using Microsoft.Win32;
 namespace eBook_Reader.Commands; 
 
 public class AddBookCommand : CommandBase {
+
+    private readonly NavigationStore m_navigationStore;
+    private readonly AllBooksViewModel m_viewModel;
+
+    public AddBookCommand(NavigationStore navigationStore, AllBooksViewModel viewModel) {
+        m_navigationStore = navigationStore;
+        m_viewModel = viewModel;
+    }
+
     [STAThread]
     public override void Execute(Object parameter) {
         OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -25,10 +31,10 @@ public class AddBookCommand : CommandBase {
 
         File.Copy(sourceFilePath, Path.Combine(@"C:\Users\User\source\repos\eBook Reader\eBook Reader\Library\", fileName + ".epub"), true);
 
-        MainViewModel mainViewModel = new MainViewModel(new NavigationStore());
+        AllBooksViewModel allBooksViewModel =  m_viewModel;
 
         Model.Book book = new Model.Book(@"C:\Users\User\source\repos\eBook Reader\eBook Reader\Library\" + fileName + ".epub");
-        
-        mainViewModel.BookList.Add(book);
+
+        allBooksViewModel.BookList.Add(book);
     }
 }
