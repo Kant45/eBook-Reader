@@ -4,6 +4,8 @@ using HtmlAgilityPack;
 using System.Collections.Generic;
 using VersOne.Epub;
 using System.IO;
+using System.Windows.Input;
+using eBook_Reader.Commands;
 
 namespace eBook_Reader.ViewModel;
 
@@ -24,8 +26,16 @@ public class ReadBookViewModel : ViewModelBase {
     public String SelectedHtml {
         get => m_selectedHtml;
         set {
-            SelectedHtml = value;
+            m_selectedHtml = value;
             OnPropertyChanged("SelectedHtml");
+        }
+    }
+
+    public List<EpubTextContentFile> ReadingOrder {
+        get => m_readingOrder;
+        set {
+            m_readingOrder = value;
+            OnPropertyChanged("ReadingOrder");
         }
     }
 
@@ -35,6 +45,12 @@ public class ReadBookViewModel : ViewModelBase {
         m_epubContent = m_selectedBook.EBook.Content;
         m_readingOrder = m_selectedBook.EBook.ReadingOrder;
 
-        m_selectedHtml = m_readingOrder[1].Content;
+        m_selectedHtml = m_readingOrder[0].Content;
+
+        PreviousPageCommand = new PreviousPageCommand(this);
+        NextPageCommand = new NextPageCommand(this);
     }
+
+    public ICommand PreviousPageCommand { get; protected set; }
+    public ICommand NextPageCommand { get; protected set; }
 }

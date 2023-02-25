@@ -24,17 +24,16 @@ namespace eBook_Reader.ViewModel {
                 OnPropertyChanged("SlectedBook");
             }
         }
-        public ICommand AddEpubBookCommand { get; 
-            protected set; }
+        public ICommand AddEpubBookCommand { get; protected set; }
         public NavigateReadBookCommand NavigateReadBookCommand { get; set; }
 
-        public ObservableCollection<Model.Book> BookList {
+        public ObservableCollection<Book> BookList {
             get { return m_bookList; }
         }
 
         public AllBooksViewModel(NavigationStore navigationStore) {
 
-            m_bookList = new ObservableCollection<Model.Book>();
+            m_bookList = new ObservableCollection<Book>();
 
             m_navigationStore = navigationStore;
 
@@ -44,7 +43,7 @@ namespace eBook_Reader.ViewModel {
             String[] filePaths = Directory.GetFiles("C:/Users/User/source/repos/eBook Reader/eBook Reader/Library");
 
             foreach(String fPath in filePaths) {
-                Model.Book book = new Model.Book(fPath);
+                Book book = new Book(fPath);
 
                 m_bookList.Add(book);
             }

@@ -22,9 +22,11 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="0" Grid.Row="1">
-            <Button x:Name="AllBooksButton" Command="{Binding AllBooksCommandProp}" Content="All books" Margin="8"/>
-            <Button x:Name="FavoritesButton" Content="Favorites" Margin="{Binding ElementName=AllBooksButton, Path=Margin}" />
-            <Button x:Name="SettingsButton" Content="Settings" Margin="{Binding ElementName=AllBooksButton, Path=Margin}" />
+            <Button x:Name="AllBooksButton" Command="{Binding NavigateAllBooksCommand}" Content="All books" Margin="8"/>
+            <Button x:Name="FavoritesButton" Command="{Binding NavigateFavoritesCommand}" 
+                    Content="Favorites" Margin="{Binding ElementName=AllBooksButton, Path=Margin}" />
+            <Button x:Name="SettingsButton" Command="{Binding NavigateSettingsCommand}" 
+                    Content="Settings" Margin="{Binding ElementName=AllBooksButton, Path=Margin}" />
         </StackPanel>
 
         <GridSplitter Width="3" Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>

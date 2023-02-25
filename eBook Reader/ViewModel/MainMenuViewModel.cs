@@ -12,20 +12,35 @@ namespace eBook_Reader.ViewModel
     class MainMenuViewModel : ViewModelBase {
 
         private readonly NavigationStore m_navigationStore;
+        private readonly MenuNavigationStore m_menuNavigationStore;
 
-        public MainMenuViewModel(NavigationStore navigationStore) {
+        public ViewModelBase CurrentMenuViewModel => m_menuNavigationStore.CurrentMenuViewModel;
+
+        public MainMenuViewModel(NavigationStore navigationStore, MenuNavigationStore menuNavigationStore, AllBooksViewModel allBooksViewModel) {
 
             m_navigationStore = navigationStore;
+            m_menuNavigationStore = menuNavigationStore;
 
-            CurrentMenuViewModel = new AllBooksViewModel(m_navigationStore);
+            NavigateAllBooksCommand = new NavigateMenuCommand<AllBooksViewModel>(menuNavigationStore, 
+                () => new AllBooksViewModel(m_navigationStore));
 
-            AllBooksCommandProp = new AllBooksCommand();
+            NavigateFavoritesCommand = new NavigateMenuCommand<FavoriteBooksViewModel>(menuNavigationStore,
+                () => new FavoriteBooksViewModel(m_menuNavigationStore, allBooksViewModel));
+
+            NavigateSettingsCommand = new NavigateMenuCommand<SettingsViewModel>(menuNavigationStore,
+                () => new SettingsViewModel(m_menuNavigationStore));
+
+            m_menuNavigationStore.CurrentMenuViewModelChanged += OnCurrentMenuViewModelChanged;
         }
 
-        public ViewModelBase CurrentMenuViewModel { get; }
-
-        public ICommand AllBooksCommandProp { get; protected set; }
+        public ICommand NavigateAllBooksCommand { get; protected set; }
+        public ICommand NavigateFavoritesCommand { get; protected set; }
+        public ICommand NavigateSettingsCommand { get; protected set; }
 
         public ICommand MainMenuCommand { get; }
+
+        private void OnCurrentMenuViewModelChanged() {
+            OnPropertyChanged(nameof(CurrentMenuViewModel));
+        }
     }
 }

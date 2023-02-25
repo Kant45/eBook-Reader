@@ -35,3 +35,7 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Vi
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\AllBooksView.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\ReadBookView.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\HtmlAgilityPack.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\FavoriteBooksView.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\SettingsView.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\FavoriteBooksView.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\SettingsView.baml

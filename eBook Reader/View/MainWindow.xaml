@@ -18,6 +18,15 @@
             <DataTemplate DataType="{x:Type vms:ReadBookViewModel}">
                 <views:ReadBookView />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:AllBooksViewModel}">
+                <views:AllBooksView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:FavoriteBooksViewModel}">
+                <views:FavoriteBooksView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:SettingsViewModel}">
+                <views:SettingsView />
+            </DataTemplate>
         </ContentControl.Resources>
     </ContentControl>
 </Window>

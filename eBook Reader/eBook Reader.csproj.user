@@ -10,15 +10,24 @@
     <Compile Update="View\AllBooksView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\FavoriteBooksView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\MainMenuView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ReadBookView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\SettingsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\AllBooksView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\FavoriteBooksView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\MainMenuView.xaml">
@@ -28,6 +37,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ReadBookView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SettingsView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

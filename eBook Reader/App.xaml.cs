@@ -17,9 +17,13 @@ namespace eBook_Reader {
         protected override void OnStartup(StartupEventArgs e) {
 
             NavigationStore m_navigationStore = new NavigationStore();
+            MenuNavigationStore m_menuNavigationStore = new MenuNavigationStore();
 
-            m_navigationStore.CurrentViewModel = new MainMenuViewModel(m_navigationStore);
+            AllBooksViewModel allBooksViewModelRef = new AllBooksViewModel(m_navigationStore);
+            m_menuNavigationStore.CurrentMenuViewModel = allBooksViewModelRef;
 
+            m_navigationStore.CurrentViewModel = new MainMenuViewModel(m_navigationStore, m_menuNavigationStore, allBooksViewModelRef);
+            
             MainWindow = new MainWindow() {
                 DataContext = new MainViewModel(m_navigationStore)
             };
