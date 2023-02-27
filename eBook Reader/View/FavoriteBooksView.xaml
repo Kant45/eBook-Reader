@@ -28,21 +28,24 @@
 
         <ListView x:Name="bookList"
                   ItemsPanel="{StaticResource listPanelTemplate}"
-                  ItemsSource="{Binding BookList}"
+                  ItemsSource="{Binding FavoriteBooks}"
                   SelectedItem="{Binding SelectedBook, Mode=TwoWay}"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Button Background="Transparent" BorderBrush="Transparent" 
+                    <Canvas>
+                        <CheckBox />
+                        <Button Background="Transparent" BorderBrush="Transparent" 
                             Command="{Binding DataContext.NavigateReadBookCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                             CommandParameter="{Binding DataContext.SelectedBook, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
-                        <StackPanel Margin="5">
-                            <Image Width="150" Height="250" Source="{Binding Path=CoverImage}" 
+                            <StackPanel Margin="5">
+                                <Image Width="150" Height="250" Source="{Binding Path=CoverImage}" 
                                    RenderOptions.BitmapScalingMode="HighQuality" />
-                            <TextBlock FontSize="16" Text="{Binding Path=Title}" HorizontalAlignment="Center" />
-                            <TextBlock FontSize="16" Text="{Binding Path=Author}" HorizontalAlignment="Center" />
-                        </StackPanel>
-                    </Button>
+                                <TextBlock FontSize="16" Text="{Binding Path=Title}" HorizontalAlignment="Center" />
+                                <TextBlock FontSize="16" Text="{Binding Path=Author}" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                    </Canvas>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

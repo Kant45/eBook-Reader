@@ -22,7 +22,8 @@ namespace eBook_Reader.Model {
         private Byte[] m_coverImage;
         private String m_title;
         private String m_author;
-        
+        private Boolean m_isFavorite;
+
         public Book(String bookPath) {
             m_epubBook = EpubReader.ReadBook(bookPath);
             m_bookPath = bookPath;
@@ -42,12 +43,18 @@ namespace eBook_Reader.Model {
         public Byte[] CoverImage {
             get { return m_coverImage; }
         }
-
         public String BookPath {
             get { return m_bookPath; }
             set { 
                 m_bookPath = value;
                 OnPropertyChanged("BookPath");
+            }
+        }
+        public Boolean IsFavorite {
+            get => m_isFavorite;
+            set {
+                m_isFavorite = value;
+                OnPropertyChanged("IsFavorite");
             }
         }
 

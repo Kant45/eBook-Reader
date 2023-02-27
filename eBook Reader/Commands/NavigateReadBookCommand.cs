@@ -28,7 +28,7 @@ namespace eBook_Reader.Commands {
 
         public override void Execute(Object parameter) {
 
-            m_navigationStore.CurrentViewModel = new ReadBookViewModel(m_allBooksViewModel.SelectedBook);
+            m_navigationStore.CurrentViewModel = new ReadBookViewModel((Book) parameter);
         }
     }
 }
