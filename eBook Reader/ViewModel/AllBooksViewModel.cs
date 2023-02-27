@@ -37,10 +37,10 @@ namespace eBook_Reader.ViewModel {
 
             m_navigationStore = navigationStore;
 
-            NavigateReadBookCommand = new NavigateReadBookCommand(this, m_navigationStore);
+            NavigateReadBookCommand = new NavigateReadBookCommand(m_navigationStore);
             
 
-            String[] filePaths = Directory.GetFiles("C:/Users/User/source/repos/eBook Reader/eBook Reader/Library");
+            String[] filePaths = Directory.GetFiles("Library");
 
             foreach(String fPath in filePaths) {
                 Book book = new Book(fPath);

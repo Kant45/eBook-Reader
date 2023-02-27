@@ -1,0 +1,41 @@
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Release\net7.0-windows\eBook Reader.exe
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Release\net7.0-windows\eBook Reader.deps.json
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Release\net7.0-windows\eBook Reader.runtimeconfig.json
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Release\net7.0-windows\eBook Reader.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Release\net7.0-windows\eBook Reader.pdb
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Release\net7.0-windows\DevExpress.Data.v22.2.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Release\net7.0-windows\HtmlAgilityPack.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Release\net7.0-windows\Microsoft.Xaml.Behaviors.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Release\net7.0-windows\NuGet.Common.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Release\net7.0-windows\NuGet.Frameworks.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Release\net7.0-windows\Prism.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Release\net7.0-windows\Prism.Wpf.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Release\net7.0-windows\VersOne.Epub.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\eBook Reader.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\View\AllBooksView.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\View\FavoriteBooksView.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\View\MainMenuView.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\View\MainWindow.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\View\ReadBookView.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\View\SettingsView.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\App.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\eBook Reader_MarkupCompile.cache
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\eBook Reader_MarkupCompile.lref
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\View\AllBooksView.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\View\FavoriteBooksView.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\View\MainMenuView.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\View\MainWindow.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\View\ReadBookView.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\View\SettingsView.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\eBook Reader.g.resources
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\eBook Reader.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\eBook Reader.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\eBook Reader.AssemblyInfo.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\eBook Reader.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\eBook Reader.csproj.CopyComplete
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\eBook Reader.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\refint\eBook Reader.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\eBook Reader.pdb
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\eBook Reader.genruntimeconfig.cache
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\ref\eBook Reader.dll

@@ -13,15 +13,17 @@ using eBook_Reader.Stores;
 namespace eBook_Reader.Commands {
     public class NavigateReadBookCommand : CommandBase {
 
-        private readonly AllBooksViewModel m_allBooksViewModel;
         private NavigationStore m_navigationStore;
 
-        public NavigateReadBookCommand(AllBooksViewModel allBooksViewModel, NavigationStore navigationStore) {
-            m_allBooksViewModel = allBooksViewModel;
+        public NavigateReadBookCommand(NavigationStore navigationStore) {
+
             m_navigationStore = navigationStore;
         }
 
         public override Boolean CanExecute(Object parameter) {
+
+            if(parameter == null) 
+                return false;
 
             return true;
         }

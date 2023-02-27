@@ -31,13 +31,25 @@
                   ItemsSource="{Binding FavoriteBooks}"
                   SelectedItem="{Binding SelectedBook, Mode=TwoWay}"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <ContentPresenter />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Canvas>
                         <CheckBox />
                         <Button Background="Transparent" BorderBrush="Transparent" 
                             Command="{Binding DataContext.NavigateReadBookCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                            CommandParameter="{Binding DataContext.SelectedBook, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+                            CommandParameter="{Binding}">
                             <StackPanel Margin="5">
                                 <Image Width="150" Height="250" Source="{Binding Path=CoverImage}" 
                                    RenderOptions.BitmapScalingMode="HighQuality" />

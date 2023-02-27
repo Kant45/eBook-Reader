@@ -1,17 +1,21 @@
-﻿using eBook_Reader.Model;
+﻿using eBook_Reader.Commands;
+using eBook_Reader.Model;
 using eBook_Reader.Stores;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Xml.Linq;
 
 namespace eBook_Reader.ViewModel {
     public class FavoriteBooksViewModel : ViewModelBase {
 
         private MenuNavigationStore m_menuNavigationStore;
+        private readonly NavigationStore m_navigationStore;
         private AllBooksViewModel m_allBooksViewModel;
         private ObservableCollection<Book> m_favoriteBooksCollection;
 
@@ -19,40 +23,35 @@ namespace eBook_Reader.ViewModel {
             get => m_favoriteBooksCollection;
         }
 
-        public FavoriteBooksViewModel(MenuNavigationStore menuNavigationStore, AllBooksViewModel allBooksViewModel) {
+        public FavoriteBooksViewModel(MenuNavigationStore menuNavigationStore, 
+                                      NavigationStore navigationStore, 
+                                      AllBooksViewModel allBooksViewModel) {
 
             m_menuNavigationStore = menuNavigationStore;
+            m_navigationStore = navigationStore;
             m_allBooksViewModel = allBooksViewModel;
+            m_favoriteBooksCollection = new ObservableCollection<Book>(GetFavoriteList());
 
-            
+            NavigateReadBookCommand = new NavigateReadBookCommand(m_navigationStore);
+        }
 
-            XElement xElement = XElement.Load("C:\\Users\\User\\source\\repos\\eBook Reader\\eBook Reader\\BookList.xml");
+        public ICommand NavigateReadBookCommand { get; protected set; }
 
-            List<XElement> xElementList = new List<XElement>();
+        private IEnumerable<Book> GetFavoriteList() {
 
-            foreach(var item in xElement.DescendantsAndSelf("book")) {
+            String fileName = "BookList.xml";
+            String path = Path.Combine(Environment.CurrentDirectory, fileName);
 
-                if(item.Attribute("IsFavorite").Value == "true")
 
-                    xElementList.Add(item);
-            }
+            XElement xElement = XElement.Load(path);
 
-            var a = xElementList[0].Attribute("Name").Value.Replace('\\', '/');
-            var b = allBooksViewModel.BookList[0].BookPath;
-
-            var books = from Xbook in xElementList
-                        from book in allBooksViewModel.BookList
-                        where Xbook.Attribute("Name").Value.Replace('\\', '/') == book.BookPath.Replace("\\", "/")
+            var books = from Xbook in xElement.DescendantsAndSelf("book")
+                        from book in m_allBooksViewModel.BookList
+                        where (Xbook.Attribute("Name")?.Value.Replace('\\', '/') == book.BookPath.Replace("\\", "/"))
+                              && (Xbook.Attribute("IsFavorite")?.Value == "true")
                         select book;
 
-            m_favoriteBooksCollection = new ObservableCollection<Book>(books);
-
-
-
-            //var filtered = from bookX in xElement?.Elements("book")
-            //               where bookX.Attribute("IsFavorite")?.Value == "true"
-            //               select bookX;
-
+            return books;
         }
     }
 }

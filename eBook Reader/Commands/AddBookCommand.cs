@@ -22,32 +22,38 @@ public class AddBookCommand : CommandBase {
     [STAThread]
     public override void Execute(Object parameter) {
 
-        OpenFileDialog openFileDialog = new OpenFileDialog();
+        try {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
 
-        String sourceFilePath = null;
-        String fileName = null;
-        String destFilePath = Directory.GetCurrentDirectory();
+            String sourceFilePath = null;
+            String fileName = null;
+            String destFilePath = Directory.GetCurrentDirectory();
 
-        if(openFileDialog.ShowDialog() == true) {
-            sourceFilePath = openFileDialog.FileName;
-            fileName = Path.GetFileNameWithoutExtension(sourceFilePath);
-        }
+            if(openFileDialog.ShowDialog() == true) {
+                sourceFilePath = openFileDialog.FileName;
+                fileName = Path.GetFileNameWithoutExtension(sourceFilePath);
+            }
 
-        File.Copy(sourceFilePath, Path.Combine(@"C:\Users\User\source\repos\eBook Reader\eBook Reader\Library\", fileName + ".epub"), true);
+            File.Copy(sourceFilePath, Path.Combine("Library", fileName + ".epub"), true);
 
-        AllBooksViewModel allBooksViewModel =  m_viewModel;
+            AllBooksViewModel allBooksViewModel = m_viewModel;
 
-        Book book = new Book(@"C:\Users\User\source\repos\eBook Reader\eBook Reader\Library\" + fileName + ".epub");
+            Book book = new Book(Path.Combine("Library", fileName + ".epub"));
 
-        allBooksViewModel.BookList.Add(book);
+            allBooksViewModel.BookList.Add(book);
 
-        AddToXML(book);
+            AddToXML(book);
+
+        } catch(ArgumentNullException) { }
     }
 
 
     private void AddToXML(Book book) {
 
-        XDocument xdoc = XDocument.Load(@"C:\Users\User\source\repos\eBook Reader\eBook Reader\BookList.xml");
+        String fileName = "BookList.xml";
+        String path = Path.Combine(Environment.CurrentDirectory, fileName);
+
+        XDocument xdoc = XDocument.Load(path);
         XElement root = xdoc.Root;
         XElement bookElement = new XElement("book");
         XAttribute bookNameAttribute = new XAttribute("Name", book.BookPath);
@@ -56,6 +62,6 @@ public class AddBookCommand : CommandBase {
         bookElement.Add(bookNameAttribute, bookIsFavoriteAttribute);
         root.Add(bookElement);
 
-        xdoc.Save(@"C:\Users\User\source\repos\eBook Reader\eBook Reader\BookList.xml");
+        xdoc.Save(path);
     }
 }

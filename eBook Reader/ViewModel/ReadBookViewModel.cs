@@ -6,6 +6,7 @@ using VersOne.Epub;
 using System.IO;
 using System.Windows.Input;
 using eBook_Reader.Commands;
+using eBook_Reader.Stores;
 
 namespace eBook_Reader.ViewModel;
 
@@ -30,7 +31,6 @@ public class ReadBookViewModel : ViewModelBase {
             OnPropertyChanged("SelectedHtml");
         }
     }
-
     public List<EpubTextContentFile> ReadingOrder {
         get => m_readingOrder;
         set {
@@ -45,7 +45,7 @@ public class ReadBookViewModel : ViewModelBase {
         m_epubContent = m_selectedBook.EBook.Content;
         m_readingOrder = m_selectedBook.EBook.ReadingOrder;
 
-        m_selectedHtml = m_readingOrder[0].Content;
+        m_selectedHtml = m_readingOrder[1].Content;
 
         PreviousPageCommand = new PreviousPageCommand(this);
         NextPageCommand = new NextPageCommand(this);

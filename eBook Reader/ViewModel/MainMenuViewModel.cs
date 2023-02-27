@@ -25,7 +25,7 @@ namespace eBook_Reader.ViewModel
                 () => new AllBooksViewModel(m_navigationStore));
 
             NavigateFavoritesCommand = new NavigateMenuCommand<FavoriteBooksViewModel>(menuNavigationStore,
-                () => new FavoriteBooksViewModel(m_menuNavigationStore, allBooksViewModel));
+                () => new FavoriteBooksViewModel(m_menuNavigationStore, m_navigationStore, allBooksViewModel));
 
             NavigateSettingsCommand = new NavigateMenuCommand<SettingsViewModel>(menuNavigationStore,
                 () => new SettingsViewModel(m_menuNavigationStore));
