@@ -39,3 +39,8 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Vi
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\SettingsView.g.cs
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\FavoriteBooksView.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\SettingsView.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\App.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\CheckBoxStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\MenuButtonStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\AddButtonStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\ListButtonStyle.baml

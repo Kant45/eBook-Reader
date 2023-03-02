@@ -24,6 +24,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Styles\AddButtonStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\CheckBoxStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\ListButtonStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\MenuButtonStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\AllBooksView.xaml">
       <SubType>Designer</SubType>
     </Page>

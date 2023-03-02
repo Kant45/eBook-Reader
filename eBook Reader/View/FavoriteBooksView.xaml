@@ -13,16 +13,21 @@
             <WrapPanel />
         </ItemsPanelTemplate>
     </UserControl.Resources>
-    <Grid Background="White">
+    <Grid Background="#fdf8e8">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <DockPanel Grid.Row="0" >
-            <StackPanel Orientation="Horizontal">
-                <Button Command="{Binding AddEpubBookCommand}"
-                        DockPanel.Dock="Top" Content="Add" MinWidth="100" Margin="5" />
+        <DockPanel Grid.Row="0" Height="100" Background="#e7dbb1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="60 0 0 0">
+                <Button Style="{DynamicResource AddButtonStyle}"
+                        Command="{Binding AddEpubBookCommand}"
+                        Height="60" Width="60" Margin="5"
+                        DockPanel.Dock="Top">
+                    <Image Source="/Icons/126583_plus_add_icon.png" Height="30" />
+                </Button>
             </StackPanel>
         </DockPanel>
 
@@ -30,7 +35,8 @@
                   ItemsPanel="{StaticResource listPanelTemplate}"
                   ItemsSource="{Binding FavoriteBooks}"
                   SelectedItem="{Binding SelectedBook, Mode=TwoWay}"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="2"
+                  Background="Transparent" BorderBrush="Transparent">
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Setter Property="Background" Value="Transparent" />

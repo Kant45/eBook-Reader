@@ -22,17 +22,18 @@ public class AddBookCommand : CommandBase {
     [STAThread]
     public override void Execute(Object parameter) {
 
-        try {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+        OpenFileDialog openFileDialog = new OpenFileDialog();
 
-            String sourceFilePath = null;
-            String fileName = null;
-            String destFilePath = Directory.GetCurrentDirectory();
+        String sourceFilePath = null;
+        String fileName = null;
+        String destFilePath = Directory.GetCurrentDirectory();
 
-            if(openFileDialog.ShowDialog() == true) {
-                sourceFilePath = openFileDialog.FileName;
-                fileName = Path.GetFileNameWithoutExtension(sourceFilePath);
-            }
+        if(openFileDialog.ShowDialog() == true) {
+            sourceFilePath = openFileDialog.FileName;
+            fileName = Path.GetFileNameWithoutExtension(sourceFilePath);
+        }
+
+        if(sourceFilePath != null) {
 
             File.Copy(sourceFilePath, Path.Combine("Library", fileName + ".epub"), true);
 
@@ -43,8 +44,9 @@ public class AddBookCommand : CommandBase {
             allBooksViewModel.BookList.Add(book);
 
             AddToXML(book);
+        }
 
-        } catch(ArgumentNullException) { }
+        return;
     }
 
 

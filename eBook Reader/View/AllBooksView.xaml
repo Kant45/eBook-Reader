@@ -11,27 +11,35 @@
 
     <UserControl.Resources>
         <ItemsPanelTemplate x:Key="listPanelTemplate">
-            <WrapPanel />
+            <WrapPanel Orientation="Horizontal" />
         </ItemsPanelTemplate>
     </UserControl.Resources>
-    <Grid Background="White">
+    <Grid Background="#fdf8e8">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <DockPanel Grid.Row="0" >
-            <StackPanel Orientation="Horizontal">
-                <Button Command="{Binding AddEpubBookCommand}"
-                        DockPanel.Dock="Top" Content="Add" MinWidth="100" Margin="5" />
-            </StackPanel>
+        <DockPanel Grid.Row="0" Height="60" Background="#e7dbb1">
+
         </DockPanel>
+
+        <Button Style="{DynamicResource AddButtonStyle}" Command="{Binding AddEpubBookCommand}"
+                        Margin="15 0 0 55" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                        Panel.ZIndex="1"
+                        Height="80" Width="80">
+            <Image Source="/Icons/126583_plus_add_icon.png" Height="40" />
+        </Button>
 
         <ListView x:Name="bookList"
                   ItemsPanel="{StaticResource listPanelTemplate}"
                   ItemsSource="{Binding BookList}"
                   SelectedItem="{Binding SelectedBook, Mode=TwoWay}"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="2"
+                  Background="Transparent"
+                  BorderBrush="Transparent" 
+                  Margin="10">
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Setter Property="Background" Value="Transparent" />
@@ -46,19 +54,37 @@
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Button Background="Transparent" BorderBrush="Transparent" 
+                    <Grid>
+                        <CheckBox Style="{DynamicResource CheckBoxStyle}"
+                                          Background="White" Panel.ZIndex="1"
+                                          HorizontalAlignment="Right"
+                                          VerticalAlignment="Top" />
+                        <Button Style="{DynamicResource ListButtonStyle}"
+                            BorderBrush="#e7dbb1" BorderThickness="2"
                             Command="{Binding DataContext.NavigateReadBookCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                            CommandParameter="{Binding}">
-                        <StackPanel Margin="5">
-                            <Image Width="150" Height="250" Source="{Binding Path=CoverImage}" 
+                            CommandParameter="{Binding}"
+                            Margin="10" Height="350" Width="200" >
+                            <StackPanel>
+                                <Image Width="170" Height="250" Source="{Binding Path=CoverImage}" 
                                    RenderOptions.BitmapScalingMode="HighQuality" />
-                            <TextBlock FontSize="16" Text="{Binding Path=Title}" HorizontalAlignment="Center" />
-                            <TextBlock FontSize="16" Text="{Binding Path=Author}" HorizontalAlignment="Center" />
-                        </StackPanel>
-                    </Button>
+                                <StackPanel Width="150" MaxHeight="55">
+                                    <TextBlock FontSize="14" Text="{Binding Path=Title}" HorizontalAlignment="Left" FontWeight="DemiBold" TextWrapping="Wrap" />
+                                    <TextBlock FontSize="12" Text="{Binding Path=Author}" HorizontalAlignment="Left" TextWrapping="Wrap" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
+
+        <DockPanel Grid.Row="2" Height="40" Background="#e7dbb1" VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="60 0 0 0">
+
+                
+
+            </StackPanel>
+        </DockPanel>
+
     </Grid>
 </UserControl>

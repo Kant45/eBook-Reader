@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:eBook_Reader" 
         d:DataContext="{d:DesignInstance Type=vms:MainViewModel}"
         mc:Ignorable="d"
-        Title="eBook reader" Height="700" Width="1000">
+        Title="eBook reader" Height="700" Width="1200" Background="Transparent">
 
     <ContentControl Content="{Binding CurrentViewModel}">
         <ContentControl.Resources>

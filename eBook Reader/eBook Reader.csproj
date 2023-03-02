@@ -9,6 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Icons\126583_plus_add_icon.png" />
+    <None Remove="Icons\48806_star_empty_icon.png" />
+    <None Remove="Icons\48807_star_full_bookmark_favorite_icon.png" />
+    <None Remove="Icons\48808_star_half_icon.png" />
+    <None Remove="Icons\book_icon.png" />
+    <None Remove="Icons\coollogo_com-34973328.png" />
+    <None Remove="Icons\coollogo_com-6470310.png" />
+    <None Remove="Icons\text-1677790700829.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DevExpress.Data" Version="22.2.4" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
     <PackageReference Include="NuGet.Common" Version="6.4.0" />
@@ -20,7 +31,17 @@
   <ItemGroup>
     <Folder Include="bin\Debug\net7.0-windows\Library\" />
     <Folder Include="bin\Release\net7.0-windows\Library\" />
-    <Folder Include="Library\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\126583_plus_add_icon.png" />
+    <Resource Include="Icons\48806_star_empty_icon.png" />
+    <Resource Include="Icons\48807_star_full_bookmark_favorite_icon.png" />
+    <Resource Include="Icons\48808_star_half_icon.png" />
+    <Resource Include="Icons\book_icon.png" />
+    <Resource Include="Icons\coollogo_com-34973328.png" />
+    <Resource Include="Icons\coollogo_com-6470310.png" />
+    <Resource Include="Icons\text-1677790700829.png" />
   </ItemGroup>
 
 </Project>

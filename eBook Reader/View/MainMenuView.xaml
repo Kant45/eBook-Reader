@@ -9,39 +9,65 @@
       d:DataContext="{d:DesignInstance Type=viewmodel:MainMenuViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
-    
-    <Grid Background="White">
+
+    <Grid Background="#fdf8e8">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="250" MaxWidth="200" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0" Grid.Row="1">
-            <Button x:Name="AllBooksButton" Command="{Binding NavigateAllBooksCommand}" Content="All books" Margin="8"/>
-            <Button x:Name="FavoritesButton" Command="{Binding NavigateFavoritesCommand}" 
-                    Content="Favorites" Margin="{Binding ElementName=AllBooksButton, Path=Margin}" />
-            <Button x:Name="SettingsButton" Command="{Binding NavigateSettingsCommand}" 
-                    Content="Settings" Margin="{Binding ElementName=AllBooksButton, Path=Margin}" />
-        </StackPanel>
+        <Grid Background="#e7dbb1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-        <GridSplitter Width="3" Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+            <Image Source="/Icons/text-1677790700829.png" RenderOptions.BitmapScalingMode="HighQuality"
+                       Width="170"/>
+            
+            <StackPanel Grid.Column="0" Grid.Row="1"
+                        Background="#fdf8e8">
+                <Button x:Name="AllBooksButton" 
+                    Style="{DynamicResource MenuButtonStyle}"
+                    Command="{Binding NavigateAllBooksCommand}" 
+                    Content="All books"
+                    FontSize="19" Foreground="#d6c2c2" FontFamily="Segoe UI"
+                    Margin="15 25 15 8"
+                    Height="40" />
+                <Button x:Name="FavoritesButton" 
+                    Style="{DynamicResource MenuButtonStyle}"
+                    Command="{Binding NavigateFavoritesCommand}" 
+                    Content="Favorites"
+                    FontSize="19" Foreground="#d6c2c2" FontFamily="Segoe UI"
+                    Margin="15 8 15 8"
+                    Height="{Binding ElementName=AllBooksButton, Path=Height}" />
+                <Button x:Name="SettingsButton" 
+                    Style="{DynamicResource MenuButtonStyle}"
+                    Command="{Binding NavigateSettingsCommand}" 
+                    Content="Settings" 
+                    FontSize="19" Foreground="#d6c2c2" FontFamily="Segoe UI"
+                    Margin="15 8 15 8"
+                    Height="{Binding ElementName=AllBooksButton, Path=Height}" />
+            </StackPanel>
+        </Grid>
 
-        <Grid x:Name="MenuFrame" Grid.Column="2" Grid.Row="1">
+        <GridSplitter Width="1" Grid.Column="1" Background="#e7dbb1"
+                      HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+
+        <Grid x:Name="MenuFrame" Grid.Column="2">
             <ContentControl Content="{Binding CurrentMenuViewModel}">
                 <ContentControl.Resources>
                     <DataTemplate DataType="{x:Type viewmodel:AllBooksViewModel}">
                         <views:AllBooksView />
                     </DataTemplate>
                 </ContentControl.Resources>
-                
             </ContentControl>
-
         </Grid>
 
+        <DockPanel Grid.Row="1" Height="40" Background="#e7dbb1" VerticalAlignment="Bottom">
+
+        </DockPanel>
+        
     </Grid>
 </UserControl>
