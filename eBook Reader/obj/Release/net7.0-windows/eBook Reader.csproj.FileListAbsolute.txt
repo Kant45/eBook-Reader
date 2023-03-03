@@ -43,3 +43,5 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\Styles\CheckBoxStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\Styles\MenuButtonStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\App.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\Styles\ListButtonStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Release\net7.0-windows\Styles\SettingsButtonStyle.baml

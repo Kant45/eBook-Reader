@@ -10,6 +10,14 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
 
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/MenuButtonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <Grid Background="#fdf8e8">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250" MaxWidth="200" />
@@ -19,7 +27,7 @@
 
         <Grid Background="#e7dbb1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="80"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
 
@@ -31,7 +39,7 @@
                 <Button x:Name="AllBooksButton" 
                     Style="{DynamicResource MenuButtonStyle}"
                     Command="{Binding NavigateAllBooksCommand}" 
-                    Content="All books"
+                    Content="Library"
                     FontSize="19" Foreground="#d6c2c2" FontFamily="Segoe UI"
                     Margin="15 25 15 8"
                     Height="40" />
@@ -42,13 +50,26 @@
                     FontSize="19" Foreground="#d6c2c2" FontFamily="Segoe UI"
                     Margin="15 8 15 8"
                     Height="{Binding ElementName=AllBooksButton, Path=Height}" />
-                <Button x:Name="SettingsButton" 
-                    Style="{DynamicResource MenuButtonStyle}"
+                <Button x:Name="SettingsButton"
                     Command="{Binding NavigateSettingsCommand}" 
                     Content="Settings" 
                     FontSize="19" Foreground="#d6c2c2" FontFamily="Segoe UI"
                     Margin="15 8 15 8"
-                    Height="{Binding ElementName=AllBooksButton, Path=Height}" />
+                    Height="{Binding ElementName=AllBooksButton, Path=Height}" >
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MenuButtonStyle}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="2" SnapsToDevicePixels="true" CornerRadius="50">
+                                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </StackPanel>
         </Grid>
 

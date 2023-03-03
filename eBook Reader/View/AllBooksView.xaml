@@ -21,7 +21,15 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <DockPanel Grid.Row="0" Height="60" Background="#e7dbb1">
+        <DockPanel Grid.Row="0" Height="80" Background="#e7dbb1">
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal">
+                <TextBox Width="200" MinWidth="130" Height="30"
+                         HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                         Margin="0 0 5 5" Background="#fdf8e8"
+                         VerticalContentAlignment="Center" HorizontalContentAlignment="Right">
+                </TextBox>
+                <Image Source="/Icons/314478_search_icon.png" Height="30" VerticalAlignment="Center" Margin="0 0 5 5" />
+            </StackPanel>
 
         </DockPanel>
 
