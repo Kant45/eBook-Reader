@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NET;NET7_0;NETCOREAPP
 C:\Users\User\source\repos\eBook Reader\eBook Reader\App.xaml
-11-1441862514
+12-1600929922
 
 28236008178
-2071920376029
-Styles\AddButtonStyle.xaml;Styles\CheckBoxStyle.xaml;Styles\ListButtonStyle.xaml;Styles\MenuButtonStyle.xaml;Styles\SettingsButtonStyle.xaml;View\AllBooksView.xaml;View\FavoriteBooksView.xaml;View\MainMenuView.xaml;View\MainWindow.xaml;View\ReadBookView.xaml;View\SettingsView.xaml;
+2091178678969
+Styles\AddButtonStyle.xaml;Styles\CheckBoxStyle.xaml;Styles\ListButtonStyle.xaml;Styles\MenuButtonStyle.xaml;Styles\SettingsButtonStyle.xaml;Styles\WebBrowserStyle.xaml;View\AllBooksView.xaml;View\FavoriteBooksView.xaml;View\MainMenuView.xaml;View\MainWindow.xaml;View\ReadBookView.xaml;View\SettingsView.xaml;
 
 False
 

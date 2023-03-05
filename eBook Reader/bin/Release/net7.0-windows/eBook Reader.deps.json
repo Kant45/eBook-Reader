@@ -10,6 +10,7 @@
         "dependencies": {
           "DevExpress.Data": "22.2.4",
           "HtmlAgilityPack": "1.11.46",
+          "HtmlRenderer.WPF": "1.5.0.6",
           "NuGet.Common": "6.4.0",
           "Prism.Wpf": "8.1.97",
           "System.Drawing.Common": "7.0.0",
@@ -41,6 +42,25 @@
           "lib/netstandard2.0/HtmlAgilityPack.dll": {
             "assemblyVersion": "1.11.46.0",
             "fileVersion": "1.11.46.0"
+          }
+        }
+      },
+      "HtmlRenderer.Core/1.5.0.5": {
+        "runtime": {
+          "lib/net45/HtmlRenderer.dll": {
+            "assemblyVersion": "1.5.0.5",
+            "fileVersion": "1.5.0.5"
+          }
+        }
+      },
+      "HtmlRenderer.WPF/1.5.0.6": {
+        "dependencies": {
+          "HtmlRenderer.Core": "1.5.0.5"
+        },
+        "runtime": {
+          "lib/net45/HtmlRenderer.WPF.dll": {
+            "assemblyVersion": "1.5.0.6",
+            "fileVersion": "1.5.0.6"
           }
         }
       },
@@ -335,6 +355,20 @@
       "sha512": "sha512-dLMn4EVfJBHWmWK4Uh0XGD76FPLHI0qr2Tm0s1m/xmgiHb1JUb9zB8AzO8HtrkBBlMN6JfCUBYddhqC0hZNR+g==",
       "path": "htmlagilitypack/1.11.46",
       "hashPath": "htmlagilitypack.1.11.46.nupkg.sha512"
+    },
+    "HtmlRenderer.Core/1.5.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QfZkSOb8HomRkKW3EAjT/VT48x6q+bgK4IBA9gFF+5FVTbvmMEIm42NsXEx/LTBHMssnQTPe94X0Bi8KdUIVQA==",
+      "path": "htmlrenderer.core/1.5.0.5",
+      "hashPath": "htmlrenderer.core.1.5.0.5.nupkg.sha512"
+    },
+    "HtmlRenderer.WPF/1.5.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9kGFhqGxwBfH4fttqU87nMN8apMLsXvlCKSy1K5lNPCeO4px2OW3/2F7y+g7jlRiQJMzemySLC2+LSXBvWZh9w==",
+      "path": "htmlrenderer.wpf/1.5.0.6",
+      "hashPath": "htmlrenderer.wpf.1.5.0.6.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/2.0.0": {
       "type": "package",

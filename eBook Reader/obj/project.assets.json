@@ -37,6 +37,35 @@
           }
         }
       },
+      "HtmlRenderer.Core/1.5.0.5": {
+        "type": "package",
+        "compile": {
+          "lib/net45/HtmlRenderer.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/net45/HtmlRenderer.dll": {
+            "related": ".pdb"
+          }
+        }
+      },
+      "HtmlRenderer.WPF/1.5.0.6": {
+        "type": "package",
+        "dependencies": {
+          "HtmlRenderer.Core": "1.5.0.5"
+        },
+        "compile": {
+          "lib/net45/HtmlRenderer.WPF.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/net45/HtmlRenderer.WPF.dll": {
+            "related": ".pdb"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/2.0.0": {
         "type": "package",
         "compile": {
@@ -707,6 +736,47 @@
         "lib/uap10.0/HtmlAgilityPack.dll",
         "lib/uap10.0/HtmlAgilityPack.pdb",
         "lib/uap10.0/HtmlAgilityPack.pri"
+      ]
+    },
+    "HtmlRenderer.Core/1.5.0.5": {
+      "sha512": "QfZkSOb8HomRkKW3EAjT/VT48x6q+bgK4IBA9gFF+5FVTbvmMEIm42NsXEx/LTBHMssnQTPe94X0Bi8KdUIVQA==",
+      "type": "package",
+      "path": "htmlrenderer.core/1.5.0.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "htmlrenderer.core.1.5.0.5.nupkg.sha512",
+        "htmlrenderer.core.nuspec",
+        "lib/net20/HtmlRenderer.dll",
+        "lib/net20/HtmlRenderer.pdb",
+        "lib/net30/HtmlRenderer.dll",
+        "lib/net30/HtmlRenderer.pdb",
+        "lib/net35-client/HtmlRenderer.dll",
+        "lib/net35-client/HtmlRenderer.pdb",
+        "lib/net40-client/HtmlRenderer.dll",
+        "lib/net40-client/HtmlRenderer.pdb",
+        "lib/net45/HtmlRenderer.dll",
+        "lib/net45/HtmlRenderer.pdb"
+      ]
+    },
+    "HtmlRenderer.WPF/1.5.0.6": {
+      "sha512": "9kGFhqGxwBfH4fttqU87nMN8apMLsXvlCKSy1K5lNPCeO4px2OW3/2F7y+g7jlRiQJMzemySLC2+LSXBvWZh9w==",
+      "type": "package",
+      "path": "htmlrenderer.wpf/1.5.0.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "htmlrenderer.wpf.1.5.0.6.nupkg.sha512",
+        "htmlrenderer.wpf.nuspec",
+        "lib/net30/HtmlRenderer.WPF.dll",
+        "lib/net30/HtmlRenderer.WPF.pdb",
+        "lib/net35-client/HtmlRenderer.WPF.dll",
+        "lib/net35-client/HtmlRenderer.WPF.pdb",
+        "lib/net40-client/HtmlRenderer.WPF.dll",
+        "lib/net40-client/HtmlRenderer.WPF.pdb",
+        "lib/net45/HtmlRenderer.WPF.dll",
+        "lib/net45/HtmlRenderer.WPF.pdb",
+        "readme.txt"
       ]
     },
     "Microsoft.NETCore.Platforms/2.0.0": {
@@ -2627,6 +2697,7 @@
     "net7.0-windows7.0": [
       "DevExpress.Data >= 22.2.4",
       "HtmlAgilityPack >= 1.11.46",
+      "HtmlRenderer.WPF >= 1.5.0.6",
       "NuGet.Common >= 6.4.0",
       "Prism.Wpf >= 8.1.97",
       "System.Drawing.Common >= 7.0.0",
@@ -2687,6 +2758,10 @@
             "target": "Package",
             "version": "[1.11.46, )"
           },
+          "HtmlRenderer.WPF": {
+            "target": "Package",
+            "version": "[1.5.0.6, )"
+          },
           "NuGet.Common": {
             "target": "Package",
             "version": "[6.4.0, )"
@@ -2726,5 +2801,27 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'HtmlRenderer.Core 1.5.0.5' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "HtmlRenderer.Core",
+      "targetGraphs": [
+        "net7.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'HtmlRenderer.WPF 1.5.0.6' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "HtmlRenderer.WPF",
+      "targetGraphs": [
+        "net7.0-windows7.0"
+      ]
+    }
+  ]
 }
