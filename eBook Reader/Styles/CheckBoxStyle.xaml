@@ -6,7 +6,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CheckBox}">
                     <StackPanel Orientation="Horizontal">
-                        <Image x:Name="checkBoxImage" Source="/Icons/48806_star_empty_icon.png" Width="32"
+                        <Image x:Name="checkBoxImage" Source="/Icons/Star/48806_star_empty_icon.png" Width="32"
                                RenderOptions.BitmapScalingMode="HighQuality"/>
                         <ContentPresenter/>
                     </StackPanel>
@@ -14,7 +14,7 @@
                     <ControlTemplate.Triggers>
 
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="checkBoxImage" Property="Source" Value="/Icons/48807_star_full_bookmark_favorite_icon.png" />
+                            <Setter TargetName="checkBoxImage" Property="Source" Value="/Icons/Star/48807_star_full_bookmark_favorite_icon.png" />
                         </Trigger>
 
                         <MultiTrigger>
@@ -22,7 +22,7 @@
                                 <Condition Property="IsMouseOver" Value="True" />
                                 <Condition Property="IsChecked" Value="False" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="checkBoxImage" Property="Source" Value="/Icons/48808_star_half_icon.png" />
+                            <Setter TargetName="checkBoxImage" Property="Source" Value="/Icons/Star/48808_star_half_icon.png" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
 

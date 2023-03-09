@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\User\source\repos\eBook Reader\eBook Reader\App.xaml
-11-1441862514
+14-762832655
 
-28-1253294165
-2071920376029
-Styles\AddButtonStyle.xaml;Styles\CheckBoxStyle.xaml;Styles\ListButtonStyle.xaml;Styles\MenuButtonStyle.xaml;Styles\SettingsButtonStyle.xaml;View\AllBooksView.xaml;View\FavoriteBooksView.xaml;View\MainMenuView.xaml;View\MainWindow.xaml;View\ReadBookView.xaml;View\SettingsView.xaml;
+29-730309642
+215-831423587
+Styles\AddButtonStyle.xaml;Styles\BarButtonStyle.xaml;Styles\CheckBoxStyle.xaml;Styles\FlowDocumentPageViewerStyle.xaml;Styles\ListButtonStyle.xaml;Styles\MenuButtonStyle.xaml;Styles\SettingsButtonStyle.xaml;Styles\SortComboBoxStyle.xaml;View\AllBooksView.xaml;View\FavoriteBooksView.xaml;View\MainMenuView.xaml;View\MainWindow.xaml;View\ReadBookView.xaml;View\SettingsView.xaml;
 
 True
 

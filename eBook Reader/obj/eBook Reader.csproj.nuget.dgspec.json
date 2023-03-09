@@ -45,6 +45,10 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            },
             "DevExpress.Data": {
               "target": "Package",
               "version": "[22.2.4, )"
@@ -56,6 +60,10 @@
             "HtmlRenderer.WPF": {
               "target": "Package",
               "version": "[1.5.0.6, )"
+            },
+            "MvvmLightLibs": {
+              "target": "Package",
+              "version": "[5.4.1.1, )"
             },
             "NuGet.Common": {
               "target": "Package",

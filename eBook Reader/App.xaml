@@ -9,7 +9,10 @@
                 <ResourceDictionary Source="Styles/MenuButtonStyle.xaml" />
                 <ResourceDictionary Source="Styles/AddButtonStyle.xaml" />
                 <ResourceDictionary Source="Styles/ListButtonStyle.xaml" />
-                <ResourceDictionary Source="Styles/WebBrowserStyle.xaml" />
+                <ResourceDictionary Source="Styles/FlowDocumentPageViewerStyle.xaml" />
+                <ResourceDictionary Source="Styles/SettingsButtonStyle.xaml" />
+                <ResourceDictionary Source="Styles/BarButtonStyle.xaml" />
+                <ResourceDictionary Source="Styles/SortComboBoxStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

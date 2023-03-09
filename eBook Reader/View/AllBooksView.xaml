@@ -18,23 +18,56 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <DockPanel Grid.Row="0" Height="80" Background="#e7dbb1">
-            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal">
+        <DockPanel Grid.Row="0" Height="45" Background="#e7dbb1">
+            <StackPanel DockPanel.Dock="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                        Orientation="Horizontal" Margin="5">
+                <ComboBox Style="{DynamicResource SortComboBoxStyle}" SelectedIndex="0" Margin="0 0 5 5"
+                          Height="30" Width="105" VerticalContentAlignment="Center">
+                    <ComboBoxItem>
+                        <StackPanel Orientation="Horizontal" Height="30">
+                            <TextBlock FontSize="16" Width="60" Margin="0 0 0 5" VerticalAlignment="Center">Title</TextBlock>
+                            <Image Source="/Icons/Sort/sort_up_icon.png" 
+                                   Height="20" Margin="0 0 0 5"
+                                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <StackPanel Orientation="Horizontal" Height="30">
+                            <TextBlock FontSize="16" Width="60" Margin="0 0 0 5" VerticalAlignment="Center">Title</TextBlock>
+                            <Image Source="/Icons/Sort/sort_down_icon.png" 
+                                   Height="20" Margin="0 0 0 5" />
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <StackPanel Orientation="Horizontal" Height="30">
+                            <TextBlock FontSize="16" Width="60" Margin="0 0 0 5" VerticalAlignment="Center">Author</TextBlock>
+                            <Image Source="/Icons/Sort/sort_up_icon.png" 
+                                   Height="20" Margin="0 0 0 5" />
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <StackPanel Orientation="Horizontal" Height="30">
+                            <TextBlock FontSize="16" Width="60" Margin="0 0 0 5" VerticalAlignment="Center">Author</TextBlock>
+                            <Image Source="/Icons/Sort/sort_down_icon.png" 
+                                   Height="20" Margin="0 0 0 5" />
+                        </StackPanel>
+                    </ComboBoxItem>
+                </ComboBox>
                 <TextBox Width="200" MinWidth="130" Height="30"
-                         HorizontalAlignment="Right" VerticalAlignment="Bottom" 
-                         Margin="0 0 5 5" Background="#fdf8e8"
-                         VerticalContentAlignment="Center" HorizontalContentAlignment="Right">
+                             HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                             Margin="0 0 5 5" Background="#fdf8e8"
+                             VerticalContentAlignment="Center" HorizontalContentAlignment="Right">
                 </TextBox>
-                <Image Source="/Icons/314478_search_icon.png" Height="30" VerticalAlignment="Center" Margin="0 0 5 5" />
+                <Image Source="/Icons/314478_search_icon.png" Height="30" Width="30" VerticalAlignment="Center" Margin="0 0 5 5" />
             </StackPanel>
-
         </DockPanel>
 
         <Button Style="{DynamicResource AddButtonStyle}" Command="{Binding AddEpubBookCommand}"
-                        Margin="15 0 0 55" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                        Margin="15 0 0 75" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Left"
                         Panel.ZIndex="1"
                         Height="80" Width="80">
             <Image Source="/Icons/126583_plus_add_icon.png" Height="40" />
@@ -44,9 +77,9 @@
                   ItemsPanel="{StaticResource listPanelTemplate}"
                   ItemsSource="{Binding BookList}"
                   SelectedItem="{Binding SelectedBook, Mode=TwoWay}"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="2"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="3"
                   Background="Transparent"
-                  BorderBrush="Transparent" 
+                  BorderBrush="Transparent"
                   Margin="10">
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
@@ -84,9 +117,10 @@
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
+
         </ListView>
 
-        <DockPanel Grid.Row="2" Height="40" Background="#e7dbb1" VerticalAlignment="Bottom">
+        <DockPanel Grid.Row="3" Height="60" Background="#e7dbb1" VerticalAlignment="Bottom">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="60 0 0 0">
 
                 

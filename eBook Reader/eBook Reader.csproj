@@ -10,20 +10,31 @@
 
   <ItemGroup>
     <None Remove="Icons\126583_plus_add_icon.png" />
+    <None Remove="Icons\2530802_cog_gear_general_machine_office_icon.png" />
     <None Remove="Icons\314478_search_icon.png" />
+    <None Remove="Icons\4733302_arrow_back_basic_outline_ui_icon.png" />
     <None Remove="Icons\48806_star_empty_icon.png" />
     <None Remove="Icons\48807_star_full_bookmark_favorite_icon.png" />
     <None Remove="Icons\48808_star_half_icon.png" />
+    <None Remove="Icons\8530586_window_minimize_icon.png" />
+    <None Remove="Icons\8673614_ic_fluent_maximize_filled_icon.png" />
+    <None Remove="Icons\9004828_cross_delete_remove_cancel_icon %281%29.png" />
+    <None Remove="Icons\9004828_cross_delete_remove_cancel_icon %282%29.png" />
+    <None Remove="Icons\9004828_cross_delete_remove_cancel_icon.png" />
     <None Remove="Icons\book_icon.png" />
     <None Remove="Icons\coollogo_com-34973328.png" />
     <None Remove="Icons\coollogo_com-6470310.png" />
+    <None Remove="Icons\Sort\sort_down_icon.png" />
+    <None Remove="Icons\Sort\sort_up_icon.png" />
     <None Remove="Icons\text-1677790700829.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
     <PackageReference Include="DevExpress.Data" Version="22.2.4" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
     <PackageReference Include="HtmlRenderer.WPF" Version="1.5.0.6" />
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
     <PackageReference Include="NuGet.Common" Version="6.4.0" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
@@ -37,13 +48,22 @@
 
   <ItemGroup>
     <Resource Include="Icons\126583_plus_add_icon.png" />
+    <Resource Include="Icons\2530802_cog_gear_general_machine_office_icon.png" />
     <Resource Include="Icons\314478_search_icon.png" />
-    <Resource Include="Icons\48806_star_empty_icon.png" />
-    <Resource Include="Icons\48807_star_full_bookmark_favorite_icon.png" />
-    <Resource Include="Icons\48808_star_half_icon.png" />
+    <Resource Include="Icons\4733302_arrow_back_basic_outline_ui_icon.png" />
+    <Resource Include="Icons\Star\48806_star_empty_icon.png" />
+    <Resource Include="Icons\Star\48807_star_full_bookmark_favorite_icon.png" />
+    <Resource Include="Icons\Star\48808_star_half_icon.png" />
+    <Resource Include="Icons\Bar\8530586_window_minimize_icon.png" />
+    <Resource Include="Icons\Bar\8673614_ic_fluent_maximize_filled_icon.png" />
+    <Resource Include="Icons\Bar\9004828_cross_delete_remove_cancel_icon %281%29.png" />
+    <Resource Include="Icons\Bar\9004828_cross_delete_remove_cancel_icon %282%29.png" />
+    <Resource Include="Icons\Bar\9004828_cross_delete_remove_cancel_icon.png" />
     <Resource Include="Icons\book_icon.png" />
     <Resource Include="Icons\coollogo_com-34973328.png" />
     <Resource Include="Icons\coollogo_com-6470310.png" />
+    <Resource Include="Icons\Sort\sort_down_icon.png" />
+    <Resource Include="Icons\Sort\sort_up_icon.png" />
     <Resource Include="Icons\text-1677790700829.png" />
   </ItemGroup>
 

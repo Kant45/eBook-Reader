@@ -23,5 +23,9 @@ namespace eBook_Reader {
         public MainWindow() {
             InitializeComponent();
         }
+
+        private void Border_MouseDown(Object sender, MouseButtonEventArgs e) {
+            this.DragMove();
+        }
     }
 }

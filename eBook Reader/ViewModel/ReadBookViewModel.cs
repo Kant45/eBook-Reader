@@ -18,6 +18,7 @@ public class ReadBookViewModel : ViewModelBase {
     private readonly Book m_selectedBook;
     private readonly EpubContent m_epubContent;
     private String m_selectedHtml;
+    private Byte[] m_coverImage;
     private List<EpubTextContentFile> m_readingOrder;
     private FlowDocument m_flowDocument;
 
@@ -33,6 +34,13 @@ public class ReadBookViewModel : ViewModelBase {
         set {
             m_selectedHtml = value;
             OnPropertyChanged("SelectedHtml");
+        }
+    }
+    public Byte[] CoverImage {
+        get => m_coverImage;
+        set {
+            m_coverImage = value;
+            OnPropertyChanged("CoverImage");
         }
     }
     public FlowDocument FlowDocument {
@@ -55,6 +63,8 @@ public class ReadBookViewModel : ViewModelBase {
         m_selectedBook = selectedBook;
         m_epubContent = m_selectedBook.EBook.Content;
         m_readingOrder = m_selectedBook.EBook.ReadingOrder;
+        m_coverImage = m_selectedBook.CoverImage;
+
 
         StringBuilder stringBuilder = new StringBuilder();
 

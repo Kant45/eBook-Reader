@@ -1,14 +1,15 @@
 ﻿<UserControl x:Class="eBook_Reader.View.MainMenuView"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:eBook_Reader.View" 
-      xmlns:viewmodel="clr-namespace:eBook_Reader.ViewModel"
-      xmlns:views="clr-namespace:eBook_Reader.View"
-      d:DataContext="{d:DesignInstance Type=viewmodel:MainMenuViewModel}"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:eBook_Reader.View" 
+             xmlns:viewmodel="clr-namespace:eBook_Reader.ViewModel"
+             xmlns:views="clr-namespace:eBook_Reader.View"
+             d:DataContext="{d:DesignInstance Type=viewmodel:MainMenuViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="#fdf8e8">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -27,49 +28,31 @@
 
         <Grid Background="#e7dbb1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
+                <RowDefinition Height="45"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
 
             <Image Source="/Icons/text-1677790700829.png" RenderOptions.BitmapScalingMode="HighQuality"
-                       Width="170"/>
+                   Width="180" VerticalAlignment="Top"/>
             
             <StackPanel Grid.Column="0" Grid.Row="1"
                         Background="#fdf8e8">
                 <Button x:Name="AllBooksButton" 
-                    Style="{DynamicResource MenuButtonStyle}"
-                    Command="{Binding NavigateAllBooksCommand}" 
-                    Content="Library"
-                    FontSize="19" Foreground="#d6c2c2" FontFamily="Segoe UI"
-                    Margin="15 25 15 8"
-                    Height="40" />
+                        Style="{DynamicResource MenuButtonStyle}"
+                        Command="{Binding NavigateAllBooksCommand}" 
+                        Content="Library"
+                        FontSize="20" Foreground="#d6c2c2" FontFamily="Segoe UI"
+                        Margin="15 25 15 8"
+                        Height="40" />
                 <Button x:Name="FavoritesButton" 
-                    Style="{DynamicResource MenuButtonStyle}"
-                    Command="{Binding NavigateFavoritesCommand}" 
-                    Content="Favorites"
-                    FontSize="19" Foreground="#d6c2c2" FontFamily="Segoe UI"
-                    Margin="15 8 15 8"
-                    Height="{Binding ElementName=AllBooksButton, Path=Height}" />
-                <Button x:Name="SettingsButton"
-                    Command="{Binding NavigateSettingsCommand}" 
-                    Content="Settings" 
-                    FontSize="19" Foreground="#d6c2c2" FontFamily="Segoe UI"
-                    Margin="15 8 15 8"
-                    Height="{Binding ElementName=AllBooksButton, Path=Height}" >
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MenuButtonStyle}">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="2" SnapsToDevicePixels="true" CornerRadius="50">
-                                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </Button.Style>
-                </Button>
+                        Style="{DynamicResource MenuButtonStyle}"
+                        Command="{Binding NavigateFavoritesCommand}" 
+                        Content="Favorites"
+                        FontSize="20" Foreground="#d6c2c2" FontFamily="Segoe UI"
+                        Margin="15 8 15 8"
+                        Height="{Binding ElementName=AllBooksButton, Path=Height}" />
+                
+
             </StackPanel>
         </Grid>
 
@@ -86,8 +69,17 @@
             </ContentControl>
         </Grid>
 
-        <DockPanel Grid.Row="1" Height="40" Background="#e7dbb1" VerticalAlignment="Bottom">
-
+        <DockPanel Grid.Row="1" Height="60" Background="#e7dbb1" VerticalAlignment="Bottom">
+            <Button x:Name="SettingsButton"
+                        Style="{DynamicResource SettingsButtonStyle}" 
+                        Command="{Binding NavigateSettingsCommand}"
+                        FontSize="20" Foreground="#d6c2c2" FontFamily="Segoe UI"
+                        Height="50" Width="50" Margin="10 0 0 0" 
+                        HorizontalAlignment="Left" VerticalAlignment="Center" >
+                <Image Source="/Icons/2530802_cog_gear_general_machine_office_icon.png"
+                       RenderOptions.BitmapScalingMode="HighQuality"
+                       Margin="3"/>
+            </Button>
         </DockPanel>
         
     </Grid>

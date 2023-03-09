@@ -3,30 +3,69 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:views="clr-namespace:eBook_Reader.View"
         xmlns:vms="clr-namespace:eBook_Reader.ViewModel"
         xmlns:local="clr-namespace:eBook_Reader" 
         d:DataContext="{d:DesignInstance Type=vms:MainViewModel}"
         mc:Ignorable="d"
-        Title="eBook reader" Height="700" Width="1200" Background="Transparent">
+        Title="eBook reader" Height="700" Width="1200" Background="#fdf8e8">
 
-    <ContentControl Content="{Binding CurrentViewModel}">
-        <ContentControl.Resources>
-            <DataTemplate DataType="{x:Type vms:MainMenuViewModel}">
-                <views:MainMenuView />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vms:ReadBookViewModel}">
-                <views:ReadBookView />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vms:AllBooksViewModel}">
-                <views:AllBooksView />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vms:FavoriteBooksViewModel}">
-                <views:FavoriteBooksView />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vms:SettingsViewModel}">
-                <views:SettingsView />
-            </DataTemplate>
-        </ContentControl.Resources>
-    </ContentControl>
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="WindowChrome.WindowChrome">
+                <Setter.Value>
+                    <WindowChrome CaptionHeight="0"
+                                  CornerRadius="5"
+                                  GlassFrameThickness="0"
+                                  NonClientFrameEdges="None"
+                                  ResizeBorderThickness="3"
+                                  RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Style>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Height="45" Background="#e7dbb1" MouseDown="Border_MouseDown">
+
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal" DockPanel.Dock="Right"
+                            Margin="0 0 5 0">
+                <Button Style="{DynamicResource MinimizeButtonStyle}"
+                            Height="35" Width="35"
+                            Margin="0 5 5 5" />
+                <Button Style="{DynamicResource MaximizeButtonStyle}" Command="{Binding MaximizeWindowCommand}" 
+                            Height="35" Width="35"
+                            Margin="0 5 5 5" />
+                <Button Style="{DynamicResource CloseButtonStyle}" Command="{Binding CloseWindowCommand}" 
+                            CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                            Height="35" Width="35"
+                            Margin="0 5 5 5" >
+                </Button>
+            </StackPanel>
+        </Border>
+        <ContentControl Content="{Binding CurrentViewModel}" Grid.Row="1">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type vms:MainMenuViewModel}">
+                    <views:MainMenuView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vms:ReadBookViewModel}">
+                    <views:ReadBookView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vms:AllBooksViewModel}">
+                    <views:AllBooksView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vms:FavoriteBooksViewModel}">
+                    <views:FavoriteBooksView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vms:SettingsViewModel}">
+                    <views:SettingsView />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+    </Grid>
 </Window>

@@ -27,7 +27,13 @@
     <Page Update="Styles\AddButtonStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Styles\BarButtonStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Styles\CheckBoxStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\FlowDocumentPageViewerStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\ListButtonStyle.xaml">
@@ -37,9 +43,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\SettingsButtonStyle.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Styles\WebBrowserStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\AllBooksView.xaml">

@@ -5,29 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:viewmodel="clr-namespace:eBook_Reader.ViewModel"
              xmlns:local="clr-namespace:eBook_Reader.View"
-             xmlns:src="clr-namespace:eBook_Reader.Utils"
              d:DataContext="{d:DesignInstance Type=viewmodel:ReadBookViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
-    <Grid Background="White">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.1*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="0.1*"/>
-        </Grid.ColumnDefinitions>
 
+    <Grid Background="#fdf8e8">
 
-        <FlowDocumentPageViewer Grid.Column="1">
-            <FlowDocument>
-                <Paragraph>
+        <FlowDocumentPageViewer Style="{DynamicResource FlowDocumentPageViewerStyle}">
+            <FlowDocument ColumnWidth="650" ColumnGap="30">
+                <BlockUIContainer>
+                    <Image Source="{Binding CoverImage}" />
+                </BlockUIContainer>
+                <Paragraph TextAlignment="Justify" Background="#fdf8e8">
                     <Run Text="{Binding SelectedHtml, Mode=TwoWay}" />
                 </Paragraph>
             </FlowDocument>
         </FlowDocumentPageViewer>
-
-        <Button Grid.Column="0" Command="{Binding PreviousPageCommand}" />
-        <Button Grid.Column="2" Command="{Binding NextPageCommand}" />
 
     </Grid>
 </UserControl>
