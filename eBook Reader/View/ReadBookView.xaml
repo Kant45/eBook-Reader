@@ -12,7 +12,7 @@
     <Grid Background="#fdf8e8">
 
         <FlowDocumentPageViewer Style="{DynamicResource FlowDocumentPageViewerStyle}">
-            <FlowDocument ColumnWidth="650" ColumnGap="30">
+            <FlowDocument ColumnWidth="600" ColumnGap="30">
                 <BlockUIContainer>
                     <Image Source="{Binding CoverImage}" />
                 </BlockUIContainer>

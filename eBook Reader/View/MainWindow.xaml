@@ -7,9 +7,11 @@
         xmlns:views="clr-namespace:eBook_Reader.View"
         xmlns:vms="clr-namespace:eBook_Reader.ViewModel"
         xmlns:local="clr-namespace:eBook_Reader" 
-        d:DataContext="{d:DesignInstance Type=vms:MainViewModel}"
         mc:Ignorable="d"
-        Title="eBook reader" Height="700" Width="1200" Background="#fdf8e8">
+        Title="eBook reader" 
+        Height="700" Width="1200" Background="#fdf8e8" 
+        WindowStartupLocation="CenterScreen"
+        d:DataContext="{d:DesignInstance Type=vms:MainViewModel}">
 
     <Window.Style>
         <Style TargetType="Window">

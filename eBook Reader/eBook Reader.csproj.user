@@ -33,6 +33,9 @@
     <Page Update="Styles\CheckBoxStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Styles\ComboBoxItemStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Styles\FlowDocumentPageViewerStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -43,6 +46,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\SettingsButtonStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\SortComboBoxStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\AllBooksView.xaml">

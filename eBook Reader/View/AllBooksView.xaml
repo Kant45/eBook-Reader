@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:eBook_Reader.View" 
       xmlns:viewmodel="clr-namespace:eBook_Reader.ViewModel"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       d:DataContext="{d:DesignInstance Type=viewmodel:AllBooksViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
@@ -25,44 +26,45 @@
         <DockPanel Grid.Row="0" Height="45" Background="#e7dbb1">
             <StackPanel DockPanel.Dock="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"
                         Orientation="Horizontal" Margin="5">
-                <ComboBox Style="{DynamicResource SortComboBoxStyle}" SelectedIndex="0" Margin="0 0 5 5"
-                          Height="30" Width="105" VerticalContentAlignment="Center">
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal" Height="30">
-                            <TextBlock FontSize="16" Width="60" Margin="0 0 0 5" VerticalAlignment="Center">Title</TextBlock>
-                            <Image Source="/Icons/Sort/sort_up_icon.png" 
-                                   Height="20" Margin="0 0 0 5"
-                                   RenderOptions.BitmapScalingMode="HighQuality"/>
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal" Height="30">
-                            <TextBlock FontSize="16" Width="60" Margin="0 0 0 5" VerticalAlignment="Center">Title</TextBlock>
-                            <Image Source="/Icons/Sort/sort_down_icon.png" 
-                                   Height="20" Margin="0 0 0 5" />
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal" Height="30">
-                            <TextBlock FontSize="16" Width="60" Margin="0 0 0 5" VerticalAlignment="Center">Author</TextBlock>
-                            <Image Source="/Icons/Sort/sort_up_icon.png" 
-                                   Height="20" Margin="0 0 0 5" />
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal" Height="30">
-                            <TextBlock FontSize="16" Width="60" Margin="0 0 0 5" VerticalAlignment="Center">Author</TextBlock>
-                            <Image Source="/Icons/Sort/sort_down_icon.png" 
-                                   Height="20" Margin="0 0 0 5" />
-                        </StackPanel>
-                    </ComboBoxItem>
+                <ComboBox Style="{DynamicResource SortComboBoxStyle}" SelectedItem="{Binding SelectedSortParameter, Mode=TwoWay}" Margin="0 0 5 5"
+                          Height="30" Width="105" VerticalContentAlignment="Center" ItemsSource="{Binding SortParameters}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Height="30" Background="#fdf8e8">
+                                <TextBlock Text="{Binding Name}"
+                                               FontSize="16" Width="75" Margin="0 0 0 5" 
+                                               VerticalAlignment="Center" />
+                                <Image Source="{Binding ImagePath}" 
+                                           Height="20" Margin="0 0 0 5"
+                                           RenderOptions.BitmapScalingMode="HighQuality"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SortCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </ComboBox>
-                <TextBox Width="200" MinWidth="130" Height="30"
-                             HorizontalAlignment="Right" VerticalAlignment="Bottom" 
-                             Margin="0 0 5 5" Background="#fdf8e8"
-                             VerticalContentAlignment="Center" HorizontalContentAlignment="Right">
-                </TextBox>
-                <Image Source="/Icons/314478_search_icon.png" Height="30" Width="30" VerticalAlignment="Center" Margin="0 0 5 5" />
+                <Border Height="30" Margin="0 0 0 5" 
+                        BorderBrush="Transparent" BorderThickness="1"
+                        CornerRadius="5" Background="#fdf8e8">
+                    <Grid Background="Transparent" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBox HorizontalAlignment="Stretch" MinWidth="130" Height="30" Grid.Column="0"
+                                 VerticalAlignment="Bottom"
+                                 Background="Transparent"
+                                 VerticalContentAlignment="Center" BorderThickness="0">
+                        </TextBox>
+                        <Image Source="/Icons/314478_search_icon.png" 
+                               Height="25" Width="30" VerticalAlignment="Center" 
+                               Grid.Column="1" RenderOptions.BitmapScalingMode="HighQuality" />
+                    </Grid>
+                </Border>
+                
             </StackPanel>
         </DockPanel>
 
