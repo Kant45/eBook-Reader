@@ -16,14 +16,15 @@ using static System.Reflection.Metadata.BlobBuilder;
 using System.Windows.Shell;
 
 namespace eBook_Reader.ViewModel {
-    public class AllBooksViewModel : ViewModelBase {
+    public class AllBooksViewModel : BooksViewModel {
 
-        private ObservableCollection<Book> m_bookList;
         private static Book? m_selectedBook;
         private readonly NavigationStore m_navigationStore;
-        private SortParameter m_selectedSortParameter;
         private ObservableCollection<SortParameter> m_sortParameters;
-
+        private SortParameter m_selectedSortParameter;
+        public ObservableCollection<Book> BookList {
+            get { return base.m_bookList; }
+        }
         public Book SelectedBook {
             get { return m_selectedBook; }
             set {
@@ -31,13 +32,11 @@ namespace eBook_Reader.ViewModel {
                 OnPropertyChanged("SlectedBook");
             }
         }
-        public ObservableCollection<Book> BookList {
-            get { return m_bookList; }
-        }
         public SortParameter SelectedSortParameter {
             get => m_selectedSortParameter;
             set {
                 m_selectedSortParameter = value;
+                base.SelectedSortParameter = value;
                 OnPropertyChanged("SelectedSortParameter");
             }
         }
@@ -55,7 +54,7 @@ namespace eBook_Reader.ViewModel {
 
         public AllBooksViewModel(NavigationStore navigationStore) {
 
-            m_bookList = new ObservableCollection<Book>();
+            base.m_bookList = new ObservableCollection<Book>();
 
             m_navigationStore = navigationStore;
 
@@ -75,26 +74,13 @@ namespace eBook_Reader.ViewModel {
                 BookList.Add(sortableList[i]);
             }
 
-            SortParameters = new ObservableCollection<SortParameter>() {
-                new SortParameter("TitleUp","/Icons/Sort/sort_up_icon.png"),
-                new SortParameter("TitleDown","/Icons/Sort/sort_down_icon.png"),
-                new SortParameter("AuthorUp","/Icons/Sort/sort_up_icon.png"),
-                new SortParameter("AuthorDown","/Icons/Sort/sort_down_icon.png")
-            };
-            SelectedSortParameter = SortParameters[0];
+            SortParameters = base.SortParameters; 
+            SelectedSortParameter = base.SortParameters[0];
 
             NavigateReadBookCommand = new NavigateReadBookCommand(m_navigationStore);
             AddEpubBookCommand = new AddBookCommand(m_navigationStore, this);
-            SortCommand = new SortCommand(this);
+            SortCommand = new SortCommand<AllBooksViewModel>(this);
         }
     }
-    public class SortParameter {
-        public String Name { get; set; }
-        public String ImagePath { get; set; }
-
-        public SortParameter(String name, String imagePath) {
-            Name = name;
-            ImagePath = imagePath;
-        }
-    }
+    
 }

@@ -45,17 +45,17 @@
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetProperty="Width" To="190" Duration="0:0:0.15">
+                                        <DoubleAnimation Storyboard.TargetProperty="Width" To="190" Duration="0:0:0.2">
                                             <DoubleAnimation.EasingFunction>
-                                                <CircleEase />
+                                                <QuadraticEase />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-                                        <DoubleAnimation Storyboard.TargetProperty="Height" To="50" Duration="0:0:0.15">
+                                        <DoubleAnimation Storyboard.TargetProperty="Height" To="50" Duration="0:0:0.2">
                                             <DoubleAnimation.EasingFunction>
-                                                <CircleEase />
+                                                <QuadraticEase />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="#a83e3e" Duration="0:0:0.15" />
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="#a83e3e" Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
@@ -63,17 +63,17 @@
                             <Trigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetProperty="Width" To="170" Duration="0:0:0.15">
+                                        <DoubleAnimation Storyboard.TargetProperty="Width" To="170" Duration="0:0:0.2">
                                             <DoubleAnimation.EasingFunction>
-                                                <CircleEase />
+                                                <QuadraticEase />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-                                        <DoubleAnimation Storyboard.TargetProperty="Height" To="45" Duration="0:0:0.15">
+                                        <DoubleAnimation Storyboard.TargetProperty="Height" To="45" Duration="0:0:0.2">
                                             <DoubleAnimation.EasingFunction>
-                                                <CircleEase />
+                                                <QuadraticEase />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="#893333" Duration="0:0:0.15" />
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="#893333" Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>

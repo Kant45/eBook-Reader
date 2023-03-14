@@ -50,25 +50,6 @@
           }
         }
       },
-      "HtmlRenderer.Core/1.5.0.5": {
-        "runtime": {
-          "lib/net45/HtmlRenderer.dll": {
-            "assemblyVersion": "1.5.0.5",
-            "fileVersion": "1.5.0.5"
-          }
-        }
-      },
-      "HtmlRenderer.WPF/1.5.0.6": {
-        "dependencies": {
-          "HtmlRenderer.Core": "1.5.0.5"
-        },
-        "runtime": {
-          "lib/net45/HtmlRenderer.WPF.dll": {
-            "assemblyVersion": "1.5.0.6",
-            "fileVersion": "1.5.0.6"
-          }
-        }
-      },
       "Libuv/1.9.1": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.0.0"
@@ -364,6 +345,11 @@
             "assemblyVersion": "1.1.0.0",
             "fileVersion": "1.1.31.10800"
           }
+        }
+      },
+      "MvvmLight/5.4.1.1": {
+        "dependencies": {
+          "MvvmLightLibs": "5.4.1.1"
         }
       },
       "MvvmLightLibs/5.4.1.1": {
@@ -2001,20 +1987,6 @@
       "path": "htmlagilitypack/1.11.46",
       "hashPath": "htmlagilitypack.1.11.46.nupkg.sha512"
     },
-    "HtmlRenderer.Core/1.5.0.5": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-QfZkSOb8HomRkKW3EAjT/VT48x6q+bgK4IBA9gFF+5FVTbvmMEIm42NsXEx/LTBHMssnQTPe94X0Bi8KdUIVQA==",
-      "path": "htmlrenderer.core/1.5.0.5",
-      "hashPath": "htmlrenderer.core.1.5.0.5.nupkg.sha512"
-    },
-    "HtmlRenderer.WPF/1.5.0.6": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-9kGFhqGxwBfH4fttqU87nMN8apMLsXvlCKSy1K5lNPCeO4px2OW3/2F7y+g7jlRiQJMzemySLC2+LSXBvWZh9w==",
-      "path": "htmlrenderer.wpf/1.5.0.6",
-      "hashPath": "htmlrenderer.wpf.1.5.0.6.nupkg.sha512"
-    },
     "Libuv/1.9.1": {
       "type": "package",
       "serviceable": true,
@@ -2154,6 +2126,13 @@
       "sha512": "sha512-LZpuf82ACZWldmfMuv3CTUMDh3o0xo0uHUaybR5HgqVLDBJJ9RZLykplQ/bTJd0/VDt3EhD4iDgUgbdIUAM+Kg==",
       "path": "microsoft.xaml.behaviors.wpf/1.1.31",
       "hashPath": "microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512"
+    },
+    "MvvmLight/5.4.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fTUDMWT//ChZGd7Q5k0IaJuIXgh+FM43pCStxup7kgh1MQXvC48CjpjWkp5Auru/YXhHOJOMgD1NdtFZgn6K2g==",
+      "path": "mvvmlight/5.4.1.1",
+      "hashPath": "mvvmlight.5.4.1.1.nupkg.sha512"
     },
     "MvvmLightLibs/5.4.1.1": {
       "type": "package",

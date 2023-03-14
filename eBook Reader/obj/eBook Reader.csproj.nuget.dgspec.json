@@ -57,11 +57,7 @@
               "target": "Package",
               "version": "[1.11.46, )"
             },
-            "HtmlRenderer.WPF": {
-              "target": "Package",
-              "version": "[1.5.0.6, )"
-            },
-            "MvvmLightLibs": {
+            "MvvmLight": {
               "target": "Package",
               "version": "[5.4.1.1, )"
             },

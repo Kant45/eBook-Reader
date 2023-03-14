@@ -12,16 +12,35 @@ using System.Windows.Input;
 using System.Xml.Linq;
 
 namespace eBook_Reader.ViewModel {
-    public class FavoriteBooksViewModel : ViewModelBase {
+    public class FavoriteBooksViewModel : BooksViewModel {
 
         private MenuNavigationStore m_menuNavigationStore;
         private readonly NavigationStore m_navigationStore;
         private AllBooksViewModel m_allBooksViewModel;
-        private ObservableCollection<Book> m_favoriteBooksCollection;
+        private SortParameter m_selectedSortParameter;
+        private ObservableCollection<SortParameter> m_sortParameters;
 
         public ObservableCollection<Book> FavoriteBooks {
-            get => m_favoriteBooksCollection;
+            get => base.m_bookList;
         }
+        public SortParameter SelectedSortParameter {
+            get => m_selectedSortParameter;
+            set {
+                m_selectedSortParameter = value;
+                OnPropertyChanged("SelectedSortParameter");
+            }
+        }
+        public ObservableCollection<SortParameter> SortParameters {
+            get => m_sortParameters;
+            set {
+                m_sortParameters = value;
+                OnPropertyChanged("SortParameters");
+            }
+        }
+
+        public ICommand AddEpubBookCommand { get; protected set; }
+        public ICommand NavigateReadBookCommand { get; protected set; }
+        public ICommand SortCommand { get; protected set; }
 
         public FavoriteBooksViewModel(MenuNavigationStore menuNavigationStore, 
                                       NavigationStore navigationStore, 
@@ -30,12 +49,20 @@ namespace eBook_Reader.ViewModel {
             m_menuNavigationStore = menuNavigationStore;
             m_navigationStore = navigationStore;
             m_allBooksViewModel = allBooksViewModel;
-            m_favoriteBooksCollection = new ObservableCollection<Book>(GetFavoriteList());
+            base.m_bookList = new ObservableCollection<Book>(GetFavoriteList());
+
+            SortParameters = new ObservableCollection<SortParameter>() {
+                new SortParameter("TitleUp","/Icons/Sort/sort_up_icon.png"),
+                new SortParameter("TitleDown","/Icons/Sort/sort_down_icon.png"),
+                new SortParameter("AuthorUp","/Icons/Sort/sort_up_icon.png"),
+                new SortParameter("AuthorDown","/Icons/Sort/sort_down_icon.png")
+            };
+            SelectedSortParameter = SortParameters[0];
 
             NavigateReadBookCommand = new NavigateReadBookCommand(m_navigationStore);
+            AddEpubBookCommand = new AddBookCommand(m_navigationStore, m_allBooksViewModel);
+            SortCommand = new SortCommand<BooksViewModel>(this);
         }
-
-        public ICommand NavigateReadBookCommand { get; protected set; }
 
         private IEnumerable<Book> GetFavoriteList() {
 

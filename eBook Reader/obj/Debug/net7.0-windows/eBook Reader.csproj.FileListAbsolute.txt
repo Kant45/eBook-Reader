@@ -44,8 +44,6 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\St
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\MenuButtonStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\AddButtonStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\ListButtonStyle.baml
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\HtmlRenderer.dll
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\HtmlRenderer.WPF.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\SettingsButtonStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\FlowDocumentPageViewerStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\BarButtonStyle.baml

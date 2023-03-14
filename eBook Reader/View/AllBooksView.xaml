@@ -26,8 +26,10 @@
         <DockPanel Grid.Row="0" Height="45" Background="#e7dbb1">
             <StackPanel DockPanel.Dock="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"
                         Orientation="Horizontal" Margin="5">
-                <ComboBox Style="{DynamicResource SortComboBoxStyle}" SelectedItem="{Binding SelectedSortParameter, Mode=TwoWay}" Margin="0 0 5 5"
-                          Height="30" Width="105" VerticalContentAlignment="Center" ItemsSource="{Binding SortParameters}">
+                <ComboBox Style="{DynamicResource SortComboBoxStyle}" 
+                          SelectedItem="{Binding SelectedSortParameter, Mode=TwoWay}" 
+                          Margin="0 0 5 5" Height="30" Width="105" 
+                          VerticalContentAlignment="Center" ItemsSource="{Binding SortParameters}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Height="30" Background="#fdf8e8">
@@ -71,7 +73,7 @@
         <Button Style="{DynamicResource AddButtonStyle}" Command="{Binding AddEpubBookCommand}"
                         Margin="15 0 0 75" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Left"
                         Panel.ZIndex="1"
-                        Height="80" Width="80">
+                        Height="75" Width="75">
             <Image Source="/Icons/126583_plus_add_icon.png" Height="40" />
         </Button>
 
@@ -123,11 +125,7 @@
         </ListView>
 
         <DockPanel Grid.Row="3" Height="60" Background="#e7dbb1" VerticalAlignment="Bottom">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="60 0 0 0">
 
-                
-
-            </StackPanel>
         </DockPanel>
 
     </Grid>

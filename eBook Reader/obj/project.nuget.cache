@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "SLOBAGoj6Ms7jLZCAM8AyTMxIPsLQeC7KEwF323PNdb/47u3iW6UJBhRQLDMQHERIoIa/31wQkGokZ2Wt4Bxpg==",
+  "dgSpecHash": "SO6sZLYSRYAaw/HzuEVLvi0AwoleBG3AqSi/QVK6Fwv6ht6MdcWeCNrWNrFhCNt3F8aFIWRlFXwGASZ3ixG+ig==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\source\\repos\\eBook Reader\\eBook Reader\\eBook Reader.csproj",
   "expectedPackageFiles": [
@@ -8,8 +8,6 @@
     "C:\\Users\\User\\.nuget\\packages\\communitytoolkit.mvvm\\8.1.0\\communitytoolkit.mvvm.8.1.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\devexpress.data\\22.2.4\\devexpress.data.22.2.4.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\htmlagilitypack\\1.11.46\\htmlagilitypack.1.11.46.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\htmlrenderer.core\\1.5.0.5\\htmlrenderer.core.1.5.0.5.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\htmlrenderer.wpf\\1.5.0.6\\htmlrenderer.wpf.1.5.0.6.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\libuv\\1.9.1\\libuv.1.9.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.codeanalysis.analyzers\\1.1.0\\microsoft.codeanalysis.analyzers.1.1.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.codeanalysis.common\\1.3.0\\microsoft.codeanalysis.common.1.3.0.nupkg.sha512",
@@ -30,6 +28,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.31\\microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\mvvmlight\\5.4.1.1\\mvvmlight.5.4.1.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\mvvmlightlibs\\5.4.1.1\\mvvmlightlibs.5.4.1.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\nuget.common\\6.4.0\\nuget.common.6.4.0.nupkg.sha512",
@@ -128,26 +127,6 @@
     "C:\\Users\\User\\.nuget\\packages\\versone.epub\\3.2.0\\versone.epub.3.2.0.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'HtmlRenderer.Core 1.5.0.5' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0-windows7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "HtmlRenderer.Core",
-      "targetGraphs": [
-        "net7.0-windows7.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'HtmlRenderer.WPF 1.5.0.6' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0-windows7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "HtmlRenderer.WPF",
-      "targetGraphs": [
-        "net7.0-windows7.0"
-      ]
-    },
     {
       "code": "NU1701",
       "level": "Warning",

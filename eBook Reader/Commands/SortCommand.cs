@@ -10,12 +10,14 @@ using System.Threading.Tasks;
 
 namespace eBook_Reader.Commands
 {
-    class SortCommand : CommandBase {
+    class SortCommand<T> : CommandBase
 
-        private AllBooksViewModel m_viewModel;
+        where T : BooksViewModel {
 
-        public SortCommand(AllBooksViewModel viewModel) {
-            m_viewModel = viewModel;
+        private T m_viewModel;
+
+        public SortCommand(T TViewModel) {
+            m_viewModel = TViewModel;
         }
         public override void Execute(Object parameter) {
 
