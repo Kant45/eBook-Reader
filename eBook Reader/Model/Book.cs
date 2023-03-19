@@ -19,6 +19,7 @@ namespace eBook_Reader.Model {
     public class Book : INotifyPropertyChanged {
         private EpubBook m_epubBook;
         private String m_bookPath;
+        private String m_newBookPath;
         private Byte[] m_coverImage;
         private String m_title;
         private String m_author;
@@ -48,6 +49,13 @@ namespace eBook_Reader.Model {
             set { 
                 m_bookPath = value;
                 OnPropertyChanged("BookPath");
+            }
+        }
+        public String NewBookPath {
+            get { return m_newBookPath; }
+            set {
+                m_newBookPath = value;
+                OnPropertyChanged("NewBookPath");
             }
         }
         public Boolean IsFavorite {

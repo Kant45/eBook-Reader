@@ -19,7 +19,7 @@ namespace eBook_Reader {
             NavigationStore m_navigationStore = new NavigationStore();
             MenuNavigationStore m_menuNavigationStore = new MenuNavigationStore();
 
-            AllBooksViewModel allBooksViewModelRef = new AllBooksViewModel(m_navigationStore);
+            AllBooksViewModel allBooksViewModelRef = new AllBooksViewModel(m_navigationStore, m_menuNavigationStore);
             m_menuNavigationStore.CurrentMenuViewModel = allBooksViewModelRef;
 
             m_navigationStore.CurrentViewModel = new MainMenuViewModel(m_navigationStore, m_menuNavigationStore, allBooksViewModelRef);

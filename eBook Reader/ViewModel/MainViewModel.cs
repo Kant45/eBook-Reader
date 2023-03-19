@@ -33,7 +33,6 @@ namespace eBook_Reader.ViewModel {
             m_navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
 
             CloseWindowCommand = new CloseCommand();
-            MaximizeWindowCommand = new MaximizeWindowCommand();
 
         }
 

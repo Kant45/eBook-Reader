@@ -13,11 +13,17 @@ using eBook_Reader.Stores;
 namespace eBook_Reader.Commands {
     public class NavigateReadBookCommand : CommandBase {
 
-        private NavigationStore m_navigationStore;
+        private readonly NavigationStore m_navigationStore;
+        private readonly MenuNavigationStore m_menuNavigationStore;
+        private AllBooksViewModel m_allBooksViewModel;
 
-        public NavigateReadBookCommand(NavigationStore navigationStore) {
+        public NavigateReadBookCommand(NavigationStore navigationStore, 
+                                       MenuNavigationStore menuNavigationStore, 
+                                       AllBooksViewModel allBooksViewModel) {
 
             m_navigationStore = navigationStore;
+            m_menuNavigationStore = menuNavigationStore;
+            m_allBooksViewModel = allBooksViewModel;
         }
 
         public override Boolean CanExecute(Object parameter) {
@@ -29,8 +35,7 @@ namespace eBook_Reader.Commands {
         }
 
         public override void Execute(Object parameter) {
-
-            m_navigationStore.CurrentViewModel = new ReadBookViewModel((Book) parameter);
+            m_navigationStore.CurrentViewModel = new ReadBookViewModel((Book) parameter, m_navigationStore, m_menuNavigationStore, m_allBooksViewModel);
         }
     }
 }

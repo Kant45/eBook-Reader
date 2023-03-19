@@ -21,7 +21,7 @@ namespace eBook_Reader.Commands
         }
         public override void Execute(Object parameter) {
 
-            String SelectedSortProperty = m_viewModel.SelectedSortParameter.Name;
+            String? SelectedSortProperty = m_viewModel.SelectedSortParameter.Name;
             ObservableCollection<Book> books = m_viewModel.BookList;
 
             List<Book> tempList;

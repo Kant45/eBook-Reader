@@ -10,12 +10,10 @@ namespace eBook_Reader.Commands;
 
 public class AddBookCommand : CommandBase {
 
-    private readonly NavigationStore m_navigationStore;
     private readonly AllBooksViewModel m_viewModel;
 
-    public AddBookCommand(NavigationStore navigationStore, AllBooksViewModel viewModel) {
+    public AddBookCommand(AllBooksViewModel viewModel) {
 
-        m_navigationStore = navigationStore;
         m_viewModel = viewModel;
     }
 
@@ -24,8 +22,8 @@ public class AddBookCommand : CommandBase {
 
         OpenFileDialog openFileDialog = new OpenFileDialog();
 
-        String sourceFilePath = null;
-        String fileName = null;
+        String sourceFilePath = "";
+        String fileName = "";
         String destFilePath = Directory.GetCurrentDirectory();
 
         if(openFileDialog.ShowDialog() == true) {
@@ -33,13 +31,14 @@ public class AddBookCommand : CommandBase {
             fileName = Path.GetFileNameWithoutExtension(sourceFilePath);
         }
 
-        if(sourceFilePath != null) {
+        if(sourceFilePath != "") {
 
             File.Copy(sourceFilePath, Path.Combine("Library", fileName + ".epub"), true);
 
             AllBooksViewModel allBooksViewModel = m_viewModel;
 
             Book book = new Book(Path.Combine("Library", fileName + ".epub"));
+            book.NewBookPath = Path.Combine("Library", fileName + ".epub");
 
             allBooksViewModel.BookList.Add(book);
 

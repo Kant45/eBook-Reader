@@ -21,6 +21,9 @@ public class ReadBookViewModel : ViewModelBase {
     private Byte[] m_coverImage;
     private List<EpubTextContentFile> m_readingOrder;
     private FlowDocument m_flowDocument;
+    private NavigationStore m_navigationStore;
+    private MenuNavigationStore m_menuNavigationStore;
+    private AllBooksViewModel m_allBooksViewModel;
 
     public Book SelectedBook { 
         get => m_selectedBook;
@@ -58,12 +61,15 @@ public class ReadBookViewModel : ViewModelBase {
         }
     }
 
-    public ReadBookViewModel(Book selectedBook) {
+    public ReadBookViewModel(Book selectedBook, NavigationStore navigationStore, MenuNavigationStore menuNavigationStore, AllBooksViewModel allBooksViewModel) {
 
         m_selectedBook = selectedBook;
         m_epubContent = m_selectedBook.EBook.Content;
         m_readingOrder = m_selectedBook.EBook.ReadingOrder;
         m_coverImage = m_selectedBook.CoverImage;
+        m_navigationStore = navigationStore;
+        m_menuNavigationStore = menuNavigationStore;
+        m_allBooksViewModel = allBooksViewModel;
 
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -73,14 +79,16 @@ public class ReadBookViewModel : ViewModelBase {
         }
 
         m_selectedHtml = stringBuilder.ToString();
-
-        PreviousPageCommand = new PreviousPageCommand(this);
-        NextPageCommand = new NextPageCommand(this);
+        
+        NavigateBackCommand = new NavigateBackCommand(m_navigationStore, m_menuNavigationStore, m_allBooksViewModel);
+        NavigateAllBooksCommand = new NavigateMenuCommand<AllBooksViewModel>(m_menuNavigationStore,
+               () => new AllBooksViewModel(m_navigationStore, m_menuNavigationStore));
+        NavigateAllBooksCommand.Execute(m_navigationStore);
+        
     }
 
-    public ICommand PreviousPageCommand { get; protected set; }
-    public ICommand NextPageCommand { get; protected set; }
-
+    public ICommand NavigateBackCommand { get; protected set; }
+    public ICommand NavigateAllBooksCommand { get; protected set; }
     private static StringBuilder GetContentFileText(EpubTextContentFile textContentFile) {
         HtmlDocument htmlDocument = new HtmlDocument();
         htmlDocument.LoadHtml(textContentFile.Content);

@@ -66,3 +66,5 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\ru
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\CommunityToolkit.Mvvm.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\SortComboBoxStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\ComboBoxItemStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\BackButtonStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader_Content.g.cs

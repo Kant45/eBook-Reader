@@ -21,12 +21,21 @@
     <None Remove="Icons\9004828_cross_delete_remove_cancel_icon %281%29.png" />
     <None Remove="Icons\9004828_cross_delete_remove_cancel_icon %282%29.png" />
     <None Remove="Icons\9004828_cross_delete_remove_cancel_icon.png" />
+    <None Remove="Icons\Back\216437_back_arrow_icon.png" />
+    <None Remove="Icons\Back\arrow_back.png" />
+    <None Remove="Icons\Back\arrow_back_mouse_over.png" />
+    <None Remove="Icons\Back\arrow_back_pressed.png" />
     <None Remove="Icons\book_icon.png" />
     <None Remove="Icons\coollogo_com-34973328.png" />
     <None Remove="Icons\coollogo_com-6470310.png" />
     <None Remove="Icons\Sort\sort_down_icon.png" />
     <None Remove="Icons\Sort\sort_up_icon.png" />
     <None Remove="Icons\text-1677790700829.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\net7.0-windows\BookList.xml" />
+    <Content Include="bin\Release\net7.0-windows\BookList.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +59,10 @@
     <Resource Include="Icons\2530802_cog_gear_general_machine_office_icon.png" />
     <Resource Include="Icons\314478_search_icon.png" />
     <Resource Include="Icons\4733302_arrow_back_basic_outline_ui_icon.png" />
+    <Resource Include="Icons\Back\216437_back_arrow_icon.png" />
+    <Resource Include="Icons\Back\arrow_back.png" />
+    <Resource Include="Icons\Back\arrow_back_mouse_over.png" />
+    <Resource Include="Icons\Back\arrow_back_pressed.png" />
     <Resource Include="Icons\Star\48806_star_empty_icon.png" />
     <Resource Include="Icons\Star\48807_star_full_bookmark_favorite_icon.png" />
     <Resource Include="Icons\Star\48808_star_half_icon.png" />

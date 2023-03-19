@@ -10,13 +10,30 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid Background="#fdf8e8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
-        <FlowDocumentPageViewer Style="{DynamicResource FlowDocumentPageViewerStyle}">
-            <FlowDocument ColumnWidth="600" ColumnGap="30">
+        <DockPanel Background="#e7dbb1"
+                   Grid.Row="0">
+            <Button Style="{DynamicResource BackButtonStyle}" 
+                    Command="{Binding NavigateBackCommand}" 
+                    Height="45" Width="45"
+                    HorizontalAlignment="Left"
+                    Margin="0 1 5 1" />
+            
+        </DockPanel>
+
+        <FlowDocumentPageViewer Style="{DynamicResource FlowDocumentPageViewerStyle}" 
+                                Grid.Row="1">
+            <FlowDocument ColumnWidth="550" 
+                          ColumnGap="50">
                 <BlockUIContainer>
                     <Image Source="{Binding CoverImage}" />
                 </BlockUIContainer>
-                <Paragraph TextAlignment="Justify" Background="#fdf8e8">
+                <Paragraph TextAlignment="Justify" 
+                           Background="#fdf8e8">
                     <Run Text="{Binding SelectedHtml, Mode=TwoWay}" />
                 </Paragraph>
             </FlowDocument>

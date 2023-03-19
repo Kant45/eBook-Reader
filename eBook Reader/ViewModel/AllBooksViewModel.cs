@@ -14,12 +14,16 @@ using System.Windows;
 using System.Windows.Input;
 using static System.Reflection.Metadata.BlobBuilder;
 using System.Windows.Shell;
+using System.Diagnostics;
+using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace eBook_Reader.ViewModel {
     public class AllBooksViewModel : BooksViewModel {
 
         private static Book? m_selectedBook;
         private readonly NavigationStore m_navigationStore;
+        private readonly MenuNavigationStore m_menuNavigationStore;
         private ObservableCollection<SortParameter> m_sortParameters;
         private SortParameter m_selectedSortParameter;
         public ObservableCollection<Book> BookList {
@@ -28,7 +32,9 @@ namespace eBook_Reader.ViewModel {
         public Book SelectedBook {
             get { return m_selectedBook; }
             set {
-                m_selectedBook = value;
+                if(value != null) {
+                    m_selectedBook = value;
+                }
                 OnPropertyChanged("SlectedBook");
             }
         }
@@ -49,14 +55,17 @@ namespace eBook_Reader.ViewModel {
         }
 
         public ICommand AddEpubBookCommand { get; protected set; }
+        public ICommand DeleteBookCommand { get; protected set; }
+        public ICommand MarkFavoriteCommand { get; protected set; }
+        public ICommand RemoveFavoriteMarkCommand { get; protected set; }
         public ICommand NavigateReadBookCommand { get; protected set; }
         public ICommand SortCommand { get; protected set; }
 
-        public AllBooksViewModel(NavigationStore navigationStore) {
+        public AllBooksViewModel(NavigationStore navigationStore, MenuNavigationStore menuNavigationStore) {
 
             base.m_bookList = new ObservableCollection<Book>();
-
             m_navigationStore = navigationStore;
+            m_menuNavigationStore = menuNavigationStore;
 
             String[] filePaths = Directory.GetFiles("Library");
 
@@ -64,6 +73,15 @@ namespace eBook_Reader.ViewModel {
 
             foreach(String fPath in filePaths) {
                 Book book = new Book(fPath);
+
+                String xmlPath = System.IO.Path.Combine(Environment.CurrentDirectory, "BookList.xml");
+                XElement? xElement = XElement.Load(xmlPath);
+
+                foreach(var Xbook in xElement.DescendantsAndSelf("book")) {
+                    if(Xbook.Attribute("Name")?.Value.Replace('\\', '/') == book.BookPath.Replace("\\", "/")) {
+                        book.IsFavorite = Boolean.Parse(Xbook.Attribute("IsFavorite").Value);
+                    }
+                }
 
                 sortableList.Add(book);
             }
@@ -77,9 +95,12 @@ namespace eBook_Reader.ViewModel {
             SortParameters = base.SortParameters; 
             SelectedSortParameter = base.SortParameters[0];
 
-            NavigateReadBookCommand = new NavigateReadBookCommand(m_navigationStore);
-            AddEpubBookCommand = new AddBookCommand(m_navigationStore, this);
+            NavigateReadBookCommand = new NavigateReadBookCommand(m_navigationStore, m_menuNavigationStore, this);
+            AddEpubBookCommand = new AddBookCommand(this);
             SortCommand = new SortCommand<AllBooksViewModel>(this);
+            DeleteBookCommand = new DeleteBookCommand(this);
+            MarkFavoriteCommand = new MarkFavoriteCommand(this);
+            RemoveFavoriteMarkCommand = new RemoveFavoriteMarkCommand(this, null);
         }
     }
     

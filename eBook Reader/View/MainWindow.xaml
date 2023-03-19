@@ -33,24 +33,31 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" Height="45" Background="#e7dbb1" MouseDown="Border_MouseDown">
+        <Border Grid.Row="0" Height="45" 
+                Background="#e7dbb1" 
+                MouseDown="Border_MouseDown">
 
-            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal" DockPanel.Dock="Right"
-                            Margin="0 0 5 0">
+            <StackPanel VerticalAlignment="Center" 
+                        HorizontalAlignment="Right" 
+                        Orientation="Horizontal" 
+                        DockPanel.Dock="Right"
+                        Margin="0 0 5 0">
                 <Button Style="{DynamicResource MinimizeButtonStyle}"
-                            Height="35" Width="35"
-                            Margin="0 5 5 5" />
-                <Button Style="{DynamicResource MaximizeButtonStyle}" Command="{Binding MaximizeWindowCommand}" 
-                            Height="35" Width="35"
-                            Margin="0 5 5 5" />
-                <Button Style="{DynamicResource CloseButtonStyle}" Command="{Binding CloseWindowCommand}" 
-                            CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-                            Height="35" Width="35"
-                            Margin="0 5 5 5" >
-                </Button>
+                        Height="40" Width="40"
+                        Margin="0 1 5 1" />
+                <Button Style="{DynamicResource MaximizeButtonStyle}" 
+                        Command="{Binding MaximizeWindowCommand}" 
+                        Height="40" Width="40"
+                        Margin="0 1 5 1" />
+                <Button Style="{DynamicResource CloseButtonStyle}" 
+                        Command="{Binding CloseWindowCommand}" 
+                        CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                        Height="40" Width="40"
+                        Margin="0 1 5 1" />
             </StackPanel>
         </Border>
-        <ContentControl Content="{Binding CurrentViewModel}" Grid.Row="1">
+        <ContentControl Content="{Binding CurrentViewModel}" 
+                        Grid.Row="1">
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type vms:MainMenuViewModel}">
                     <views:MainMenuView />
