@@ -17,6 +17,8 @@ using System.Windows.Shell;
 using System.Diagnostics;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace eBook_Reader.ViewModel {
     public class AllBooksViewModel : BooksViewModel {
@@ -26,6 +28,9 @@ namespace eBook_Reader.ViewModel {
         private readonly MenuNavigationStore m_menuNavigationStore;
         private ObservableCollection<SortParameter> m_sortParameters;
         private SortParameter m_selectedSortParameter;
+        private String m_search;
+        private ICollectionView m_bookListView;
+
         public ObservableCollection<Book> BookList {
             get { return base.m_bookList; }
         }
@@ -53,6 +58,17 @@ namespace eBook_Reader.ViewModel {
                 OnPropertyChanged("SortParameters");
             }
         }
+        public String Search {
+            get { return m_search; }
+            set {
+                if(value != m_search) {
+                    m_search = value;
+                    m_bookListView.Refresh();
+                    OnPropertyChanged("Search");
+                }
+            }
+        }
+
 
         public ICommand AddEpubBookCommand { get; protected set; }
         public ICommand DeleteBookCommand { get; protected set; }
@@ -64,10 +80,15 @@ namespace eBook_Reader.ViewModel {
         public AllBooksViewModel(NavigationStore navigationStore, MenuNavigationStore menuNavigationStore) {
 
             base.m_bookList = new ObservableCollection<Book>();
+            m_bookListView = CollectionViewSource.GetDefaultView(base.m_bookList);
+            m_bookListView.Filter = o => String.IsNullOrEmpty(Search) ? true : ((String) ((Book) o).Title.ToLower()).Contains(Search.ToLower());
+
             m_navigationStore = navigationStore;
             m_menuNavigationStore = menuNavigationStore;
 
-            String[] filePaths = Directory.GetFiles("Library");
+            String libraryPath = Properties.LibrarySettings.Default.LibraryPath;
+
+            String[] filePaths = Directory.GetFiles(libraryPath);
 
             List<Book> sortableList = new List<Book>();
 
@@ -103,5 +124,4 @@ namespace eBook_Reader.ViewModel {
             RemoveFavoriteMarkCommand = new RemoveFavoriteMarkCommand(this, null);
         }
     }
-    
 }

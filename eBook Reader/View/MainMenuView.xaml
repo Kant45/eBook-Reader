@@ -14,7 +14,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/MenuButtonStyle.xaml"/>
+                <ResourceDictionary Source="/Styles/Button/MenuButtonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -41,7 +41,7 @@
                         Style="{DynamicResource MenuButtonStyle}"
                         Command="{Binding NavigateAllBooksCommand}" 
                         Content="Library"
-                        FontSize="20" Foreground="#d6c2c2" FontFamily="Segoe UI"
+                        FontSize="20" Foreground="#d6c2c2" FontFamily="Segoe UI" FontWeight="Medium"
                         Width="170"
                         Margin="0 25 0 8"
                         Height="45" />
@@ -49,7 +49,7 @@
                         Style="{DynamicResource MenuButtonStyle}"
                         Command="{Binding NavigateFavoritesCommand}" 
                         Content="Favorites"
-                        FontSize="20" Foreground="#d6c2c2" FontFamily="Segoe UI"
+                        FontSize="20" Foreground="#d6c2c2" FontFamily="Segoe UI" FontWeight="Medium"
                         Width="170"
                         Margin="0 8 0 8"
                         Height="45" />
@@ -74,15 +74,15 @@
         <DockPanel Grid.Row="1" Height="60" Background="#e7dbb1" VerticalAlignment="Bottom">
             <Grid Width="60" HorizontalAlignment="Left">
                 <Button x:Name="SettingsButton"
-                        Style="{DynamicResource SettingsButtonStyle}" 
+                        Style="{DynamicResource NavigateSettingsButtonStyle}" 
                         Command="{Binding NavigateSettingsCommand}"
                         FontSize="20" Foreground="#d6c2c2" FontFamily="Segoe UI"
                         Height="45" Width="45"
-                        VerticalAlignment="Center" >
+                        VerticalAlignment="Center" HorizontalContentAlignment="Center" >
                     <Image x:Name="RotateImage"
                            Source="/Icons/2530802_cog_gear_general_machine_office_icon.png"
                            RenderOptions.BitmapScalingMode="HighQuality"
-                           Margin="3" />
+                           VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2"/>
                 </Button>
             </Grid>
 

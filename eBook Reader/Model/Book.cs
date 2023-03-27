@@ -17,6 +17,7 @@ using System.Drawing;
 
 namespace eBook_Reader.Model {
     public class Book : INotifyPropertyChanged {
+
         private EpubBook m_epubBook;
         private String m_bookPath;
         private String m_newBookPath;
@@ -31,7 +32,9 @@ namespace eBook_Reader.Model {
             m_coverImage = m_epubBook.CoverImage;
             m_title = m_epubBook.Title;
             m_author = m_epubBook.Author;
+            m_newBookPath = Path.Combine(Properties.LibrarySettings.Default.LibraryPath, Path.GetFileName(m_bookPath));
         }
+
         public EpubBook EBook {
             get => m_epubBook;
         }
@@ -66,11 +69,9 @@ namespace eBook_Reader.Model {
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] String prop = "") {
-            if(PropertyChanged != null) {
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
     }
 }

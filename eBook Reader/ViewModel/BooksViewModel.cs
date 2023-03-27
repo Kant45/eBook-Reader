@@ -13,6 +13,7 @@ namespace eBook_Reader.ViewModel {
         protected ObservableCollection<Book> m_bookList;
         protected ObservableCollection<SortParameter> m_sortParameters;
         protected SortParameter m_selectedSortParameter;
+        protected String m_libraryPath;
         public ObservableCollection<Book> BookList {
             get { return m_bookList; }
         }
@@ -32,7 +33,8 @@ namespace eBook_Reader.ViewModel {
         }
         public BooksViewModel() {
 
-            String[] filePaths = Directory.GetFiles("Library");
+            m_libraryPath = Properties.LibrarySettings.Default.LibraryPath;
+            String[] filePaths = Directory.GetFiles(m_libraryPath);
 
             List<Book> sortableList = new List<Book>();
 

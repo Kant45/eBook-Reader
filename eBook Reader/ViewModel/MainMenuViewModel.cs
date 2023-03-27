@@ -13,6 +13,7 @@ namespace eBook_Reader.ViewModel
 
         private readonly NavigationStore m_navigationStore;
         private readonly MenuNavigationStore m_menuNavigationStore;
+        private readonly AllBooksViewModel m_allBooksViewModel;
 
         public ViewModelBase CurrentMenuViewModel => m_menuNavigationStore.CurrentMenuViewModel;
 
@@ -20,15 +21,16 @@ namespace eBook_Reader.ViewModel
 
             m_navigationStore = navigationStore;
             m_menuNavigationStore = menuNavigationStore;
+            m_allBooksViewModel = allBooksViewModel;
 
-            NavigateAllBooksCommand = new NavigateMenuCommand<AllBooksViewModel>(menuNavigationStore, 
+            NavigateAllBooksCommand = new NavigateMenuCommand<AllBooksViewModel>(m_menuNavigationStore, 
                 () => new AllBooksViewModel(m_navigationStore, m_menuNavigationStore));
 
-            NavigateFavoritesCommand = new NavigateMenuCommand<FavoriteBooksViewModel>(menuNavigationStore,
-                () => new FavoriteBooksViewModel(m_menuNavigationStore, m_navigationStore, allBooksViewModel));
+            NavigateFavoritesCommand = new NavigateMenuCommand<FavoriteBooksViewModel>(m_menuNavigationStore,
+                () => new FavoriteBooksViewModel(m_menuNavigationStore, m_navigationStore, m_allBooksViewModel));
 
-            NavigateSettingsCommand = new NavigateMenuCommand<SettingsViewModel>(menuNavigationStore,
-                () => new SettingsViewModel(m_menuNavigationStore));
+            NavigateSettingsCommand = new NavigateMenuCommand<SettingsViewModel>(m_menuNavigationStore,
+                () => new SettingsViewModel(m_menuNavigationStore, m_allBooksViewModel));
 
             m_menuNavigationStore.CurrentMenuViewModelChanged += OnCurrentMenuViewModelChanged;
         }
@@ -36,8 +38,6 @@ namespace eBook_Reader.ViewModel
         public ICommand NavigateAllBooksCommand { get; protected set; }
         public ICommand NavigateFavoritesCommand { get; protected set; }
         public ICommand NavigateSettingsCommand { get; protected set; }
-
-        public ICommand MainMenuCommand { get; }
 
         private void OnCurrentMenuViewModelChanged() {
             OnPropertyChanged(nameof(CurrentMenuViewModel));

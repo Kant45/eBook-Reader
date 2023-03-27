@@ -41,12 +41,7 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Vi
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\SettingsView.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\App.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\CheckBoxStyle.baml
-C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\MenuButtonStyle.baml
-C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\AddButtonStyle.baml
-C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\ListButtonStyle.baml
-C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\SettingsButtonStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\FlowDocumentPageViewerStyle.baml
-C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\BarButtonStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\CommonServiceLocator.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Microsoft.CodeAnalysis.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Microsoft.CodeAnalysis.CSharp.dll
@@ -66,5 +61,17 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\ru
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\CommunityToolkit.Mvvm.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\SortComboBoxStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\ComboBoxItemStyle.baml
-C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\BackButtonStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader_Content.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\eBook Reader.dll.config
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\TabControlItemStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\LibraryPathTextBoxStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\Button\AddButtonStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\Button\BackButtonStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\Button\BarButtonStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\Button\ListButtonStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\Button\MenuButtonStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\Button\NavigateSettingsButtonStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\Button\SettingsButtonStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\NServiceBus.Core.dll

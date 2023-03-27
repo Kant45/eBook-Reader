@@ -6,15 +6,18 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/CheckBoxStyle.xaml" />
-                <ResourceDictionary Source="Styles/MenuButtonStyle.xaml" />
-                <ResourceDictionary Source="Styles/AddButtonStyle.xaml" />
-                <ResourceDictionary Source="Styles/ListButtonStyle.xaml" />
+                <ResourceDictionary Source="Styles/Button/MenuButtonStyle.xaml" />
+                <ResourceDictionary Source="Styles/Button/AddButtonStyle.xaml" />
+                <ResourceDictionary Source="Styles/Button/ListButtonStyle.xaml" />
                 <ResourceDictionary Source="Styles/FlowDocumentPageViewerStyle.xaml" />
-                <ResourceDictionary Source="Styles/SettingsButtonStyle.xaml" />
-                <ResourceDictionary Source="Styles/BarButtonStyle.xaml" />
+                <ResourceDictionary Source="Styles/Button/NavigateSettingsButtonStyle.xaml" />
+                <ResourceDictionary Source="Styles/Button/BarButtonStyle.xaml" />
                 <ResourceDictionary Source="Styles/SortComboBoxStyle.xaml" />
                 <ResourceDictionary Source="Styles/ComboBoxItemStyle.xaml" />
-                <ResourceDictionary Source="Styles/BackButtonStyle.xaml" />
+                <ResourceDictionary Source="Styles/Button/BackButtonStyle.xaml" />
+                <ResourceDictionary Source="Styles/TabControlItemStyle.xaml" />
+                <ResourceDictionary Source="Styles/LibraryPathTextBoxStyle.xaml" />
+                <ResourceDictionary Source="Styles/Button/SettingsButtonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

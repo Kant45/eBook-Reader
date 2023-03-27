@@ -66,7 +66,8 @@
                             <ColumnDefinition Width="200" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <TextBox HorizontalAlignment="Stretch" 
+                        <TextBox Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 HorizontalAlignment="Stretch" 
                                  MinWidth="130" Height="30" 
                                  Grid.Column="0"
                                  VerticalAlignment="Bottom"
@@ -126,47 +127,67 @@
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Tag="{Binding DataContext, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}">
-                        <CheckBox Style="{DynamicResource CheckBoxStyle}"
-                                  Background="White" 
-                                  Panel.ZIndex="1"
-                                  HorizontalAlignment="Right"
-                                  VerticalAlignment="Top"
-                                  IsChecked="{Binding IsFavorite}">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Unchecked">
-                                    <i:InvokeCommandAction Command="{Binding DataContext.RemoveFavoriteMarkCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </CheckBox>
-                        <Button Style="{DynamicResource ListButtonStyle}"
-                                BorderBrush="#e7dbb1"
-                                BorderThickness="2"
-                                Command="{Binding DataContext.NavigateReadBookCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                CommandParameter="{Binding}"
-                                Margin="10" Height="350" Width="200">
-                            <StackPanel>
-                                <Image Width="150" Height="250" 
-                                       Source="{Binding Path=CoverImage}" 
-                                       RenderOptions.BitmapScalingMode="HighQuality" />
-                                <StackPanel Width="150" MaxHeight="55">
-                                    <TextBlock FontSize="14" Text="{Binding Path=Title}" 
+                    <Button Style="{DynamicResource ListButtonStyle}"
+                            BorderBrush="#e7dbb1" 
+                            BorderThickness="2"
+                            Command="{Binding DataContext.NavigateReadBookCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                            CommandParameter="{Binding}"
+                            Tag="{Binding DataContext, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Height="370" Width="220"
+                            Margin="10">
+                        <Grid Margin="5" 
+                              VerticalAlignment="Stretch" 
+                              HorizontalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <CheckBox Style="{DynamicResource CheckBoxStyle}"
+                                      IsChecked="{Binding IsFavorite}"
+                                      Grid.Row="1"
+                                      Background="White" 
+                                      Panel.ZIndex="1"
+                                      HorizontalAlignment="Right"
+                                      VerticalAlignment="Bottom"
+                                      Margin="3">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.MarkFavoriteCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.RemoveFavoriteMarkCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+
+                            <Image HorizontalAlignment="Stretch"
+                                   Grid.Row="0"
+                                   Margin="7 7 7 0"
+                                   VerticalAlignment="Stretch"
+                                   Source="{Binding Path=CoverImage}"
+                                   RenderOptions.BitmapScalingMode="HighQuality"/>
+
+                            <StackPanel HorizontalAlignment="Left" MaxHeight="55" MaxWidth="165" Margin="5 10 5 10" Grid.Row="1">
+                                <TextBlock FontSize="14" Text="{Binding Path=Title}" 
                                                HorizontalAlignment="Left" 
                                                FontWeight="DemiBold" 
                                                TextWrapping="Wrap" />
-                                    <TextBlock FontSize="12" Text="{Binding Path=Author}" 
+                                <TextBlock FontSize="12" Text="{Binding Path=Author}" 
                                                HorizontalAlignment="Left" 
                                                TextWrapping="Wrap" />
-                                </StackPanel>
                             </StackPanel>
-                        </Button>
-                        <Grid.ContextMenu>
+                        </Grid>
+
+                        <Button.ContextMenu>
                             <ContextMenu DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
                                 <MenuItem Header="Delete"
                                           Command="{Binding DeleteBookCommand}" />
                             </ContextMenu>
-                        </Grid.ContextMenu>
-                    </Grid>
+                        </Button.ContextMenu>
+                    </Button>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

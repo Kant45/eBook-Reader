@@ -27,5 +27,13 @@ namespace eBook_Reader {
         private void Border_MouseDown(Object sender, MouseButtonEventArgs e) {
             this.DragMove();
         }
+
+        private void RestoreButton_Click(Object sender, RoutedEventArgs e) {
+            WindowState = (WindowState == WindowState.Normal) ? WindowState.Maximized : WindowState.Normal;
+        }
+
+        private void MinimizeButton_Click(Object sender, RoutedEventArgs e) {
+            WindowState = WindowState.Minimized;
+        }
     }
 }

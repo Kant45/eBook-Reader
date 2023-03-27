@@ -33,14 +33,13 @@ public class AddBookCommand : CommandBase {
 
         if(sourceFilePath != "") {
 
-            File.Copy(sourceFilePath, Path.Combine("Library", fileName + ".epub"), true);
+            String libraryPath = Properties.LibrarySettings.Default.LibraryPath;
 
-            AllBooksViewModel allBooksViewModel = m_viewModel;
+            File.Copy(sourceFilePath, Path.Combine(libraryPath, fileName + ".epub"), true);
 
-            Book book = new Book(Path.Combine("Library", fileName + ".epub"));
-            book.NewBookPath = Path.Combine("Library", fileName + ".epub");
+            Book book = new Book(Path.Combine(libraryPath, fileName + ".epub"));
 
-            allBooksViewModel.BookList.Add(book);
+            m_viewModel.BookList.Add(book);
 
             AddToXML(book);
         }
@@ -48,20 +47,18 @@ public class AddBookCommand : CommandBase {
         return;
     }
 
-
     private void AddToXML(Book book) {
 
-        String fileName = "BookList.xml";
-        String path = Path.Combine(Environment.CurrentDirectory, fileName);
+        String path = Path.Combine(Environment.CurrentDirectory, "BookList.xml");
 
-        XDocument xdoc = XDocument.Load(path);
-        XElement root = xdoc.Root;
+        XDocument? xdoc = XDocument.Load(path);
+        XElement? root = xdoc?.Root;
         XElement bookElement = new XElement("book");
         XAttribute bookNameAttribute = new XAttribute("Name", book.BookPath);
         XAttribute bookIsFavoriteAttribute = new XAttribute("IsFavorite", false);
 
         bookElement.Add(bookNameAttribute, bookIsFavoriteAttribute);
-        root.Add(bookElement);
+        root?.Add(bookElement);
 
         xdoc.Save(path);
     }

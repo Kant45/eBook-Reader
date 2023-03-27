@@ -6,6 +6,7 @@
     <RootNamespace>eBook_Reader</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>True</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +29,9 @@
     <None Remove="Icons\book_icon.png" />
     <None Remove="Icons\coollogo_com-34973328.png" />
     <None Remove="Icons\coollogo_com-6470310.png" />
+    <None Remove="Icons\ReadingSettings\minus.png" />
+    <None Remove="Icons\ReadingSettings\plus.png" />
+    <None Remove="Icons\settings.png" />
     <None Remove="Icons\Sort\sort_down_icon.png" />
     <None Remove="Icons\Sort\sort_up_icon.png" />
     <None Remove="Icons\text-1677790700829.png" />
@@ -43,6 +47,7 @@
     <PackageReference Include="DevExpress.Data" Version="22.2.4" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
     <PackageReference Include="MvvmLight" Version="5.4.1.1" />
+    <PackageReference Include="NServiceBus" Version="8.0.3" />
     <PackageReference Include="NuGet.Common" Version="6.4.0" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
@@ -63,6 +68,9 @@
     <Resource Include="Icons\Back\arrow_back.png" />
     <Resource Include="Icons\Back\arrow_back_mouse_over.png" />
     <Resource Include="Icons\Back\arrow_back_pressed.png" />
+    <Resource Include="Icons\ReadingSettings\minus.png" />
+    <Resource Include="Icons\ReadingSettings\plus.png" />
+    <Resource Include="Icons\settings.png" />
     <Resource Include="Icons\Star\48806_star_empty_icon.png" />
     <Resource Include="Icons\Star\48807_star_full_bookmark_favorite_icon.png" />
     <Resource Include="Icons\Star\48808_star_half_icon.png" />
@@ -77,6 +85,30 @@
     <Resource Include="Icons\Sort\sort_down_icon.png" />
     <Resource Include="Icons\Sort\sort_up_icon.png" />
     <Resource Include="Icons\text-1677790700829.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\LibrarySettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LibrarySettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\DisplayBookSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DisplayBookSettings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\LibrarySettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>LibrarySettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Properties\DisplayBookSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>DisplayBookSettings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

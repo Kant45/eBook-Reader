@@ -18,11 +18,10 @@
             <Setter Property="WindowChrome.WindowChrome">
                 <Setter.Value>
                     <WindowChrome CaptionHeight="0"
-                                  CornerRadius="5"
+                                  CornerRadius="10 10 5 5"
                                   GlassFrameThickness="0"
                                   NonClientFrameEdges="None"
-                                  ResizeBorderThickness="3"
-                                  RenderOptions.BitmapScalingMode="HighQuality"/>
+                                  ResizeBorderThickness="3"/>
                 </Setter.Value>
             </Setter>
         </Style>
@@ -33,9 +32,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" Height="45" 
-                Background="#e7dbb1" 
-                MouseDown="Border_MouseDown">
+        <Border Height="45"
+                    Background="#e7dbb1"
+                    MouseDown="Border_MouseDown">
 
             <StackPanel VerticalAlignment="Center" 
                         HorizontalAlignment="Right" 
@@ -44,11 +43,11 @@
                         Margin="0 0 5 0">
                 <Button Style="{DynamicResource MinimizeButtonStyle}"
                         Height="40" Width="40"
-                        Margin="0 1 5 1" />
+                        Margin="0 1 5 1" Click="MinimizeButton_Click" />
                 <Button Style="{DynamicResource MaximizeButtonStyle}" 
                         Command="{Binding MaximizeWindowCommand}" 
                         Height="40" Width="40"
-                        Margin="0 1 5 1" />
+                        Margin="0 1 5 1" Click="RestoreButton_Click" />
                 <Button Style="{DynamicResource CloseButtonStyle}" 
                         Command="{Binding CloseWindowCommand}" 
                         CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
@@ -56,6 +55,7 @@
                         Margin="0 1 5 1" />
             </StackPanel>
         </Border>
+
         <ContentControl Content="{Binding CurrentViewModel}" 
                         Grid.Row="1">
             <ContentControl.Resources>

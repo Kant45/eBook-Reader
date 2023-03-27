@@ -24,13 +24,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Styles\AddButtonStyle.xaml">
+    <Page Update="Styles\Button\AddButtonStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Styles\BackButtonStyle.xaml">
+    <Page Update="Styles\Button\BackButtonStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Styles\BarButtonStyle.xaml">
+    <Page Update="Styles\Button\BarButtonStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Button\SettingsButtonStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\CheckBoxStyle.xaml">
@@ -42,16 +45,22 @@
     <Page Update="Styles\FlowDocumentPageViewerStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Styles\ListButtonStyle.xaml">
+    <Page Update="Styles\LibraryPathTextBoxStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Styles\MenuButtonStyle.xaml">
+    <Page Update="Styles\Button\ListButtonStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Styles\SettingsButtonStyle.xaml">
+    <Page Update="Styles\Button\MenuButtonStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Button\NavigateSettingsButtonStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\SortComboBoxStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\TabControlItemStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\AllBooksView.xaml">

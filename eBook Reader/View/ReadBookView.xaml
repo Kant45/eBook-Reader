@@ -7,7 +7,9 @@
              xmlns:local="clr-namespace:eBook_Reader.View"
              d:DataContext="{d:DesignInstance Type=viewmodel:ReadBookViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="userControl"
+             Loaded="UserControl_Loaded">
 
     <Grid Background="#fdf8e8">
         <Grid.RowDefinitions>
@@ -16,24 +18,56 @@
         </Grid.RowDefinitions>
 
         <DockPanel Background="#e7dbb1"
-                   Grid.Row="0">
+                   Grid.Row="0" Panel.ZIndex="1">
             <Button Style="{DynamicResource BackButtonStyle}" 
                     Command="{Binding NavigateBackCommand}" 
                     Height="45" Width="45"
-                    HorizontalAlignment="Left"
-                    Margin="0 1 5 1" />
-            
+                    HorizontalAlignment="Left">
+                <Image Source="/Icons/Back/216437_back_arrow_icon.png" />
+            </Button>
+            <Canvas Name="canvas" Panel.ZIndex="5">
+                <Button Style="{DynamicResource BackButtonStyle}" Canvas.Right="0"
+                    Height="45" Width="45" Name="settigsButton" Click="settingsButton_Click">
+                    <Image Source="/Icons/settings.png" Margin="2" RenderOptions.BitmapScalingMode="HighQuality" />
+                </Button>
+                <Border Height="{Binding ElementName=canvas, Path=ActualHeight}"
+                        Width="{Binding ElementName=userControl, Path=ActualWidth}"
+                        Background="#ede4c4"
+                        Panel.ZIndex="1"
+                        BorderBrush="Gray" CornerRadius="5 0 5 5" Name="brd"
+                        Canvas.Top="{Binding ElementName=settigsButton, Path=ActualHeight}"
+                        Canvas.Right="0">
+                    <StackPanel>
+                        <TextBlock Margin="5" Padding="5" TextWrapping="Wrap" Text="Line spacing" />
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <Button Style="{DynamicResource BackButtonStyle}"
+                                    Width="40">
+                                <Image Source="/Icons/ReadingSettings/plus.png" />
+                            </Button>
+                            <Button Style="{DynamicResource BackButtonStyle}"
+                                    Width="40">
+                                <Image Source="/Icons/ReadingSettings/minus.png" />
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Canvas>
+
         </DockPanel>
 
-        <FlowDocumentPageViewer Style="{DynamicResource FlowDocumentPageViewerStyle}" 
+        
+
+        <FlowDocumentPageViewer x:Name="flowDocument"
+                                Style="{DynamicResource FlowDocumentPageViewerStyle}"
+                                Panel.ZIndex="0"
                                 Grid.Row="1">
             <FlowDocument ColumnWidth="550" 
-                          ColumnGap="50">
+                          ColumnGap="50" >
                 <BlockUIContainer>
                     <Image Source="{Binding CoverImage}" />
                 </BlockUIContainer>
                 <Paragraph TextAlignment="Justify" 
-                           Background="#fdf8e8">
+                           Background="#fdf8e8" >
                     <Run Text="{Binding SelectedHtml, Mode=TwoWay}" />
                 </Paragraph>
             </FlowDocument>
