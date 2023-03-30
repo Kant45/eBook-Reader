@@ -3,13 +3,13 @@ using eBook_Reader.Model;
 using HtmlAgilityPack;
 using System.Collections.Generic;
 using VersOne.Epub;
-using VersOne.Epub.Schema;
-using System.IO;
 using System.Windows.Input;
 using eBook_Reader.Commands;
 using eBook_Reader.Stores;
 using System.Text;
 using System.Windows.Documents;
+using eBook_Reader.Commands.ReadingSettingsCommands;
+using System.Collections.ObjectModel;
 
 namespace eBook_Reader.ViewModel;
 
@@ -61,6 +61,119 @@ public class ReadBookViewModel : ViewModelBase {
         }
     }
 
+    private String m_selectedAlignment;
+    private ObservableCollection<String> m_alignmentParamenters;
+    private String m_selectedFont;
+    private ObservableCollection<String> m_fontParamenters;
+    private String m_selectedReadingModeName;
+    private String m_selectedReadingMode;
+    private ObservableCollection<String> m_readingModeParamenters;
+
+    public String SelectedAlignment {
+        get => m_selectedAlignment;
+        set {
+            m_selectedAlignment = value;
+            Properties.DisplayBookSettings.Default.Alignment = value;
+            Properties.DisplayBookSettings.Default.Save();
+            OnPropertyChanged("SelectedAlignment");
+        }
+    }
+    public ObservableCollection<String> AlignmentParameters {
+        get => m_alignmentParamenters;
+        set {
+            m_alignmentParamenters = value;
+            OnPropertyChanged("AlignmentParameters");
+        }
+    }
+    public String SelectedFont {
+        get => m_selectedFont;
+        set {
+            m_selectedFont = value;
+            Properties.DisplayBookSettings.Default.Font = value;
+            Properties.DisplayBookSettings.Default.Save();
+            OnPropertyChanged("SelectedFont");
+        }
+    }
+    public ObservableCollection<String> FontParameters {
+        get => m_fontParamenters;
+        set {
+            m_fontParamenters = value;
+            OnPropertyChanged("FontParameters");
+        }
+    }
+    public String SelectedReadingModeName {
+        get => m_selectedReadingModeName;
+        set {
+            m_selectedReadingModeName = value;
+        }
+    }
+    public String SelectedReadingMode {
+        get => m_selectedReadingMode;
+        set {
+            if(value == "Auto") {
+                m_selectedReadingMode = "Auto";
+                Properties.DisplayBookSettings.Default.ReadingMode = 550.ToString();
+                Properties.DisplayBookSettings.Default.Save();
+                OnPropertyChanged("SelectedReadingMode");
+            }
+            if(value == "Single") {
+                m_selectedFont = "Single";
+                Properties.DisplayBookSettings.Default.ReadingMode = 1000.ToString();
+                Properties.DisplayBookSettings.Default.Save();
+                OnPropertyChanged("SelectedReadingMode");
+            }
+
+        }
+    }
+    public ObservableCollection<String> ReadingModeParameters {
+        get => m_readingModeParamenters;
+        set {
+            m_readingModeParamenters = value;
+            OnPropertyChanged("ReadingModeParameters");
+        }
+    }
+
+    private Boolean m_firstColorSelected;
+    private Boolean m_secondColorSelected;
+    private Boolean m_thirdColorSelected;
+    private Boolean m_fourthColorSelected;
+    public Boolean FirstColor {
+        get => m_firstColorSelected; 
+        set {
+            if(value) {
+                Properties.DisplayBookSettings.Default.BackgroundColor = "#fdf8e8";
+                Properties.DisplayBookSettings.Default.Save();
+            }
+        }
+    }    
+    public Boolean SecondColor {
+        get => m_secondColorSelected;
+        set {
+            if(value) {
+                Properties.DisplayBookSettings.Default.BackgroundColor = "#ffffff";
+                Properties.DisplayBookSettings.Default.Save();
+            }
+        }
+    }
+    public Boolean ThirdColor {
+        get => m_thirdColorSelected;
+        set {
+            if(value) {
+                Properties.DisplayBookSettings.Default.BackgroundColor = "#f8fad1";
+                Properties.DisplayBookSettings.Default.Save();
+            }
+        }
+    }
+    public Boolean FourthColor {
+        get => m_fourthColorSelected;
+        set {
+            if(value) {
+                Properties.DisplayBookSettings.Default.BackgroundColor = "#e8fdf4";
+                Properties.DisplayBookSettings.Default.Save();
+            }
+        }
+    }
+
     public ReadBookViewModel(Book selectedBook, NavigationStore navigationStore, MenuNavigationStore menuNavigationStore, AllBooksViewModel allBooksViewModel) {
 
         m_selectedBook = selectedBook;
@@ -79,16 +192,34 @@ public class ReadBookViewModel : ViewModelBase {
         }
 
         m_selectedHtml = stringBuilder.ToString();
-        
+
+        AlignmentParameters = new ObservableCollection<String>() { "Justify", "Center", "Left", "Right" };
+        m_selectedAlignment = Properties.DisplayBookSettings.Default.Alignment;
+
+        FontParameters = new ObservableCollection<String>() { "Sans Serif", "Arial", "Baskerville", "Sabon", "Garamond", "Caslon", "Utopia" };
+        m_selectedFont = Properties.DisplayBookSettings.Default.Font;
+
+        ReadingModeParameters = new ObservableCollection<String>() { "Auto", "Single" };
+
+        if(Properties.DisplayBookSettings.Default.ReadingMode == "550")
+            SelectedReadingMode = "Auto";
+        else
+            SelectedReadingMode = "Single";
+
         NavigateBackCommand = new NavigateBackCommand(m_navigationStore, m_menuNavigationStore, m_allBooksViewModel);
         NavigateAllBooksCommand = new NavigateMenuCommand<AllBooksViewModel>(m_menuNavigationStore,
                () => new AllBooksViewModel(m_navigationStore, m_menuNavigationStore));
         NavigateAllBooksCommand.Execute(m_navigationStore);
-        
+
+        IncreaseLineSpacingCommand = new IncreaseLineSpacingCommand();
+        DecreaseLineSpacingCommand = new DecreaseLineSpacingCommand();
     }
 
     public ICommand NavigateBackCommand { get; protected set; }
     public ICommand NavigateAllBooksCommand { get; protected set; }
+    public ICommand IncreaseLineSpacingCommand { get; protected set; }
+    public ICommand DecreaseLineSpacingCommand { get; protected set; }
+
     private static StringBuilder GetContentFileText(EpubTextContentFile textContentFile) {
         HtmlDocument htmlDocument = new HtmlDocument();
         htmlDocument.LoadHtml(textContentFile.Content);

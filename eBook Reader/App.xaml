@@ -12,12 +12,13 @@
                 <ResourceDictionary Source="Styles/FlowDocumentPageViewerStyle.xaml" />
                 <ResourceDictionary Source="Styles/Button/NavigateSettingsButtonStyle.xaml" />
                 <ResourceDictionary Source="Styles/Button/BarButtonStyle.xaml" />
-                <ResourceDictionary Source="Styles/SortComboBoxStyle.xaml" />
+                <ResourceDictionary Source="Styles/ComboBoxStyle.xaml" />
                 <ResourceDictionary Source="Styles/ComboBoxItemStyle.xaml" />
                 <ResourceDictionary Source="Styles/Button/BackButtonStyle.xaml" />
                 <ResourceDictionary Source="Styles/TabControlItemStyle.xaml" />
                 <ResourceDictionary Source="Styles/LibraryPathTextBoxStyle.xaml" />
                 <ResourceDictionary Source="Styles/Button/SettingsButtonStyle.xaml" />
+                <ResourceDictionary Source="Styles/BackgroundRadioButtonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

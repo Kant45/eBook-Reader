@@ -8,8 +8,9 @@
         xmlns:vms="clr-namespace:eBook_Reader.ViewModel"
         xmlns:local="clr-namespace:eBook_Reader" 
         mc:Ignorable="d"
-        Title="eBook reader" 
-        Height="700" Width="1200" Background="#fdf8e8" 
+        Title="eBook reader"
+        MinWidth="800" MinHeight="500"
+        Height="700" Width="1200" Background="Transparent"
         WindowStartupLocation="CenterScreen"
         d:DataContext="{d:DesignInstance Type=vms:MainViewModel}">
 
@@ -18,10 +19,9 @@
             <Setter Property="WindowChrome.WindowChrome">
                 <Setter.Value>
                     <WindowChrome CaptionHeight="0"
-                                  CornerRadius="10 10 5 5"
                                   GlassFrameThickness="0"
                                   NonClientFrameEdges="None"
-                                  ResizeBorderThickness="3"/>
+                                  ResizeBorderThickness="5" />
                 </Setter.Value>
             </Setter>
         </Style>

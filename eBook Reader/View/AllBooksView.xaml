@@ -29,7 +29,7 @@
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal" Margin="5">
-                <ComboBox Style="{DynamicResource SortComboBoxStyle}" 
+                <ComboBox Style="{DynamicResource ComboBoxStyle}" 
                           SelectedItem="{Binding SelectedSortParameter, Mode=TwoWay}" 
                           Margin="0 0 5 5" 
                           Height="30" Width="105" 
@@ -37,8 +37,7 @@
                           ItemsSource="{Binding SortParameters}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Background="#fdf8e8" 
-                                        Orientation="Horizontal" 
+                            <StackPanel Orientation="Horizontal" 
                                         Height="30">
                                 <TextBlock Text="{Binding Name}"
                                            FontSize="16" Width="75" 

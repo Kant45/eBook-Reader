@@ -24,6 +24,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Styles\BackgroundRadioButtonStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Styles\Button\AddButtonStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -57,7 +60,7 @@
     <Page Update="Styles\Button\NavigateSettingsButtonStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Styles\SortComboBoxStyle.xaml">
+    <Page Update="Styles\ComboBoxStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\TabControlItemStyle.xaml">

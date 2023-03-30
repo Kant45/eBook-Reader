@@ -59,7 +59,6 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\ru
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\runtimes\win7-x64\native\libuv.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\runtimes\win7-x86\native\libuv.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\CommunityToolkit.Mvvm.dll
-C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\SortComboBoxStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\ComboBoxItemStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader_Content.g.cs
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\eBook Reader.dll.config
@@ -75,3 +74,5 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\St
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\NServiceBus.Core.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\ComboBoxStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\BackgroundRadioButtonStyle.baml

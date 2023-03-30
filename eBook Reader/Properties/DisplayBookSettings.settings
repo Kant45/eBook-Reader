@@ -1,5 +1,21 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="eBook_Reader.Properties" GeneratedClassName="DisplayBookSettings">
   <Profiles />
-  <Settings />
+  <Settings>
+    <Setting Name="LineHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="Alignment" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Justify</Value>
+    </Setting>
+    <Setting Name="Font" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Sans Serif</Value>
+    </Setting>
+    <Setting Name="ReadingMode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">550</Value>
+    </Setting>
+    <Setting Name="BackgroundColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#fdf8e8</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
