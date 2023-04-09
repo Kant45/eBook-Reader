@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\User\source\repos\eBook Reader\eBook Reader\App.xaml
-20527641596
-21415512517
-38114246993
-224-1191573605
-Styles\BackgroundRadioButtonStyle.xaml;Styles\Button\AddButtonStyle.xaml;Styles\Button\BackButtonStyle.xaml;Styles\Button\BarButtonStyle.xaml;Styles\Button\ListButtonStyle.xaml;Styles\Button\MenuButtonStyle.xaml;Styles\Button\NavigateSettingsButtonStyle.xaml;Styles\Button\SettingsButtonStyle.xaml;Styles\CheckBoxStyle.xaml;Styles\ComboBoxItemStyle.xaml;Styles\ComboBoxStyle.xaml;Styles\FlowDocumentPageViewerStyle.xaml;Styles\LibraryPathTextBoxStyle.xaml;Styles\TabControlItemStyle.xaml;View\AllBooksView.xaml;View\FavoriteBooksView.xaml;View\MainMenuView.xaml;View\MainWindow.xaml;View\ReadBookView.xaml;View\SettingsView.xaml;
+21-1816357950
+41361823417
+43124733838
+229-1989816931
+Styles\BackgroundRadioButtonStyle.xaml;Styles\Button\AddButtonStyle.xaml;Styles\Button\BackButtonStyle.xaml;Styles\Button\BarButtonStyle.xaml;Styles\Button\ListButtonStyle.xaml;Styles\Button\MenuButtonStyle.xaml;Styles\Button\NavigateSettingsButtonStyle.xaml;Styles\Button\SettingsButtonStyle.xaml;Styles\CheckBoxStyle.xaml;Styles\ComboBoxItemStyle.xaml;Styles\ComboBoxStyle.xaml;Styles\FlowDocumentReaderStyle.xaml;Styles\LibraryPathTextBoxStyle.xaml;Styles\MainWindowStyle.xaml;Styles\TabControlItemStyle.xaml;View\AllBooksView.xaml;View\FavoriteBooksView.xaml;View\MainMenuView.xaml;View\MainWindow.xaml;View\ReadBookView.xaml;View\SettingsView.xaml;
 
 False
 

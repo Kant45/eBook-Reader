@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:viewmodel="clr-namespace:eBook_Reader.ViewModel"
              xmlns:local="clr-namespace:eBook_Reader.View" 
+             xmlns:ex="clr-namespace:eBook_Reader.ControlExtensions"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:properties="clr-namespace:eBook_Reader.Properties"
              d:DataContext="{d:DesignInstance Type=viewmodel:ReadBookViewModel}"
@@ -154,25 +155,28 @@
                     </StackPanel>
                 </Border>
             </Canvas>
+            <Button Content="Button" Width="64" Click="Button_Click"/>
         </DockPanel>
 
-        <FlowDocumentPageViewer x:Name="flowDocument"
-                                Style="{DynamicResource FlowDocumentPageViewerStyle}"
-                                Panel.ZIndex="0"
-                                Grid.Row="1">
-            <FlowDocument ColumnWidth="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=ReadingMode, UpdateSourceTrigger=PropertyChanged}" 
-                          ColumnGap="50">
-                <BlockUIContainer>
-                    <Image Source="{Binding CoverImage}" />
-                </BlockUIContainer>
-                <Paragraph TextAlignment="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=Alignment, UpdateSourceTrigger=PropertyChanged}"
-                           FontFamily="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=Font, UpdateSourceTrigger=PropertyChanged}"
-                           LineHeight="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=LineHeight, UpdateSourceTrigger=PropertyChanged}"
-                           Background="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=BackgroundColor, UpdateSourceTrigger=PropertyChanged}">
-                    <Run Text="{Binding SelectedHtml, Mode=TwoWay}" />
-                </Paragraph>
-            </FlowDocument>
-        </FlowDocumentPageViewer>
+        <FlowDocumentReader x:Name="flowDocumentReader" Grid.Row="1" Panel.ZIndex="0" BorderBrush="Transparent" ViewingMode="TwoPage" Zoom="10"
+                            Document="{Binding FlowDocumentProperty}"
+                            Unloaded="flowDocumentReader_Unloaded"
+                            Tag="{Binding Path=FlowDocumentProperty}">
+            <!--<FlowDocument Name="document"
+                          ColumnWidth="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=ReadingMode, UpdateSourceTrigger=PropertyChanged}"
+                          ColumnGap="50"
+                          DataContext="{Binding Paragraphs}">
+                <Section TextAlignment="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=Alignment, UpdateSourceTrigger=PropertyChanged}"
+                         FontFamily="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=Font, UpdateSourceTrigger=PropertyChanged}"
+                         LineHeight="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=LineHeight, UpdateSourceTrigger=PropertyChanged}"
+                         Background="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=BackgroundColor, UpdateSourceTrigger=PropertyChanged}"
+                         >
+                    <Paragraph Name="paragraph">
+                        <Run Text="{Binding SelectedHtml, Mode=TwoWay}" />
+                    </Paragraph>
+                </Section>
+            </FlowDocument>-->
+        </FlowDocumentReader>
 
     </Grid>
 </UserControl>

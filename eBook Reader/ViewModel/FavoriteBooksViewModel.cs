@@ -84,9 +84,7 @@ namespace eBook_Reader.ViewModel {
 
         private IEnumerable<Book> GetFavoriteList() {
 
-            String fileName = "BookList.xml";
-            String path = Path.Combine(Environment.CurrentDirectory, fileName);
-            XElement xElement = XElement.Load(path);
+            XElement xElement = XElement.Load(Path.Combine(Environment.CurrentDirectory, "BookList.xml"));
 
             var books = from Xbook in xElement.DescendantsAndSelf("book")
                         from book in m_allBooksViewModel.BookList

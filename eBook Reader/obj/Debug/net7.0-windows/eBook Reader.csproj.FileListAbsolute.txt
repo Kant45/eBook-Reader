@@ -41,7 +41,6 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Vi
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\SettingsView.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\App.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\CheckBoxStyle.baml
-C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\FlowDocumentPageViewerStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\CommonServiceLocator.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Microsoft.CodeAnalysis.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Microsoft.CodeAnalysis.CSharp.dll
@@ -76,3 +75,11 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Mi
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\NServiceBus.Core.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\ComboBoxStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\BackgroundRadioButtonStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\MainWindowStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\MainWindowStyle.g.cs
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\FlowDocumentReaderStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyModel.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Microsoft.Extensions.PlatformAbstractions.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Nancy.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Newtonsoft.Json.dll

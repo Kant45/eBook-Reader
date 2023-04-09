@@ -93,18 +93,22 @@ namespace eBook_Reader.ViewModel {
             List<Book> sortableList = new List<Book>();
 
             foreach(String fPath in filePaths) {
-                Book book = new Book(fPath);
+                try {
+                    Book book = new Book(fPath);
 
-                String xmlPath = System.IO.Path.Combine(Environment.CurrentDirectory, "BookList.xml");
-                XElement? xElement = XElement.Load(xmlPath);
+                    String xmlPath = System.IO.Path.Combine(Environment.CurrentDirectory, "BookList.xml");
+                    XElement? xElement = XElement.Load(xmlPath);
 
-                foreach(var Xbook in xElement.DescendantsAndSelf("book")) {
-                    if(Xbook.Attribute("Name")?.Value.Replace('\\', '/') == book.BookPath.Replace("\\", "/")) {
-                        book.IsFavorite = Boolean.Parse(Xbook.Attribute("IsFavorite").Value);
+                    foreach(var Xbook in xElement.DescendantsAndSelf("book")) {
+                        if(Xbook.Attribute("Name")?.Value.Replace('\\', '/') == book.BookPath.Replace("\\", "/")) {
+                            book.IsFavorite = Boolean.Parse(Xbook.Attribute("IsFavorite").Value);
+                        }
                     }
-                }
 
-                sortableList.Add(book);
+                    sortableList.Add(book);
+                } catch(AggregateException) {
+                    System.Windows.MessageBox.Show("Something wrong with file", "Error", MessageBoxButton.OK, MessageBoxImage.None);
+                }
             }
 
             sortableList = sortableList.OrderBy(book => book.Title).ToList();

@@ -9,7 +9,6 @@
                 <ResourceDictionary Source="Styles/Button/MenuButtonStyle.xaml" />
                 <ResourceDictionary Source="Styles/Button/AddButtonStyle.xaml" />
                 <ResourceDictionary Source="Styles/Button/ListButtonStyle.xaml" />
-                <ResourceDictionary Source="Styles/FlowDocumentPageViewerStyle.xaml" />
                 <ResourceDictionary Source="Styles/Button/NavigateSettingsButtonStyle.xaml" />
                 <ResourceDictionary Source="Styles/Button/BarButtonStyle.xaml" />
                 <ResourceDictionary Source="Styles/ComboBoxStyle.xaml" />
@@ -19,6 +18,8 @@
                 <ResourceDictionary Source="Styles/LibraryPathTextBoxStyle.xaml" />
                 <ResourceDictionary Source="Styles/Button/SettingsButtonStyle.xaml" />
                 <ResourceDictionary Source="Styles/BackgroundRadioButtonStyle.xaml" />
+                <ResourceDictionary Source="Styles/MainWindowStyle.xaml" />
+                <ResourceDictionary Source="Styles/FlowDocumentReaderStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

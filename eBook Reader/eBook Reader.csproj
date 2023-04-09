@@ -39,7 +39,9 @@
 
   <ItemGroup>
     <Content Include="bin\Debug\net7.0-windows\BookList.xml" />
+    <Content Include="bin\Debug\net7.0-windows\BookProgress.xml" />
     <Content Include="bin\Release\net7.0-windows\BookList.xml" />
+    <Content Include="bin\Release\net7.0-windows\BookProgress.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,6 +49,7 @@
     <PackageReference Include="DevExpress.Data" Version="22.2.4" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
     <PackageReference Include="MvvmLight" Version="5.4.1.1" />
+    <PackageReference Include="Nancy" Version="2.0.0" />
     <PackageReference Include="NServiceBus" Version="8.0.3" />
     <PackageReference Include="NuGet.Common" Version="6.4.0" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />

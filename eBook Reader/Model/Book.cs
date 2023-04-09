@@ -14,6 +14,8 @@ using System.Windows.Media;
 using static DevExpress.Utils.HashCodeHelper.Primitives;
 using System.Windows.Media.Imaging;
 using System.Drawing;
+using VersOne.Epub.Schema;
+using VersOne.Epub.Options;
 
 namespace eBook_Reader.Model {
     public class Book : INotifyPropertyChanged {
@@ -27,7 +29,23 @@ namespace eBook_Reader.Model {
         private Boolean m_isFavorite;
 
         public Book(String bookPath) {
-            m_epubBook = EpubReader.ReadBook(bookPath);
+
+            EpubReaderOptions options = new EpubReaderOptions() {
+                PackageReaderOptions = new PackageReaderOptions() {
+                    IgnoreMissingToc = true,
+                    SkipInvalidManifestItems = true,
+
+                },
+                Epub2NcxReaderOptions = new Epub2NcxReaderOptions() {
+                    IgnoreMissingContentForNavigationPoints = true
+                }
+            };
+            options.ContentReaderOptions.ContentFileMissing += (sender, e) =>
+            {
+                e.SuppressException = true;
+            };
+
+            m_epubBook = EpubReader.ReadBookAsync(bookPath, options).Result;
             m_bookPath = bookPath;
             m_coverImage = m_epubBook.CoverImage;
             m_title = m_epubBook.Title;

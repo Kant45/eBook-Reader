@@ -9,6 +9,8 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bin/debug/net7.0-windows/booklist.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bin/debug/net7.0-windows/bookprogress.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bin/release/net7.0-windows/booklist.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bin/release/net7.0-windows/bookprogress.xml")]
 
 

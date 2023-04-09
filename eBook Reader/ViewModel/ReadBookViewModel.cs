@@ -10,6 +10,11 @@ using System.Text;
 using System.Windows.Documents;
 using eBook_Reader.Commands.ReadingSettingsCommands;
 using System.Collections.ObjectModel;
+using System.Xml.Linq;
+using System.IO;
+using System.Linq;
+using System.Printing;
+using System.ComponentModel;
 
 namespace eBook_Reader.ViewModel;
 
@@ -17,10 +22,11 @@ public class ReadBookViewModel : ViewModelBase {
     
     private readonly Book m_selectedBook;
     private readonly EpubContent m_epubContent;
+    private FlowDocument m_flowDocument;
+    private ObservableCollection<Paragraph> m_paragraphs; //
     private String m_selectedHtml;
     private Byte[] m_coverImage;
     private List<EpubTextContentFile> m_readingOrder;
-    private FlowDocument m_flowDocument;
     private NavigationStore m_navigationStore;
     private MenuNavigationStore m_menuNavigationStore;
     private AllBooksViewModel m_allBooksViewModel;
@@ -30,6 +36,20 @@ public class ReadBookViewModel : ViewModelBase {
         set {
             SelectedBook = value;
             OnPropertyChanged("SelectedBook");
+        }
+    }
+    public FlowDocument FlowDocumentProperty {
+        get => m_flowDocument;
+        set {
+            m_flowDocument = value;
+            OnPropertyChanged("FlowDocumentProperty");
+        }
+    }
+    public ObservableCollection<Paragraph> Paragraphs {
+        get => m_paragraphs;
+        set {
+            m_paragraphs = value;
+            OnPropertyChanged("Paragraphs");
         }
     }
     public String SelectedHtml {
@@ -44,13 +64,6 @@ public class ReadBookViewModel : ViewModelBase {
         set {
             m_coverImage = value;
             OnPropertyChanged("CoverImage");
-        }
-    }
-    public FlowDocument FlowDocument {
-        get => m_flowDocument;
-        set {
-            m_flowDocument = value;
-            OnPropertyChanged("FlowDocument");
         }
     }
     public List<EpubTextContentFile> ReadingOrder {
@@ -184,12 +197,28 @@ public class ReadBookViewModel : ViewModelBase {
         m_menuNavigationStore = menuNavigationStore;
         m_allBooksViewModel = allBooksViewModel;
 
+        SetOpenFileTime(selectedBook);
 
         StringBuilder stringBuilder = new StringBuilder();
 
         for(Int32 i = 1; i < m_readingOrder.Count - 1; i++) {
             stringBuilder.Append(GetContentFileText(m_readingOrder[i]));
         }
+
+        m_paragraphs = new ObservableCollection<Paragraph>();
+
+        FlowDocumentProperty = new FlowDocument();
+        FlowDocumentProperty.Name = "document";
+        FlowDocumentProperty.ColumnWidth = 1000;
+
+        foreach(String s in Split(stringBuilder.ToString(), 700)) {
+
+            Paragraph paragraph = new Paragraph();
+            paragraph.Inlines.Add(new Run(s));
+            m_paragraphs.Add(paragraph);
+            FlowDocumentProperty.Blocks.Add(paragraph);
+        }
+        
 
         m_selectedHtml = stringBuilder.ToString();
 
@@ -220,6 +249,11 @@ public class ReadBookViewModel : ViewModelBase {
     public ICommand IncreaseLineSpacingCommand { get; protected set; }
     public ICommand DecreaseLineSpacingCommand { get; protected set; }
 
+    static IEnumerable<string> Split(string str, int chunkSize) {
+        return Enumerable.Range(0, str.Length / chunkSize)
+            .Select(i => str.Substring(i * chunkSize, chunkSize));
+    }
+
     private static StringBuilder GetContentFileText(EpubTextContentFile textContentFile) {
         HtmlDocument htmlDocument = new HtmlDocument();
         htmlDocument.LoadHtml(textContentFile.Content);
@@ -230,5 +264,18 @@ public class ReadBookViewModel : ViewModelBase {
         }
 
         return sb;
+    }
+
+    private static void SetOpenFileTime(Book selectedBook) {
+        String path = Path.Combine(Environment.CurrentDirectory, "BookList.xml");
+        XElement? xElement = XElement.Load(path);
+
+        foreach(var Xbook in xElement.DescendantsAndSelf("book")) {
+            if(Xbook.Attribute("Name")?.Value.Replace('\\', '/') == selectedBook.BookPath.Replace("\\", "/")) {
+
+                Xbook.SetAttributeValue("LastOpeningTime", DateTime.Now.ToString());
+                xElement.Save(path);
+            }
+        }
     }
 }
