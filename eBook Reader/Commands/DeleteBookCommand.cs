@@ -23,6 +23,9 @@ namespace eBook_Reader.Commands {
             File.Delete(m_allBooksViewModel.SelectedBook.NewBookPath);
             DeleteFromXML(m_allBooksViewModel.SelectedBook);
 
+            if(m_allBooksViewModel.SelectedBook.BookPath == m_allBooksViewModel.LastOpenedBook.BookPath) {
+                m_allBooksViewModel.ContinueReadingVisibility = "Hidden";
+            }
         }
 
         private void DeleteFromXML(Book book) {

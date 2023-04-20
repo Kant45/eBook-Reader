@@ -38,8 +38,6 @@ namespace eBook_Reader.Commands {
                 case DialogResult.No:
                     break;
             }
-
-            
         }
 
         private void DeleteFromXML(Book book) {

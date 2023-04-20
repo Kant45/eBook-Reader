@@ -54,6 +54,7 @@ public class AddBookCommand : CommandBase {
 
                 AddToXML(book);
             } catch(AggregateException) {
+                File.Delete(Path.Combine(libraryPath, fileName));
                 System.Windows.MessageBox.Show("Something wrong with file", "Error", MessageBoxButton.OK, MessageBoxImage.None);
             }
         }

@@ -36,6 +36,9 @@
     <Page Update="Styles\Button\BarButtonStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Styles\Button\PlayButtonStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Styles\Button\SettingsButtonStyle.xaml">
       <SubType>Designer</SubType>
     </Page>

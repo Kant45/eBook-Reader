@@ -56,6 +56,7 @@
                                         HorizontalAlignment="Center">
                                 <Button Style="{DynamicResource BackButtonStyle}"
                                         Command="{Binding IncreaseLineSpacingCommand}"
+                                        Name="increaseSpacingButton"
                                     Width="50" Height="40">
                                     <Image Source="/Icons/ReadingSettings/plus.png" />
                                 </Button>
@@ -66,7 +67,29 @@
                                 </Button>
                             </StackPanel>
                         </StackPanel>
-                        <Line Y1="0" Y2="80" VerticalAlignment="Center" Stroke="#e5d8a9" StrokeThickness="2" />
+                        <Line Y1="0" Y2="70" VerticalAlignment="Center" Stroke="#e5d8a9" StrokeThickness="2" />
+                        <StackPanel Margin="10 0 10 10" Width="130">
+                            <TextBlock Margin="5" Padding="5" FontSize="15"
+                                       HorizontalAlignment="Center"
+                                       TextWrapping="Wrap" 
+                                       Text="Margin width" />
+                            <StackPanel Grid.Column="1" 
+                                        Orientation="Horizontal" 
+                                        HorizontalAlignment="Center">
+                                <Button Style="{DynamicResource BackButtonStyle}"
+                                        Command="{Binding IncreaseMarginWidthCommand}"
+                                        Name="increaseButton"
+                                    Width="50" Height="40">
+                                    <Image Source="/Icons/ReadingSettings/plus.png" />
+                                </Button>
+                                <Button Style="{DynamicResource BackButtonStyle}"
+                                        Command="{Binding DecreaseMarginWidthCommand}"
+                                    Width="50" Height="40">
+                                    <Image Source="/Icons/ReadingSettings/minus.png" />
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                        <Line Y1="0" Y2="70" VerticalAlignment="Center" Stroke="#e5d8a9" StrokeThickness="2" />
                         <StackPanel Margin="20 0 20 10">
                             <TextBlock Text="Alignment"
                                        Margin="0 10" FontSize="15"
@@ -89,7 +112,7 @@
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
                         </StackPanel>
-                        <Line Y1="0" Y2="80" VerticalAlignment="Center" Stroke="#e5d8a9" StrokeThickness="2" />
+                        <Line Y1="0" Y2="70" VerticalAlignment="Center" Stroke="#e5d8a9" StrokeThickness="2" />
                         <StackPanel Margin="20 0 20 10">
                             <TextBlock Text="Font"
                                        Margin="0 10" FontSize="15"
@@ -112,30 +135,8 @@
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
                         </StackPanel>
-                        <Line Y1="0" Y2="80" VerticalAlignment="Center" Stroke="#e5d8a9" StrokeThickness="2" />
-                        <StackPanel Margin="20 0 20 10">
-                            <TextBlock Text="Reading mode"
-                                       Margin="0 10" FontSize="15"
-                                       HorizontalAlignment="Center"
-                                       TextWrapping="Wrap" />
-                            <ComboBox Style="{DynamicResource ComboBoxStyle}" 
-                                      SelectedItem="{Binding SelectedReadingMode, Mode=TwoWay}" 
-                                      Margin="0 0 5 5" 
-                                      Height="32" Width="105" 
-                                      VerticalContentAlignment="Center" 
-                                      ItemsSource="{Binding ReadingModeParameters}">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding}"
-                                                       FontSize="16" 
-                                                       Width="75" Height="23" 
-                                                       Margin="0 0 0 5" 
-                                                       VerticalAlignment="Center" />
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                        </StackPanel>
-                        <Line Y1="0" Y2="80" VerticalAlignment="Center" Stroke="#e5d8a9" StrokeThickness="2" />
+                        <Line Y1="0" Y2="70" VerticalAlignment="Center" Stroke="#e5d8a9" StrokeThickness="2" />
+                        <Line Y1="0" Y2="70" VerticalAlignment="Center" Stroke="#e5d8a9" StrokeThickness="2" />
                         <StackPanel Margin="20 0 10 10">
                             <TextBlock Text="Background color"
                                        Margin="0 10 0 8" FontSize="15"
@@ -155,13 +156,12 @@
                     </StackPanel>
                 </Border>
             </Canvas>
-            <Button Content="Button" Width="64" Click="Button_Click"/>
         </DockPanel>
 
-        <FlowDocumentReader x:Name="flowDocumentReader" Grid.Row="1" Panel.ZIndex="0" BorderBrush="Transparent" ViewingMode="TwoPage" Zoom="10"
+        <FlowDocumentReader Name="flowDocumentReader" Grid.Row="1" Panel.ZIndex="0" BorderBrush="Transparent" ViewingMode="TwoPage" Zoom="10"
                             Document="{Binding FlowDocumentProperty}"
-                            Unloaded="flowDocumentReader_Unloaded"
-                            Tag="{Binding Path=FlowDocumentProperty}">
+                            Tag="{Binding Path=FlowDocumentProperty}"
+                            FontFamily="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=Font, UpdateSourceTrigger=PropertyChanged}">
             <!--<FlowDocument Name="document"
                           ColumnWidth="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=ReadingMode, UpdateSourceTrigger=PropertyChanged}"
                           ColumnGap="50"

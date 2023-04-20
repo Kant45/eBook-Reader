@@ -17,5 +17,8 @@
     <Setting Name="BackgroundColor" Type="System.String" Scope="User">
       <Value Profile="(Default)">#fdf8e8</Value>
     </Setting>
+    <Setting Name="MarginWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

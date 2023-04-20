@@ -20,6 +20,7 @@
                 <ResourceDictionary Source="Styles/BackgroundRadioButtonStyle.xaml" />
                 <ResourceDictionary Source="Styles/MainWindowStyle.xaml" />
                 <ResourceDictionary Source="Styles/FlowDocumentReaderStyle.xaml" />
+                <ResourceDictionary Source="Styles/Button/PlayButtonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

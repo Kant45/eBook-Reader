@@ -15,6 +15,8 @@ using System.IO;
 using System.Linq;
 using System.Printing;
 using System.ComponentModel;
+using System.Windows;
+using System.Drawing;
 
 namespace eBook_Reader.ViewModel;
 
@@ -78,13 +80,20 @@ public class ReadBookViewModel : ViewModelBase {
     private ObservableCollection<String> m_alignmentParamenters;
     private String m_selectedFont;
     private ObservableCollection<String> m_fontParamenters;
-    private String m_selectedReadingModeName;
-    private String m_selectedReadingMode;
-    private ObservableCollection<String> m_readingModeParamenters;
 
     public String SelectedAlignment {
         get => m_selectedAlignment;
         set {
+            switch(value) {
+                case "Justify":
+                    FlowDocumentProperty.TextAlignment = TextAlignment.Justify; break;
+                case "Center":
+                    FlowDocumentProperty.TextAlignment = TextAlignment.Center; break;
+                case "Left":
+                    FlowDocumentProperty.TextAlignment = TextAlignment.Left; break;
+                case "Right":
+                    FlowDocumentProperty.TextAlignment = TextAlignment.Right; break;
+            }
             m_selectedAlignment = value;
             Properties.DisplayBookSettings.Default.Alignment = value;
             Properties.DisplayBookSettings.Default.Save();
@@ -102,6 +111,23 @@ public class ReadBookViewModel : ViewModelBase {
         get => m_selectedFont;
         set {
             m_selectedFont = value;
+
+            switch(value) {
+                case "Sans Serif":
+                    FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("SansSerif"); break;
+                case "Arial":
+                    FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Arial"); break;
+                case "Baskerville":
+                    FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Baskerville"); break;
+                case "Sabon":
+                    FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Sabon"); break;
+                case "Garamond":
+                    FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Garamond"); break;
+                case "Caslon":
+                    FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Caslon"); break;
+                case "Utopia":
+                    FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Utopia"); break;
+            }
             Properties.DisplayBookSettings.Default.Font = value;
             Properties.DisplayBookSettings.Default.Save();
             OnPropertyChanged("SelectedFont");
@@ -112,37 +138,6 @@ public class ReadBookViewModel : ViewModelBase {
         set {
             m_fontParamenters = value;
             OnPropertyChanged("FontParameters");
-        }
-    }
-    public String SelectedReadingModeName {
-        get => m_selectedReadingModeName;
-        set {
-            m_selectedReadingModeName = value;
-        }
-    }
-    public String SelectedReadingMode {
-        get => m_selectedReadingMode;
-        set {
-            if(value == "Auto") {
-                m_selectedReadingMode = "Auto";
-                Properties.DisplayBookSettings.Default.ReadingMode = 550.ToString();
-                Properties.DisplayBookSettings.Default.Save();
-                OnPropertyChanged("SelectedReadingMode");
-            }
-            if(value == "Single") {
-                m_selectedFont = "Single";
-                Properties.DisplayBookSettings.Default.ReadingMode = 1000.ToString();
-                Properties.DisplayBookSettings.Default.Save();
-                OnPropertyChanged("SelectedReadingMode");
-            }
-
-        }
-    }
-    public ObservableCollection<String> ReadingModeParameters {
-        get => m_readingModeParamenters;
-        set {
-            m_readingModeParamenters = value;
-            OnPropertyChanged("ReadingModeParameters");
         }
     }
 
@@ -207,18 +202,19 @@ public class ReadBookViewModel : ViewModelBase {
 
         m_paragraphs = new ObservableCollection<Paragraph>();
 
-        FlowDocumentProperty = new FlowDocument();
-        FlowDocumentProperty.Name = "document";
-        FlowDocumentProperty.ColumnWidth = 1000;
+        FlowDocumentProperty = DocumentInicialization();
+       
 
-        foreach(String s in Split(stringBuilder.ToString(), 700)) {
+        foreach(String s in Split(stringBuilder.ToString())) {
 
             Paragraph paragraph = new Paragraph();
+            paragraph.BorderThickness = new Thickness(0);
+            paragraph.Margin = new Thickness(0);
+            paragraph.Padding = new Thickness(Properties.DisplayBookSettings.Default.MarginWidth,0, Properties.DisplayBookSettings.Default.MarginWidth, 0);
             paragraph.Inlines.Add(new Run(s));
             m_paragraphs.Add(paragraph);
             FlowDocumentProperty.Blocks.Add(paragraph);
         }
-        
 
         m_selectedHtml = stringBuilder.ToString();
 
@@ -228,32 +224,48 @@ public class ReadBookViewModel : ViewModelBase {
         FontParameters = new ObservableCollection<String>() { "Sans Serif", "Arial", "Baskerville", "Sabon", "Garamond", "Caslon", "Utopia" };
         m_selectedFont = Properties.DisplayBookSettings.Default.Font;
 
-        ReadingModeParameters = new ObservableCollection<String>() { "Auto", "Single" };
-
-        if(Properties.DisplayBookSettings.Default.ReadingMode == "550")
-            SelectedReadingMode = "Auto";
-        else
-            SelectedReadingMode = "Single";
-
         NavigateBackCommand = new NavigateBackCommand(m_navigationStore, m_menuNavigationStore, m_allBooksViewModel);
         NavigateAllBooksCommand = new NavigateMenuCommand<AllBooksViewModel>(m_menuNavigationStore,
                () => new AllBooksViewModel(m_navigationStore, m_menuNavigationStore));
         NavigateAllBooksCommand.Execute(m_navigationStore);
 
-        IncreaseLineSpacingCommand = new IncreaseLineSpacingCommand();
-        DecreaseLineSpacingCommand = new DecreaseLineSpacingCommand();
+        IncreaseLineSpacingCommand = new IncreaseLineSpacingCommand(this);
+        DecreaseLineSpacingCommand = new DecreaseLineSpacingCommand(this);
+        IncreaseMarginWidthCommand = new IncreaseMarginWidthCommand(this);
+        DecreaseMarginWidthCommand = new DecreaseMarginWidthCommand(this);
     }
 
     public ICommand NavigateBackCommand { get; protected set; }
     public ICommand NavigateAllBooksCommand { get; protected set; }
     public ICommand IncreaseLineSpacingCommand { get; protected set; }
     public ICommand DecreaseLineSpacingCommand { get; protected set; }
+    public ICommand IncreaseMarginWidthCommand { get; protected set; }
+    public ICommand DecreaseMarginWidthCommand { get; protected set; }
 
-    static IEnumerable<string> Split(string str, int chunkSize) {
-        return Enumerable.Range(0, str.Length / chunkSize)
-            .Select(i => str.Substring(i * chunkSize, chunkSize));
+    private FlowDocument DocumentInicialization() {
+        FlowDocument document = new FlowDocument();
+        document.Name = "document";
+        document.ColumnWidth = 1000;
+        document.LineHeight = Properties.DisplayBookSettings.Default.LineHeight;
+
+        switch(Properties.DisplayBookSettings.Default.Alignment) {
+            case "Justify":
+                document.TextAlignment = TextAlignment.Justify; break;
+            case "Center":
+                document.TextAlignment = TextAlignment.Center; break;
+            case "Left":
+                document.TextAlignment = TextAlignment.Left; break;
+            case "Right":
+                document.TextAlignment = TextAlignment.Right; break;
+        }
+        
+        return document;
     }
 
+    static String[] Split(String str) {
+        return str.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+    }
+    
     private static StringBuilder GetContentFileText(EpubTextContentFile textContentFile) {
         HtmlDocument htmlDocument = new HtmlDocument();
         htmlDocument.LoadHtml(textContentFile.Content);

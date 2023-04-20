@@ -83,3 +83,4 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Mi
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Microsoft.Extensions.PlatformAbstractions.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Nancy.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Newtonsoft.Json.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\Button\PlayButtonStyle.baml

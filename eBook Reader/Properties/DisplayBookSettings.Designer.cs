@@ -82,5 +82,17 @@ namespace eBook_Reader.Properties {
                 this["BackgroundColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int MarginWidth {
+            get {
+                return ((int)(this["MarginWidth"]));
+            }
+            set {
+                this["MarginWidth"] = value;
+            }
+        }
     }
 }

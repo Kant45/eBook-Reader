@@ -34,10 +34,12 @@ namespace eBook_Reader.Model {
                 PackageReaderOptions = new PackageReaderOptions() {
                     IgnoreMissingToc = true,
                     SkipInvalidManifestItems = true,
-
                 },
                 Epub2NcxReaderOptions = new Epub2NcxReaderOptions() {
                     IgnoreMissingContentForNavigationPoints = true
+                },
+                XmlReaderOptions = new XmlReaderOptions() {
+                    SkipXmlHeaders = true,
                 }
             };
             options.ContentReaderOptions.ContentFileMissing += (sender, e) =>

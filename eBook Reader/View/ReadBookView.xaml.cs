@@ -1,22 +1,17 @@
 ﻿using System;
-using System.ComponentModel;
 using System.IO;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using System.Xml;
-using System.Xml.Serialization;
 using eBook_Reader.ViewModel;
-using Nancy.Json;
 using eBook_Reader.Utils;
 using System.Collections.ObjectModel;
 using System.Xml.Linq;
 using eBook_Reader.Model;
+using System.Linq;
 
 namespace eBook_Reader.View {
     /// <summary>
@@ -24,9 +19,15 @@ namespace eBook_Reader.View {
     /// </summary>
     public partial class ReadBookView : UserControl {
 
-        String str;
-        Paragraph bookmark;
-        Int32 pageNumber;
+        private String m_str;
+        private Paragraph m_bookmark;
+        private FlowDocument m_document;
+
+        public FlowDocument Document {
+            get { return m_document; }
+            set { m_document = value; }
+        }
+
         public event EventHandler<EventArgs> SecondCompleted;
 
         public ReadBookView() {
@@ -54,13 +55,11 @@ namespace eBook_Reader.View {
 
         private void UserControl_Loaded(Object sender, RoutedEventArgs e) {
 
-            if(ProgressSerializer.DeserializeProgress(((ReadBookViewModel) this.DataContext)) != null) {
-                String tempString = ProgressSerializer.DeserializeProgress(((ReadBookViewModel) this.DataContext)).PointText; ;
-                Paragraph paragraph = new Paragraph();
-                paragraph.Inlines.Add(new Run(tempString));
-                BringToViewParagraph(paragraph);
+            String bookProgress = GetBookProgress();
+
+            if((bookProgress != "") && (bookProgress != null )) {
+                BringToViewParagraph(bookProgress);
             }
-            
 
             brd.Height = 0;
 
@@ -69,55 +68,56 @@ namespace eBook_Reader.View {
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
         }
-        private void BringToViewParagraph(Paragraph paragraph) {
-            if((((ReadBookViewModel) this.DataContext).FlowDocumentProperty.IsLoaded) 
-                && (ProgressSerializer.DeserializeProgress(((ReadBookViewModel) this.DataContext))) != null) {
-                String tempString = ProgressSerializer.DeserializeProgress(((ReadBookViewModel) this.DataContext)).PointText;
-                Paragraph paragraphPoint = new Paragraph();
-                paragraphPoint.Inlines.Add(new Run(tempString));
+        private void BringToViewParagraph(String bookProgress) {
+
+            if(((ReadBookViewModel) this.DataContext).FlowDocumentProperty.IsLoaded 
+                && ((bookProgress != null) && (bookProgress != ""))) {
 
                 ObservableCollection<Paragraph> paragraphs = ((ReadBookViewModel) this.DataContext).Paragraphs;
 
                 TextRange range;
-                foreach(var par in paragraphs) {
-                    range = new TextRange(par.ContentStart, par.ContentEnd);
-                    str = range.Text;
-                    if(str == tempString) {
-                        par.BringIntoView();
+                for(Int32 i = 0; i < paragraphs.Count; i++) {
+                    range = new TextRange(paragraphs[i].ContentStart, paragraphs[i].ContentEnd);
+                    m_str = range.Text;
+                    if(m_str == bookProgress) {
+                        paragraphs[++i].BringIntoView();
                     }
                 }
-                paragraph.BringIntoView();
-            } else if(ProgressSerializer.DeserializeProgress(((ReadBookViewModel) this.DataContext)) != null) {
+                
+                Document = flowDocumentReader.Document;
+
+            } else if((bookProgress != null) && (bookProgress != "")) {
                 ((ReadBookViewModel) this.DataContext).FlowDocumentProperty.Loaded += paragraphLoaded;
             }
         }
+
         void paragraphLoaded(object sender, RoutedEventArgs e) {
-            Paragraph paragraph = (Paragraph) sender;
-            paragraph.Loaded -= paragraphLoaded;
-            String tempString = ProgressSerializer.DeserializeProgress(((ReadBookViewModel) this.DataContext)).PointText;
-            Paragraph paragraphPoint = new Paragraph();
-            paragraphPoint.Inlines.Add(new Run(tempString));
 
+            String bookProgress = GetBookProgress();
             ObservableCollection<Paragraph> paragraphs = ((ReadBookViewModel) this.DataContext).Paragraphs;
-
             TextRange range;
-            foreach(var par in paragraphs) {
-                range = new TextRange(par.ContentStart, par.ContentEnd);
-                str = range.Text;
-                if(str == tempString) {
-                    par.BringIntoView();
+
+            if((bookProgress != null) && (bookProgress != "")) {
+
+                for(Int32 i = 0; i < paragraphs.Count; i++) {
+                    range = new TextRange(paragraphs[i].ContentStart, paragraphs[i].ContentEnd);
+                    m_str = range.Text;
+                    if(m_str == bookProgress) {
+                        paragraphs[++i].BringIntoView();
+                    }
                 }
+
+                Document = flowDocumentReader.Document;
             }
-            paragraph.BringIntoView();
         }
         void timer_Tick(object sender, EventArgs e) {
             if(this.DataContext != null) {
                 DynamicDocumentPaginator? paginator = ((IDocumentPaginatorSource) ((ReadBookViewModel) this.DataContext).FlowDocumentProperty).DocumentPaginator as DynamicDocumentPaginator;
                 var position = paginator.GetPagePosition(paginator.GetPage(flowDocumentReader.PageNumber - 1)) as TextPointer;
-                bookmark = position.Paragraph; 
+                m_bookmark = position.Paragraph; 
                 
-                TextRange range = new TextRange(bookmark.ContentStart, bookmark.ContentEnd);
-                str = range.Text;
+                TextRange range = new TextRange(m_bookmark.ContentStart, m_bookmark.ContentEnd);
+                m_str = range.Text;
 
                 String path = Path.Combine(Environment.CurrentDirectory, "BookList.xml");
                 XElement? xElement = XElement.Load(path);
@@ -127,7 +127,7 @@ namespace eBook_Reader.View {
                     if(Xbook.Attribute("Name")?.Value.Replace('\\', '/') 
                         == ((ReadBookViewModel) this.DataContext).SelectedBook.BookPath.Replace("\\", "/")) {
 
-                        Xbook.SetAttributeValue("progress", str);
+                        Xbook.SetAttributeValue("progress", m_str);
                         xElement.Save(path);
                     }
                 }
@@ -138,22 +138,16 @@ namespace eBook_Reader.View {
             }
         }
 
-        private void Button_Click(Object sender, RoutedEventArgs e) {
-            String tempString = Serializer.Deserialize();
-            Paragraph paragraph = new Paragraph();
-            paragraph.Inlines.Add(new Run(tempString));
+        private String GetBookProgress() {
 
-            ObservableCollection<Paragraph> paragraphs = ((ReadBookViewModel) this.DataContext).Paragraphs;
+            XElement xElement = XElement.Load(Path.Combine(Environment.CurrentDirectory, "BookList.xml"));
+            Book selectedBook = ((ReadBookViewModel) this.DataContext).SelectedBook;
 
-            TextRange range;
-            foreach(var par in paragraphs) {
-                range = new TextRange(par.ContentStart, par.ContentEnd);
-                str = range.Text;
-                if(str == tempString) {
-                    par.BringIntoView();
-                }
-            }
-            paragraph.BringIntoView();
+            var book = (from xBook in xElement.DescendantsAndSelf("book")
+                        where xBook.Attribute("Name")?.Value.Replace('\\', '/') == selectedBook.BookPath.Replace("\\", "/")
+                        select xBook).FirstOrDefault();
+
+            return book.Attribute("progress")?.Value;
         }
     }
 }

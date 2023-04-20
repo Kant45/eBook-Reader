@@ -11,9 +11,9 @@ namespace eBook_Reader.Commands {
     internal class RemoveFavoriteMarkCommand : CommandBase {
 
         private AllBooksViewModel m_allBooksViewModel;
-        private FavoriteBooksViewModel m_favoriteBooksViewModel;
+        private FavoriteBooksViewModel? m_favoriteBooksViewModel;
         public RemoveFavoriteMarkCommand(AllBooksViewModel allBooksViewModel, 
-                                         FavoriteBooksViewModel favoriteBooksViewModel) {
+                                         FavoriteBooksViewModel? favoriteBooksViewModel = null) {
             m_allBooksViewModel = allBooksViewModel;
             m_favoriteBooksViewModel = favoriteBooksViewModel;
         }

@@ -193,7 +193,20 @@
 
         <DockPanel Grid.Row="3" Height="60" 
                    Background="#e7dbb1" 
-                   VerticalAlignment="Bottom" />
-
+                   VerticalAlignment="Bottom">
+            <Button Style="{DynamicResource PlayButtonStyle}" 
+                    HorizontalAlignment="Right"
+                    Visibility="{Binding ContinueReadingVisibility}"
+                    Command="{Binding NavigateReadBookCommand}"
+                    CommandParameter="{Binding LastOpenedBook}">
+                <StackPanel>
+                    <TextBlock Text="Continue reading" FontSize="14" Margin="10 0 10 0" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding LastOpenedBook.Author}" FontSize="14" Margin="10 0 0 0" FontWeight="DemiBold" />
+                        <TextBlock Text="{Binding LastOpenedBook.Title, StringFormat= - {0}}" FontSize="14" MaxWidth="250" Margin="10 0 10 0" FontWeight="DemiBold" />
+                    </StackPanel>
+                </StackPanel>
+            </Button>
+        </DockPanel>
     </Grid>
 </UserControl>

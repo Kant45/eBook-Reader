@@ -29,6 +29,9 @@
     <None Remove="Icons\book_icon.png" />
     <None Remove="Icons\coollogo_com-34973328.png" />
     <None Remove="Icons\coollogo_com-6470310.png" />
+    <None Remove="Icons\Play\play_arrow_icon %281%29.png" />
+    <None Remove="Icons\Play\play_arrow_icon %282%29.png" />
+    <None Remove="Icons\Play\play_arrow_icon.png" />
     <None Remove="Icons\ReadingSettings\minus.png" />
     <None Remove="Icons\ReadingSettings\plus.png" />
     <None Remove="Icons\settings.png" />
@@ -71,6 +74,9 @@
     <Resource Include="Icons\Back\arrow_back.png" />
     <Resource Include="Icons\Back\arrow_back_mouse_over.png" />
     <Resource Include="Icons\Back\arrow_back_pressed.png" />
+    <Resource Include="Icons\Play\play_arrow_icon (1).png" />
+    <Resource Include="Icons\Play\play_arrow_icon (2).png" />
+    <Resource Include="Icons\Play\play_arrow_icon.png" />
     <Resource Include="Icons\ReadingSettings\minus.png" />
     <Resource Include="Icons\ReadingSettings\plus.png" />
     <Resource Include="Icons\settings.png" />

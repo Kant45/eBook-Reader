@@ -68,7 +68,7 @@
                         </Trigger>
                         <Trigger Property="IsChecked" Value="true">
                             <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
-                            <Setter Property="BorderBrush" Value="Gray" />
+                            <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="Gray" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="{x:Null}">
                             <Setter Property="Opacity" TargetName="optionMark" Value="0.56"/>
