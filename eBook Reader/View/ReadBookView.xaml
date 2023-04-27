@@ -37,7 +37,7 @@
                     <Image Source="/Icons/settings.png" Margin="8" 
                            RenderOptions.BitmapScalingMode="HighQuality" />
                 </Button>
-                <Border Height="95"
+                <Border Height="100"
                         Width="{Binding ElementName=userControl, Path=ActualWidth}"
                         Background="#ede4c4"
                         Panel.ZIndex="1"
@@ -158,24 +158,15 @@
             </Canvas>
         </DockPanel>
 
-        <FlowDocumentReader Name="flowDocumentReader" Grid.Row="1" Panel.ZIndex="0" BorderBrush="Transparent" ViewingMode="TwoPage" Zoom="10"
+        <FlowDocumentReader Name="flowDocumentReader" Grid.Row="1" 
+                            Panel.ZIndex="0" 
+                            BorderBrush="Transparent" 
+                            ViewingMode="TwoPage"
+                            Zoom="10"
+                            IsScrollViewEnabled="False"
                             Document="{Binding FlowDocumentProperty}"
                             Tag="{Binding Path=FlowDocumentProperty}"
                             FontFamily="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=Font, UpdateSourceTrigger=PropertyChanged}">
-            <!--<FlowDocument Name="document"
-                          ColumnWidth="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=ReadingMode, UpdateSourceTrigger=PropertyChanged}"
-                          ColumnGap="50"
-                          DataContext="{Binding Paragraphs}">
-                <Section TextAlignment="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=Alignment, UpdateSourceTrigger=PropertyChanged}"
-                         FontFamily="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=Font, UpdateSourceTrigger=PropertyChanged}"
-                         LineHeight="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=LineHeight, UpdateSourceTrigger=PropertyChanged}"
-                         Background="{Binding Source={x:Static properties:DisplayBookSettings.Default}, Path=BackgroundColor, UpdateSourceTrigger=PropertyChanged}"
-                         >
-                    <Paragraph Name="paragraph">
-                        <Run Text="{Binding SelectedHtml, Mode=TwoWay}" />
-                    </Paragraph>
-                </Section>
-            </FlowDocument>-->
         </FlowDocumentReader>
 
     </Grid>

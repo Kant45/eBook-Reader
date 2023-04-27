@@ -26,7 +26,7 @@ namespace eBook_Reader.Commands {
             m_allBooksViewModel = allBooksViewModel;
         }
 
-        public override Boolean CanExecute(Object parameter) {
+        public override Boolean CanExecute(Object? parameter) {
 
             if(parameter == null) 
                 return false;
@@ -34,8 +34,10 @@ namespace eBook_Reader.Commands {
             return true;
         }
 
-        public override void Execute(Object parameter) {
-            m_navigationStore.CurrentViewModel = new ReadBookViewModel((Book) parameter, m_navigationStore, m_menuNavigationStore, m_allBooksViewModel);
+        public override void Execute(Object? parameter) {
+
+            if(parameter != null)
+                m_navigationStore.CurrentViewModel = new ReadBookViewModel((Book) parameter, m_navigationStore, m_menuNavigationStore, m_allBooksViewModel);
         }
     }
 }

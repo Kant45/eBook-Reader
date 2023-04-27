@@ -9,13 +9,13 @@ using WinForms = System.Windows.Forms;
 namespace eBook_Reader.Commands {
     class ChangeLibraryPathCommand : CommandBase {
 
-        private SettingsViewModel m_settingsViewModel;
+        private readonly SettingsViewModel m_settingsViewModel;
 
         public ChangeLibraryPathCommand(SettingsViewModel settingsViewModel) {
 
             m_settingsViewModel = settingsViewModel;
         }
-        public override void Execute(Object parameter) {
+        public override void Execute(Object? parameter) {
 
             WinForms.FolderBrowserDialog dialog = new WinForms.FolderBrowserDialog();
             dialog.InitialDirectory = "C:\\";

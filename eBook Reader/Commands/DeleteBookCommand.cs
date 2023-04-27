@@ -12,19 +12,22 @@ using System.Xml.Linq;
 namespace eBook_Reader.Commands {
     internal class DeleteBookCommand : CommandBase {
 
-        private readonly AllBooksViewModel m_allBooksViewModel;
+        private readonly AllBooksViewModel? m_allBooksViewModel;
 
-        public DeleteBookCommand(AllBooksViewModel allBooksViewModel) {
+        public DeleteBookCommand(AllBooksViewModel? allBooksViewModel) {
             m_allBooksViewModel = allBooksViewModel;
         }
-        public override void Execute(Object parameter) {
+        public override void Execute(Object? parameter) {
 
-            m_allBooksViewModel.BookList.Remove(m_allBooksViewModel.SelectedBook);
-            File.Delete(m_allBooksViewModel.SelectedBook.NewBookPath);
-            DeleteFromXML(m_allBooksViewModel.SelectedBook);
+            if(m_allBooksViewModel!.SelectedBook != null) {
 
-            if(m_allBooksViewModel.SelectedBook.BookPath == m_allBooksViewModel.LastOpenedBook.BookPath) {
-                m_allBooksViewModel.ContinueReadingVisibility = "Hidden";
+                m_allBooksViewModel.BookList.Remove(m_allBooksViewModel.SelectedBook);
+                File.Delete(m_allBooksViewModel.SelectedBook.NewBookPath);
+                DeleteFromXML(m_allBooksViewModel.SelectedBook);
+
+                if(m_allBooksViewModel.SelectedBook.BookPath == m_allBooksViewModel.LastOpenedBook!.BookPath) {
+                    m_allBooksViewModel.ContinueReadingVisibility = "Hidden";
+                }
             }
         }
 

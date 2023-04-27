@@ -41,22 +41,6 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Vi
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\View\SettingsView.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\App.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\CheckBoxStyle.baml
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\CommonServiceLocator.dll
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Microsoft.CodeAnalysis.dll
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\GalaSoft.MvvmLight.Extras.dll
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\GalaSoft.MvvmLight.Platform.dll
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\GalaSoft.MvvmLight.dll
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\System.Windows.Interactivity.dll
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\runtimes\debian-x64\native\libuv.so
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\runtimes\fedora-x64\native\libuv.so
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\runtimes\opensuse-x64\native\libuv.so
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\runtimes\osx\native\libuv.dylib
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\runtimes\rhel-x64\native\libuv.so
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\runtimes\win7-arm\native\libuv.dll
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\runtimes\win7-x64\native\libuv.dll
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\runtimes\win7-x86\native\libuv.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\CommunityToolkit.Mvvm.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\ComboBoxItemStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\eBook Reader_Content.g.cs
@@ -84,3 +68,6 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Mi
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Nancy.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Newtonsoft.Json.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\Button\PlayButtonStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\ScrollBarStyle.baml
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\MaterialDesignColors.dll
+C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\MaterialDesignThemes.Wpf.dll

@@ -105,7 +105,7 @@
                   Grid.Row="3"
                   Background="Transparent" 
                   BorderBrush="Transparent"
-                  Margin="10">
+                  Margin="10 10 10 70">
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Setter Property="Background" 

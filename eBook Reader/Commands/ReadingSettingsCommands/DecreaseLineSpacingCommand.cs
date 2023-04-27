@@ -14,9 +14,10 @@ namespace eBook_Reader.Commands.ReadingSettingsCommands {
             m_readBookViewModel = readBookViewModel;
         }
 
-        public override void Execute(Object parameter) {
+        public override void Execute(Object? parameter) {
 
-            if(Properties.DisplayBookSettings.Default.LineHeight > 19) {
+            if(Properties.DisplayBookSettings.Default.LineHeight > 19
+                && m_readBookViewModel.FlowDocumentProperty != null) {
                 Properties.DisplayBookSettings.Default.LineHeight--;
                 Properties.DisplayBookSettings.Default.Save();
                 m_readBookViewModel.FlowDocumentProperty.LineHeight = Properties.DisplayBookSettings.Default.LineHeight;

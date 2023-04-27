@@ -15,13 +15,13 @@ namespace eBook_Reader.Commands {
         public MarkFavoriteCommand(AllBooksViewModel allBooksViewModel) {
             m_allBooksViewModel = allBooksViewModel;
         }
-        public override void Execute(Object parameter) {
+        public override void Execute(Object? parameter) {
 
             String path = Path.Combine(Environment.CurrentDirectory, "BookList.xml");
             XElement? xElement = XElement.Load(path);
 
             foreach(var Xbook in xElement.DescendantsAndSelf("book")) {
-                if(Xbook.Attribute("Name")?.Value.Replace('\\', '/') == m_allBooksViewModel.SelectedBook.BookPath.Replace("\\", "/")) {
+                if(Xbook.Attribute("Name")?.Value.Replace('\\', '/') == m_allBooksViewModel.SelectedBook!.BookPath.Replace("\\", "/")) {
 
                     Xbook.SetAttributeValue("IsFavorite", "true");
                     xElement.Save(path);

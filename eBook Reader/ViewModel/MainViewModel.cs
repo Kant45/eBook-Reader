@@ -21,9 +21,6 @@ namespace eBook_Reader.ViewModel {
 
         private NavigationStore m_navigationStore;
 
-        public ICommand CloseWindowCommand { get; protected set; }
-        public ICommand MaximizeWindowCommand { get; protected set; }
-
         public ViewModelBase CurrentViewModel => m_navigationStore.CurrentViewModel;
 
         public MainViewModel(NavigationStore navigationStore) {
@@ -31,9 +28,6 @@ namespace eBook_Reader.ViewModel {
             m_navigationStore = navigationStore;
 
             m_navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
-
-            CloseWindowCommand = new CloseCommand();
-
         }
 
         private void OnCurrentViewModelChanged() {

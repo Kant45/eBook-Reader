@@ -8,14 +8,10 @@ namespace eBook_Reader.ViewModel;
 
 public class ViewModelBase : INotifyPropertyChanged {
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     protected void OnPropertyChanged(String propertyName) {
 
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void ParameterMethod(Book book) {
-
     }
 }

@@ -18,7 +18,7 @@ namespace eBook_Reader.Commands {
             m_allBooksViewModel = allBooksViewModel;
         }
 
-        public override void Execute(Object parameter) {
+        public override void Execute(Object? parameter) {
 
             DialogResult dialogResult = MessageBox.Show("Are you sure?",
                       "Empty library", MessageBoxButtons.YesNo);

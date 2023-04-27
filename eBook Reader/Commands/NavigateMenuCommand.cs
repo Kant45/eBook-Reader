@@ -19,7 +19,7 @@ namespace eBook_Reader.Commands {
             m_createViewModel = createViewModel;
         }
 
-        public override void Execute(Object parameter) {
+        public override void Execute(Object? parameter) {
 
             m_menuNavigationStore.CurrentMenuViewModel = m_createViewModel();
         }

@@ -57,9 +57,13 @@
               "target": "Package",
               "version": "[1.11.46, )"
             },
-            "MvvmLight": {
+            "MaterialDesignColors": {
               "target": "Package",
-              "version": "[5.4.1.1, )"
+              "version": "[2.1.2, )"
+            },
+            "MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[4.8.0, )"
             },
             "NServiceBus": {
               "target": "Package",

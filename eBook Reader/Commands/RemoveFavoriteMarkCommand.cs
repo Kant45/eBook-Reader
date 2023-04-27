@@ -17,14 +17,15 @@ namespace eBook_Reader.Commands {
             m_allBooksViewModel = allBooksViewModel;
             m_favoriteBooksViewModel = favoriteBooksViewModel;
         }
-        public override void Execute(Object parameter) {
+        public override void Execute(Object? parameter) {
 
             String path = Path.Combine(Environment.CurrentDirectory, "BookList.xml");
             XElement? xElement = XElement.Load(path);
 
             if(m_favoriteBooksViewModel == null) {
+
                 foreach(var Xbook in xElement.DescendantsAndSelf("book")) {
-                    if(Xbook.Attribute("Name")?.Value.Replace('\\', '/') == m_allBooksViewModel.SelectedBook.BookPath.Replace("\\", "/")) {
+                    if(Xbook.Attribute("Name")?.Value.Replace('\\', '/') == m_allBooksViewModel.SelectedBook!.BookPath.Replace("\\", "/")) {
 
                         Xbook.SetAttributeValue("IsFavorite", "false");
                         xElement.Save(path);
@@ -40,7 +41,7 @@ namespace eBook_Reader.Commands {
                         Xbook.SetAttributeValue("IsFavorite", "false");
                         xElement.Save(path);
 
-                        m_allBooksViewModel.SelectedBook.IsFavorite = false;
+                        m_allBooksViewModel.SelectedBook!.IsFavorite = false;
 
                     }
                 }

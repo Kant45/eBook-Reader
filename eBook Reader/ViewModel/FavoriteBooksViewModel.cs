@@ -19,20 +19,20 @@ namespace eBook_Reader.ViewModel {
 
         private static Book? m_selectedBook;
         private Book? m_lastOpenedBook;
-        private String m_continueReadingVisibility;
+        private String? m_continueReadingVisibility;
         private MenuNavigationStore m_menuNavigationStore;
         private readonly NavigationStore m_navigationStore;
         private AllBooksViewModel m_allBooksViewModel;
-        private SortParameter m_selectedSortParameter;
-        private ObservableCollection<SortParameter> m_sortParameters;
-        private String m_search;
+        private new SortParameter? m_selectedSortParameter;
+        private new ObservableCollection<SortParameter>? m_sortParameters;
+        private String? m_search;
         private ICollectionView m_bookListView;
 
         public ObservableCollection<Book> FavoriteBooks {
-            get => base.m_bookList;
+            get => base.m_bookList!;
         }
         public Book SelectedBook {
-            get { return m_selectedBook; }
+            get { return m_selectedBook!; }
             set {
                 if(value != null) {
                     m_selectedBook = value;
@@ -48,29 +48,29 @@ namespace eBook_Reader.ViewModel {
             }
         }
         public String ContinueReadingVisibility {
-            get => m_continueReadingVisibility;
+            get => m_continueReadingVisibility!;
             set {
                 m_continueReadingVisibility = value;
                 OnPropertyChanged("ContinueReadingVisibility");
             }
         }
-        public SortParameter SelectedSortParameter {
-            get => m_selectedSortParameter;
+        public new SortParameter SelectedSortParameter {
+            get => m_selectedSortParameter!;
             set {
                 m_selectedSortParameter = value;
                 base.SelectedSortParameter = value;
                 OnPropertyChanged("SelectedSortParameter");
             }
         }
-        public ObservableCollection<SortParameter> SortParameters {
-            get => m_sortParameters;
+        public new ObservableCollection<SortParameter> SortParameters {
+            get => m_sortParameters!;
             set {
                 m_sortParameters = value;
                 OnPropertyChanged("SortParameters");
             }
         }
         public String Search {
-            get { return m_search; }
+            get { return m_search!; }
             set {
                 if(value != m_search) {
                     m_search = value;
@@ -97,24 +97,13 @@ namespace eBook_Reader.ViewModel {
             m_menuNavigationStore = menuNavigationStore;
             m_navigationStore = navigationStore;
             m_allBooksViewModel = allBooksViewModel;
-            
-            List<Book> sortableList = new List<Book>();
-
-            sortableList = sortableList.OrderBy(book => book.Title).ToList();
-
-            for(Int32 i = 0; i < sortableList.Count; i++) {
-                BookList.Add(sortableList[i]);
-            }
 
             LastOpenedBook = GetLastOpenedBook();
 
             SortParameters = base.SortParameters;
 
-
             base.m_bookList = new ObservableCollection<Book>(GetFavoriteList());
             SelectedSortParameter = SortParameters[0];
-            SortCommand<FavoriteBooksViewModel> sortCommand = new SortCommand<FavoriteBooksViewModel>(this);
-            sortCommand.Execute(this);
 
             NavigateReadBookCommand = new NavigateReadBookCommand(m_navigationStore, m_menuNavigationStore, m_allBooksViewModel);
             AddEpubBookCommand = new AddBookCommand(m_allBooksViewModel);
@@ -139,8 +128,8 @@ namespace eBook_Reader.ViewModel {
                         favoriteBook.IsFavorite = true;
                 } 
             }
-            
-            return books;
+
+            return books.OrderBy(book => book.Title);
         }
 
         private Book? GetLastOpenedBook() {
@@ -153,20 +142,27 @@ namespace eBook_Reader.ViewModel {
 
             foreach(var xBook in xElement.DescendantsAndSelf("book")) {
 
-                if(DateTime.Parse(xBook.Attribute("LastOpeningTime")?.Value) > DateTime.Parse(newestTime)) {
-                    newestTime = xBook.Attribute("LastOpeningTime")?.Value;
-
-                    foreach(var book in m_allBooksViewModel.BookList) {
-
-                        if(xBook.Attribute("Name")?.Value.Replace('\\', '/') == book.BookPath.Replace("\\", "/")) {
-                            ContinueReadingVisibility = "Visible";
-                            lastOpenedBook = book;
-                        }
-                    }
-                }
+                GetNewerBook(xBook, ref newestTime, ref lastOpenedBook);
             }
 
             return lastOpenedBook;
+        }
+
+        private void GetNewerBook(XElement xBook, ref String newestTime, ref Book? lastOpenedBook) {
+
+            if(DateTime.Parse(xBook.Attribute("LastOpeningTime")?.Value ?? new DateTime(1, 1, 1, 1, 1, 1).ToString()) > DateTime.Parse(newestTime)) {
+
+                newestTime = xBook.Attribute("LastOpeningTime")?.Value ?? new DateTime(1, 1, 1, 1, 1, 1).ToString();
+
+                foreach(var book in m_allBooksViewModel.BookList) {
+
+                    if(xBook.Attribute("Name")?.Value.Replace('\\', '/') == book.BookPath.Replace("\\", "/")) {
+
+                        ContinueReadingVisibility = "Visible";
+                        lastOpenedBook = book;
+                    }
+                }
+            }
         }
     }
 }

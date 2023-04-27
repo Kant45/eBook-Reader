@@ -14,9 +14,11 @@ namespace eBook_Reader.Commands.ReadingSettingsCommands {
         public IncreaseLineSpacingCommand(ReadBookViewModel readBookViewModel) {
             m_readBookViewModel = readBookViewModel;
         }
-        public override void Execute(Object parameter) {
+        public override void Execute(Object? parameter) {
 
-            if(Properties.DisplayBookSettings.Default.LineHeight < 40) {
+            if(Properties.DisplayBookSettings.Default.LineHeight < 40
+                && m_readBookViewModel.FlowDocumentProperty != null) {
+
                 Properties.DisplayBookSettings.Default.LineHeight++;
                 Properties.DisplayBookSettings.Default.Save();
                 m_readBookViewModel.FlowDocumentProperty.LineHeight = Properties.DisplayBookSettings.Default.LineHeight;

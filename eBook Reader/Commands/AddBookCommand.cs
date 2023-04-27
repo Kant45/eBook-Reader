@@ -19,7 +19,7 @@ public class AddBookCommand : CommandBase {
     }
 
     [STAThread]
-    public override void Execute(Object parameter) {
+    public override void Execute(Object? parameter) {
 
         OpenFileDialog openFileDialog = new OpenFileDialog();
 
@@ -62,7 +62,7 @@ public class AddBookCommand : CommandBase {
         return;
     }
 
-    private void AddToXML(Book book) {
+    private static void AddToXML(Book book) {
 
         String path = Path.Combine(Environment.CurrentDirectory, "BookList.xml");
 
@@ -77,6 +77,6 @@ public class AddBookCommand : CommandBase {
         bookElement.Add(bookNameAttribute, bookIsFavoriteAttribute, bookLastOpeningTime, bookProgress);
         root?.Add(bookElement);
 
-        xdoc.Save(path);
+        xdoc?.Save(path);
     }
 }

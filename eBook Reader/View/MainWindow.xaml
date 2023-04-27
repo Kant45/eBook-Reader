@@ -8,9 +8,13 @@
         mc:Ignorable="d"
         Title=""
         MinWidth="800" MinHeight="500"
-        Height="700" Width="1200" Background="#fdf8e8"
+        Height="700" Width="1250" Background="#fdf8e8"
         WindowStartupLocation="CenterScreen"
         d:DataContext="{d:DesignInstance Type=vms:MainViewModel}">
+
+    <Window.Resources>
+        <ResourceDictionary Source="/Styles/ScrollBarStyle.xaml" />
+    </Window.Resources>
 
     <Grid>
         <ContentControl Content="{Binding CurrentViewModel}">

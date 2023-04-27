@@ -10,22 +10,22 @@ using System.Threading.Tasks;
 namespace eBook_Reader.ViewModel {
     public class BooksViewModel : ViewModelBase {
 
-        protected ObservableCollection<Book> m_bookList;
-        protected ObservableCollection<SortParameter> m_sortParameters;
-        protected SortParameter m_selectedSortParameter;
+        protected ObservableCollection<Book>? m_bookList;
+        protected ObservableCollection<SortParameter>? m_sortParameters;
+        protected SortParameter? m_selectedSortParameter;
         protected String m_libraryPath;
         public ObservableCollection<Book> BookList {
-            get { return m_bookList; }
+            get { return m_bookList!; }
         }
         public SortParameter SelectedSortParameter {
-            get => m_selectedSortParameter;
+            get => m_selectedSortParameter ?? new SortParameter("TitleUp", "/Icons/Sort/sort_up_icon.png");
             set {
                 m_selectedSortParameter = value;
                 OnPropertyChanged("SelectedSortParameter");
             }
         }
         public ObservableCollection<SortParameter> SortParameters {
-            get => m_sortParameters;
+            get => m_sortParameters!;
             set {
                 m_sortParameters = value;
                 OnPropertyChanged("SortParameters");

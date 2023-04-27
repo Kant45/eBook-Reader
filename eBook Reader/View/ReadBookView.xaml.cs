@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.Xml.Linq;
 using eBook_Reader.Model;
 using System.Linq;
+using System.Windows.Documents.DocumentStructures;
 
 namespace eBook_Reader.View {
     /// <summary>
@@ -19,16 +20,16 @@ namespace eBook_Reader.View {
     /// </summary>
     public partial class ReadBookView : UserControl {
 
-        private String m_str;
-        private Paragraph m_bookmark;
-        private FlowDocument m_document;
+        private String? m_str;
+        private Paragraph? m_bookmark;
+        private FlowDocument? m_document;
 
         public FlowDocument Document {
-            get { return m_document; }
+            get { return m_document!; }
             set { m_document = value; }
         }
 
-        public event EventHandler<EventArgs> SecondCompleted;
+        public event EventHandler<EventArgs>? SecondCompleted;
 
         public ReadBookView() {
 
@@ -55,7 +56,7 @@ namespace eBook_Reader.View {
 
         private void UserControl_Loaded(Object sender, RoutedEventArgs e) {
 
-            String bookProgress = GetBookProgress();
+            String? bookProgress = GetBookProgress();
 
             if((bookProgress != "") && (bookProgress != null )) {
                 BringToViewParagraph(bookProgress);
@@ -64,40 +65,47 @@ namespace eBook_Reader.View {
             brd.Height = 0;
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(3);
-            timer.Tick += new EventHandler(timer_Tick);
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += new EventHandler(timer_Tick!);
             timer.Start();
         }
         private void BringToViewParagraph(String bookProgress) {
 
-            if(((ReadBookViewModel) this.DataContext).FlowDocumentProperty.IsLoaded 
-                && ((bookProgress != null) && (bookProgress != ""))) {
+            if(((ReadBookViewModel) this.DataContext).FlowDocumentProperty!.IsLoaded
+                && (bookProgress != null) && (bookProgress != "")) {
 
-                ObservableCollection<Paragraph> paragraphs = ((ReadBookViewModel) this.DataContext).Paragraphs;
+                ObservableCollection<Paragraph>? paragraphs = ((ReadBookViewModel) this.DataContext).Paragraphs;
 
-                TextRange range;
-                for(Int32 i = 0; i < paragraphs.Count; i++) {
-                    range = new TextRange(paragraphs[i].ContentStart, paragraphs[i].ContentEnd);
-                    m_str = range.Text;
-                    if(m_str == bookProgress) {
-                        paragraphs[++i].BringIntoView();
+                if(paragraphs != null) {
+
+                    TextRange range;
+
+                    for(Int32 i = 0; i < paragraphs.Count; i++) {
+
+                        range = new TextRange(paragraphs[i].ContentStart, paragraphs[i].ContentEnd);
+                        m_str = range.Text;
+
+                        if(m_str == bookProgress) {
+                            paragraphs[++i].BringIntoView();
+                        }
                     }
                 }
-                
                 Document = flowDocumentReader.Document;
 
-            } else if((bookProgress != null) && (bookProgress != "")) {
-                ((ReadBookViewModel) this.DataContext).FlowDocumentProperty.Loaded += paragraphLoaded;
+            } else 
+            if((bookProgress != null) && (bookProgress != "")) {
+
+                ((ReadBookViewModel) this.DataContext).FlowDocumentProperty!.Loaded += paragraphLoaded;
             }
         }
 
         void paragraphLoaded(object sender, RoutedEventArgs e) {
 
-            String bookProgress = GetBookProgress();
-            ObservableCollection<Paragraph> paragraphs = ((ReadBookViewModel) this.DataContext).Paragraphs;
+            String? bookProgress = GetBookProgress();
+            ObservableCollection<Paragraph>? paragraphs = ((ReadBookViewModel) this.DataContext).Paragraphs;
             TextRange range;
 
-            if((bookProgress != null) && (bookProgress != "")) {
+            if((bookProgress != null) && (bookProgress != "") && (paragraphs != null)) {
 
                 for(Int32 i = 0; i < paragraphs.Count; i++) {
                     range = new TextRange(paragraphs[i].ContentStart, paragraphs[i].ContentEnd);
@@ -111,12 +119,22 @@ namespace eBook_Reader.View {
             }
         }
         void timer_Tick(object sender, EventArgs e) {
+
             if(this.DataContext != null) {
-                DynamicDocumentPaginator? paginator = ((IDocumentPaginatorSource) ((ReadBookViewModel) this.DataContext).FlowDocumentProperty).DocumentPaginator as DynamicDocumentPaginator;
-                var position = paginator.GetPagePosition(paginator.GetPage(flowDocumentReader.PageNumber - 1)) as TextPointer;
-                m_bookmark = position.Paragraph; 
+
+                DynamicDocumentPaginator? paginator = ((IDocumentPaginatorSource) ((ReadBookViewModel) this.DataContext).FlowDocumentProperty!).DocumentPaginator as DynamicDocumentPaginator;
+
+                TextPointer? position = null;
+
+                if(paginator != null) {
+                    position = paginator.GetPagePosition(paginator.GetPage(flowDocumentReader.PageNumber - 1)) as TextPointer;
+                }
+
+                if(position != null) {
+                    m_bookmark = position.Paragraph;
+                }
                 
-                TextRange range = new TextRange(m_bookmark.ContentStart, m_bookmark.ContentEnd);
+                TextRange range = new TextRange(m_bookmark!.ContentStart, m_bookmark.ContentEnd);
                 m_str = range.Text;
 
                 String path = Path.Combine(Environment.CurrentDirectory, "BookList.xml");
@@ -138,7 +156,7 @@ namespace eBook_Reader.View {
             }
         }
 
-        private String GetBookProgress() {
+        private String? GetBookProgress() {
 
             XElement xElement = XElement.Load(Path.Combine(Environment.CurrentDirectory, "BookList.xml"));
             Book selectedBook = ((ReadBookViewModel) this.DataContext).SelectedBook;
@@ -147,7 +165,7 @@ namespace eBook_Reader.View {
                         where xBook.Attribute("Name")?.Value.Replace('\\', '/') == selectedBook.BookPath.Replace("\\", "/")
                         select xBook).FirstOrDefault();
 
-            return book.Attribute("progress")?.Value;
+            return book?.Attribute("progress")?.Value;
         }
     }
 }

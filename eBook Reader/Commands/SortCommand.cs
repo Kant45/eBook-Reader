@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace eBook_Reader.Commands
 {
@@ -14,12 +15,13 @@ namespace eBook_Reader.Commands
 
         where T : BooksViewModel {
 
-        private T m_viewModel;
+        private readonly T m_viewModel;
 
         public SortCommand(T TViewModel) {
             m_viewModel = TViewModel;
         }
-        public override void Execute(Object parameter) {
+
+        public override void Execute(Object? parameter) {
 
             String? SelectedSortProperty = m_viewModel.SelectedSortParameter.Name;
             ObservableCollection<Book> books = m_viewModel.BookList;
@@ -31,42 +33,41 @@ namespace eBook_Reader.Commands
                 case "TitleUp": {
 
                     tempList = books.OrderBy(book => book.Title).ToList();
+                    BackToObservableCollection(tempList, ref books);
 
-                    for(Int32 i = 0; i < tempList.Count; i++) {
-                        books.Move(books.IndexOf(tempList[i]), i);
-                    }
                     break;
                 }
                 case "TitleDown": {
 
                     tempList = books.OrderByDescending(book => book.Title).ToList();
+                    BackToObservableCollection(tempList, ref books);
 
-                    for(Int32 i = 0; i < tempList.Count; i++) {
-                        books.Move(books.IndexOf(tempList[i]), i);
-                    }
                     break;
                 }
                 case "AuthorUp": {
 
                     tempList = books.OrderBy(book => book.Author).ToList();
+                    BackToObservableCollection(tempList, ref books);
 
-                    for(Int32 i = 0; i < tempList.Count; i++) {
-                        books.Move(books.IndexOf(tempList[i]), i);
-                    }
                     break;
                 }
                 case "AuthorDown": {
 
                     tempList = books.OrderByDescending(book => book.Author).ToList();
+                    BackToObservableCollection(tempList, ref books);
 
-                    for(Int32 i = 0; i < tempList.Count; i++) {
-                        books.Move(books.IndexOf(tempList[i]), i);
-                    }
                     break;
                 }
-                default: return;
+                default:
+                    return;
             }
+        }
 
+        private void BackToObservableCollection(List<Book> tempList, ref ObservableCollection<Book> books) {
+
+            for(Int32 i = 0; i < tempList.Count; i++) {
+                books.Move(books.IndexOf(tempList[i]), i);
+            }
         }
     }
 }

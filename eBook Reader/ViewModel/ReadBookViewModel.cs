@@ -24,9 +24,9 @@ public class ReadBookViewModel : ViewModelBase {
     
     private readonly Book m_selectedBook;
     private readonly EpubContent m_epubContent;
-    private FlowDocument m_flowDocument;
-    private ObservableCollection<Paragraph> m_paragraphs; //
-    private String m_selectedHtml;
+    private FlowDocument? m_flowDocument;
+    private ObservableCollection<Paragraph>? m_paragraphs;
+    private String? m_selectedHtml;
     private Byte[] m_coverImage;
     private List<EpubTextContentFile> m_readingOrder;
     private NavigationStore m_navigationStore;
@@ -40,21 +40,21 @@ public class ReadBookViewModel : ViewModelBase {
             OnPropertyChanged("SelectedBook");
         }
     }
-    public FlowDocument FlowDocumentProperty {
+    public FlowDocument? FlowDocumentProperty {
         get => m_flowDocument;
         set {
             m_flowDocument = value;
             OnPropertyChanged("FlowDocumentProperty");
         }
     }
-    public ObservableCollection<Paragraph> Paragraphs {
+    public ObservableCollection<Paragraph>? Paragraphs {
         get => m_paragraphs;
         set {
             m_paragraphs = value;
             OnPropertyChanged("Paragraphs");
         }
     }
-    public String SelectedHtml {
+    public String? SelectedHtml {
         get => m_selectedHtml;
         set {
             m_selectedHtml = value;
@@ -84,16 +84,20 @@ public class ReadBookViewModel : ViewModelBase {
     public String SelectedAlignment {
         get => m_selectedAlignment;
         set {
-            switch(value) {
-                case "Justify":
-                    FlowDocumentProperty.TextAlignment = TextAlignment.Justify; break;
-                case "Center":
-                    FlowDocumentProperty.TextAlignment = TextAlignment.Center; break;
-                case "Left":
-                    FlowDocumentProperty.TextAlignment = TextAlignment.Left; break;
-                case "Right":
-                    FlowDocumentProperty.TextAlignment = TextAlignment.Right; break;
+            if(FlowDocumentProperty != null) {
+
+                switch(value) {
+                    case "Justify":
+                        FlowDocumentProperty.TextAlignment = TextAlignment.Justify; break;
+                    case "Center":
+                        FlowDocumentProperty.TextAlignment = TextAlignment.Center; break;
+                    case "Left":
+                        FlowDocumentProperty.TextAlignment = TextAlignment.Left; break;
+                    case "Right":
+                        FlowDocumentProperty.TextAlignment = TextAlignment.Right; break;
+                }
             }
+            
             m_selectedAlignment = value;
             Properties.DisplayBookSettings.Default.Alignment = value;
             Properties.DisplayBookSettings.Default.Save();
@@ -112,22 +116,25 @@ public class ReadBookViewModel : ViewModelBase {
         set {
             m_selectedFont = value;
 
-            switch(value) {
-                case "Sans Serif":
-                    FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("SansSerif"); break;
-                case "Arial":
-                    FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Arial"); break;
-                case "Baskerville":
-                    FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Baskerville"); break;
-                case "Sabon":
-                    FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Sabon"); break;
-                case "Garamond":
-                    FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Garamond"); break;
-                case "Caslon":
-                    FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Caslon"); break;
-                case "Utopia":
-                    FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Utopia"); break;
+            if(FlowDocumentProperty != null) {
+                switch(value) {
+                    case "Sans Serif":
+                        FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("SansSerif"); break;
+                    case "Arial":
+                        FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Arial"); break;
+                    case "Baskerville":
+                        FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Baskerville"); break;
+                    case "Sabon":
+                        FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Sabon"); break;
+                    case "Garamond":
+                        FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Garamond"); break;
+                    case "Caslon":
+                        FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Caslon"); break;
+                    case "Utopia":
+                        FlowDocumentProperty.FontFamily = new System.Windows.Media.FontFamily("Utopia"); break;
+                }
             }
+            
             Properties.DisplayBookSettings.Default.Font = value;
             Properties.DisplayBookSettings.Default.Save();
             OnPropertyChanged("SelectedFont");
@@ -140,13 +147,7 @@ public class ReadBookViewModel : ViewModelBase {
             OnPropertyChanged("FontParameters");
         }
     }
-
-    private Boolean m_firstColorSelected;
-    private Boolean m_secondColorSelected;
-    private Boolean m_thirdColorSelected;
-    private Boolean m_fourthColorSelected;
     public Boolean FirstColor {
-        get => m_firstColorSelected; 
         set {
             if(value) {
                 Properties.DisplayBookSettings.Default.BackgroundColor = "#fdf8e8";
@@ -155,7 +156,6 @@ public class ReadBookViewModel : ViewModelBase {
         }
     }    
     public Boolean SecondColor {
-        get => m_secondColorSelected;
         set {
             if(value) {
                 Properties.DisplayBookSettings.Default.BackgroundColor = "#ffffff";
@@ -164,7 +164,6 @@ public class ReadBookViewModel : ViewModelBase {
         }
     }
     public Boolean ThirdColor {
-        get => m_thirdColorSelected;
         set {
             if(value) {
                 Properties.DisplayBookSettings.Default.BackgroundColor = "#f8fad1";
@@ -173,7 +172,6 @@ public class ReadBookViewModel : ViewModelBase {
         }
     }
     public Boolean FourthColor {
-        get => m_fourthColorSelected;
         set {
             if(value) {
                 Properties.DisplayBookSettings.Default.BackgroundColor = "#e8fdf4";
@@ -182,7 +180,10 @@ public class ReadBookViewModel : ViewModelBase {
         }
     }
 
-    public ReadBookViewModel(Book selectedBook, NavigationStore navigationStore, MenuNavigationStore menuNavigationStore, AllBooksViewModel allBooksViewModel) {
+    public ReadBookViewModel(Book selectedBook, 
+                             NavigationStore navigationStore, 
+                             MenuNavigationStore menuNavigationStore, 
+                             AllBooksViewModel allBooksViewModel) {
 
         m_selectedBook = selectedBook;
         m_epubContent = m_selectedBook.EBook.Content;
@@ -193,35 +194,12 @@ public class ReadBookViewModel : ViewModelBase {
         m_allBooksViewModel = allBooksViewModel;
 
         SetOpenFileTime(selectedBook);
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for(Int32 i = 1; i < m_readingOrder.Count - 1; i++) {
-            stringBuilder.Append(GetContentFileText(m_readingOrder[i]));
-        }
-
-        m_paragraphs = new ObservableCollection<Paragraph>();
-
-        FlowDocumentProperty = DocumentInicialization();
-       
-
-        foreach(String s in Split(stringBuilder.ToString())) {
-
-            Paragraph paragraph = new Paragraph();
-            paragraph.BorderThickness = new Thickness(0);
-            paragraph.Margin = new Thickness(0);
-            paragraph.Padding = new Thickness(Properties.DisplayBookSettings.Default.MarginWidth,0, Properties.DisplayBookSettings.Default.MarginWidth, 0);
-            paragraph.Inlines.Add(new Run(s));
-            m_paragraphs.Add(paragraph);
-            FlowDocumentProperty.Blocks.Add(paragraph);
-        }
-
-        m_selectedHtml = stringBuilder.ToString();
-
-        AlignmentParameters = new ObservableCollection<String>() { "Justify", "Center", "Left", "Right" };
+        FlowDocumentInitialization();
+        
+        m_alignmentParamenters = new ObservableCollection<String>() { "Justify", "Center", "Left", "Right" };
         m_selectedAlignment = Properties.DisplayBookSettings.Default.Alignment;
 
-        FontParameters = new ObservableCollection<String>() { "Sans Serif", "Arial", "Baskerville", "Sabon", "Garamond", "Caslon", "Utopia" };
+        m_fontParamenters = new ObservableCollection<String>() { "Sans Serif", "Arial", "Baskerville", "Sabon", "Garamond", "Caslon", "Utopia" };
         m_selectedFont = Properties.DisplayBookSettings.Default.Font;
 
         NavigateBackCommand = new NavigateBackCommand(m_navigationStore, m_menuNavigationStore, m_allBooksViewModel);
@@ -242,31 +220,47 @@ public class ReadBookViewModel : ViewModelBase {
     public ICommand IncreaseMarginWidthCommand { get; protected set; }
     public ICommand DecreaseMarginWidthCommand { get; protected set; }
 
-    private FlowDocument DocumentInicialization() {
-        FlowDocument document = new FlowDocument();
-        document.Name = "document";
-        document.ColumnWidth = 1000;
-        document.LineHeight = Properties.DisplayBookSettings.Default.LineHeight;
+    private void FlowDocumentInitialization() {
 
-        switch(Properties.DisplayBookSettings.Default.Alignment) {
-            case "Justify":
-                document.TextAlignment = TextAlignment.Justify; break;
-            case "Center":
-                document.TextAlignment = TextAlignment.Center; break;
-            case "Left":
-                document.TextAlignment = TextAlignment.Left; break;
-            case "Right":
-                document.TextAlignment = TextAlignment.Right; break;
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for(Int32 i = 1; i < m_readingOrder.Count - 1; i++) {
+
+            stringBuilder.Append(GetContentFileText(m_readingOrder[i]));
         }
-        
-        return document;
+
+        m_paragraphs = new ObservableCollection<Paragraph>();
+
+        FlowDocumentProperty = DocumentInicialization();
+
+        foreach(String s in SplitByNewLines(stringBuilder.ToString())) {
+
+            AppendParagraph(s);
+        }
+
+        m_selectedHtml = stringBuilder.ToString();
     }
 
-    static String[] Split(String str) {
+    private void AppendParagraph(String str) {
+
+        Paragraph paragraph = new Paragraph();
+        paragraph.BorderThickness = new Thickness(0);
+        paragraph.Margin = new Thickness(0);
+        paragraph.Padding = new Thickness(Properties.DisplayBookSettings.Default.MarginWidth, 0, Properties.DisplayBookSettings.Default.MarginWidth, 0);
+        paragraph.Inlines.Add(new Run(str));
+        m_paragraphs?.Add(paragraph);
+
+        if(FlowDocumentProperty != null)
+            FlowDocumentProperty.Blocks.Add(paragraph);
+    }
+
+    static String[] SplitByNewLines(String str) {
+
         return str.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
     }
     
     private static StringBuilder GetContentFileText(EpubTextContentFile textContentFile) {
+
         HtmlDocument htmlDocument = new HtmlDocument();
         htmlDocument.LoadHtml(textContentFile.Content);
         StringBuilder sb = new StringBuilder();
@@ -278,11 +272,42 @@ public class ReadBookViewModel : ViewModelBase {
         return sb;
     }
 
+    private FlowDocument DocumentInicialization() {
+
+        FlowDocument document = new FlowDocument();
+        document.Name = "document";
+        document.ColumnWidth = 1000;
+        document.LineHeight = Properties.DisplayBookSettings.Default.LineHeight;
+
+        switch(Properties.DisplayBookSettings.Default.Alignment) {
+
+            case "Justify":
+                document.TextAlignment = TextAlignment.Justify; 
+                break;
+
+            case "Center":
+                document.TextAlignment = TextAlignment.Center; 
+                break;
+
+            case "Left":
+                document.TextAlignment = TextAlignment.Left; 
+                break;
+
+            case "Right":
+                document.TextAlignment = TextAlignment.Right; 
+                break;
+        }
+
+        return document;
+    }
+
     private static void SetOpenFileTime(Book selectedBook) {
+
         String path = Path.Combine(Environment.CurrentDirectory, "BookList.xml");
         XElement? xElement = XElement.Load(path);
 
         foreach(var Xbook in xElement.DescendantsAndSelf("book")) {
+
             if(Xbook.Attribute("Name")?.Value.Replace('\\', '/') == selectedBook.BookPath.Replace("\\", "/")) {
 
                 Xbook.SetAttributeValue("LastOpeningTime", DateTime.Now.ToString());

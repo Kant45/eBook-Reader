@@ -17,7 +17,7 @@ namespace eBook_Reader.Commands {
             m_settingsViewModel = settingsViewModel;
         }
 
-        public override void Execute(Object parameter) {
+        public override void Execute(Object? parameter) {
 
             DialogResult dialogResult = MessageBox.Show("Are you sure?",
                       "Change library path", MessageBoxButtons.YesNo);
