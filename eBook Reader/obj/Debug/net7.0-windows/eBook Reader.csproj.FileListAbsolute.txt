@@ -69,5 +69,3 @@ C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Na
 C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\Newtonsoft.Json.dll
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\Button\PlayButtonStyle.baml
 C:\Users\User\source\repos\eBook Reader\eBook Reader\obj\Debug\net7.0-windows\Styles\ScrollBarStyle.baml
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\MaterialDesignColors.dll
-C:\Users\User\source\repos\eBook Reader\eBook Reader\bin\Debug\net7.0-windows\MaterialDesignThemes.Wpf.dll

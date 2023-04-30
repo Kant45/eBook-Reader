@@ -57,14 +57,6 @@
               "target": "Package",
               "version": "[1.11.46, )"
             },
-            "MaterialDesignColors": {
-              "target": "Package",
-              "version": "[2.1.2, )"
-            },
-            "MaterialDesignThemes": {
-              "target": "Package",
-              "version": "[4.8.0, )"
-            },
             "NServiceBus": {
               "target": "Package",
               "version": "[8.0.3, )"

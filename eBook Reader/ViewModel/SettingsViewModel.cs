@@ -1,4 +1,6 @@
 ﻿using eBook_Reader.Commands;
+using eBook_Reader.Commands.GeneralSettings;
+using eBook_Reader.Commands.ManageLibrary;
 using eBook_Reader.Stores;
 using System;
 using System.Collections.Generic;

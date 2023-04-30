@@ -20,6 +20,16 @@ using VersOne.Epub.Options;
 namespace eBook_Reader.Model {
     public class Book : INotifyPropertyChanged {
 
+        /***************************************
+         * 
+         * Class: Book
+         * 
+         * Belongs to 'Model' layer. We use it
+         * for wrapping epub file in appropriate
+         * entity, that we can use in C#
+         * 
+         ***************************************/
+
         private EpubBook m_epubBook;
         private String m_bookPath;
         private String m_newBookPath;
@@ -30,6 +40,7 @@ namespace eBook_Reader.Model {
 
         public Book(String bookPath) {
 
+            // This object lets majority of invalid files in our application
             EpubReaderOptions options = new EpubReaderOptions() {
                 PackageReaderOptions = new PackageReaderOptions() {
                     IgnoreMissingToc = true,
@@ -42,11 +53,13 @@ namespace eBook_Reader.Model {
                     SkipXmlHeaders = true,
                 }
             };
+
             options.ContentReaderOptions.ContentFileMissing += (sender, e) =>
             {
                 e.SuppressException = true;
             };
 
+            // Wrap epub file in 'VersOne.Epub.EpubBook asyncronously'
             m_epubBook = EpubReader.ReadBookAsync(bookPath, options).Result;
             m_bookPath = bookPath;
             m_coverImage = m_epubBook.CoverImage;

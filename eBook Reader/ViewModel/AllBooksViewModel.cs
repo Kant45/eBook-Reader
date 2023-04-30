@@ -11,9 +11,21 @@ using System.Windows.Input;
 using System.Xml.Linq;
 using System.ComponentModel;
 using System.Windows.Data;
+using eBook_Reader.Commands.NavigationCommands;
+using eBook_Reader.Commands.ManageLibrary;
 
 namespace eBook_Reader.ViewModel {
     public class AllBooksViewModel : BooksViewModel {
+
+        /*******************************************
+         
+         Class: AllBooksViewModel
+
+         Layer between 'AllBooksView' and 'Model'.
+         Primarily made for creating 'Book' collection 
+         and providing it to 'AllBooksView' by data binding.
+         
+         ********************************************/
 
         private static Book? m_selectedBook;
         private Book? m_lastOpenedBook;
@@ -87,10 +99,12 @@ namespace eBook_Reader.ViewModel {
         public AllBooksViewModel(NavigationStore navigationStore, MenuNavigationStore menuNavigationStore) {
 
             base.m_bookList = InitializeBookList();
+
+            //Search in 'BookList'.
             m_bookListView = CollectionViewSource.GetDefaultView(base.m_bookList);
             m_bookListView.Filter = o => String.IsNullOrEmpty(Search) ? true : ((String) ((Book) o).Title.ToLower()).Contains(Search.ToLower());
-            m_continueReadingVisibility = "Hidden";
 
+            m_continueReadingVisibility = "Hidden";
             m_navigationStore = navigationStore;
             m_menuNavigationStore = menuNavigationStore;
             LastOpenedBook = GetLastOpenedBook();
@@ -106,6 +120,8 @@ namespace eBook_Reader.ViewModel {
             RemoveFavoriteMarkCommand = new RemoveFavoriteMarkCommand(this);
         }
 
+        // Method initializes 'Book' collection from chosen in settings directory.
+        // We do it in loop by initilizing 'Book' instances from 'Model'.
         private ObservableCollection<Book> InitializeBookList() {
 
             ObservableCollection<Book> books = new ObservableCollection<Book>();
@@ -120,23 +136,34 @@ namespace eBook_Reader.ViewModel {
                     Book book = new Book(fPath);
 
                     String xmlPath = System.IO.Path.Combine(Environment.CurrentDirectory, "BookList.xml");
-                    XElement? xElement = XElement.Load(xmlPath);
+                    XElement xElement = XElement.Load(xmlPath);
 
-                    foreach(XElement? Xbook in xElement.DescendantsAndSelf("book")) {
+                    // We check 'IsFavorite' mark from 'BookList' and change 'IsFavorite' 'Book' instance property value by it.
+
+                    Boolean isFavoriteAttribute = false;
+                    foreach(XElement Xbook in xElement.DescendantsAndSelf("book")) {
+
+                        if(Xbook.Attribute("IsFavorite") != null)
+                        isFavoriteAttribute = Boolean.Parse(Xbook.Attribute("IsFavorite")!.Value);
+
                         if(Xbook.Attribute("Name")?.Value.Replace('\\', '/') == book.BookPath.Replace("\\", "/")) {
-                            book.IsFavorite = Boolean.Parse(Xbook.Attribute("IsFavorite")!.Value);
+
+                            book.IsFavorite = isFavoriteAttribute;
                         }
                     }
 
                     sortableList.Add(book);
 
                 } catch(AggregateException) {
+
+                    // Exception occurs when epub file have missed parts or invalid data.
                     System.Windows.MessageBox.Show("Something wrong with file", "Error", MessageBoxButton.OK, MessageBoxImage.None);
                 }
             }
 
             sortableList = sortableList.OrderBy(book => book.Title).ToList();
 
+            // Add books in 'ObservableCollection<Book>' from 'sortableList' after sorting.
             for(Int32 i = 0; i < sortableList.Count; i++) {
                 books.Add(sortableList[i]);
             }
@@ -144,6 +171,8 @@ namespace eBook_Reader.ViewModel {
             return books;
         }
 
+        // Method returns instance of last opened book.
+        // We do it by comparing 'LastOpeningTime' attribute of 'book' elements and return recently closed book.
         private Book? GetLastOpenedBook() {
 
             ContinueReadingVisibility = "Hidden";
@@ -153,14 +182,15 @@ namespace eBook_Reader.ViewModel {
             Book? lastOpenedBook = BookList.FirstOrDefault();
 
             foreach(XElement? xBook in xElement.DescendantsAndSelf("book")) {
-
-                    GetNewerBook(xBook, ref newestTime, ref lastOpenedBook);
+                
+                GetRecentlyOpenedBook(xBook, ref newestTime, ref lastOpenedBook);
             }
 
             return lastOpenedBook;
         }
 
-        private void GetNewerBook(XElement xBook, ref String newestTime, ref Book? lastOpenedBook) {
+        // Here we could compare values of attributes we alluded earlier.
+        private void GetRecentlyOpenedBook(XElement xBook, ref String newestTime, ref Book? lastOpenedBook) {
 
             if(DateTime.Parse(xBook.Attribute("LastOpeningTime")?.Value ?? new DateTime(1, 1, 1, 1, 1, 1).ToString()) > DateTime.Parse(newestTime)) {
 

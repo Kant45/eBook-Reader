@@ -1,4 +1,5 @@
 ﻿using eBook_Reader.Commands;
+using eBook_Reader.Commands.NavigationCommands;
 using eBook_Reader.Stores;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,15 @@ using System.Windows.Input;
 namespace eBook_Reader.ViewModel
 {
     class MainMenuViewModel : ViewModelBase {
+
+        /*******************************************
+         
+         Class: MainMenuViewModel
+
+         Layer between 'MainMenuView' and 'Model'.
+         This class provides navigation commands for menu buttons.
+         
+         ********************************************/
 
         private readonly NavigationStore m_navigationStore;
         private readonly MenuNavigationStore m_menuNavigationStore;

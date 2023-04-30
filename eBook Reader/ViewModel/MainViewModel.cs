@@ -19,6 +19,15 @@ using eBook_Reader.Stores;
 namespace eBook_Reader.ViewModel {
     public class MainViewModel : ViewModelBase {
 
+        /*******************************************
+         
+         Class: MainViewModel
+
+         Layer between 'MainWindow' and 'Model'.
+         Encapsulate chosen 'ViewModel' for 'MainWindow'.
+         
+         ********************************************/
+
         private NavigationStore m_navigationStore;
 
         public ViewModelBase CurrentViewModel => m_navigationStore.CurrentViewModel;
