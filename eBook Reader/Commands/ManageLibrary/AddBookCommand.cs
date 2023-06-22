@@ -48,7 +48,6 @@ public class AddBookCommand : CommandBase
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-
                 sourceFilePath = openFileDialog.FileName;
                 fileName = Path.GetFileName(sourceFilePath);
             }

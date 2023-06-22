@@ -41,6 +41,20 @@ namespace eBook_Reader.Model {
         public Book(String bookPath) {
 
             // This object lets majority of invalid files in our application
+            // We need it because there are many invalid epub files in internet
+            EpubReaderOptions options = GetReaderOptions();
+
+            // Wrap epub file in 'VersOne.Epub.EpubBook asyncronously'
+            m_epubBook = EpubReader.ReadBookAsync(bookPath, options).Result;
+            m_bookPath = bookPath;
+            m_coverImage = m_epubBook.CoverImage;
+            m_title = m_epubBook.Title;
+            m_author = m_epubBook.Author;
+            m_newBookPath = Path.Combine(Properties.LibrarySettings.Default.LibraryPath, Path.GetFileName(m_bookPath));
+        }
+
+        private EpubReaderOptions GetReaderOptions() {
+
             EpubReaderOptions options = new EpubReaderOptions() {
                 PackageReaderOptions = new PackageReaderOptions() {
                     IgnoreMissingToc = true,
@@ -54,18 +68,11 @@ namespace eBook_Reader.Model {
                 }
             };
 
-            options.ContentReaderOptions.ContentFileMissing += (sender, e) =>
-            {
+            options.ContentReaderOptions.ContentFileMissing += (sender, e) => {
                 e.SuppressException = true;
             };
 
-            // Wrap epub file in 'VersOne.Epub.EpubBook asyncronously'
-            m_epubBook = EpubReader.ReadBookAsync(bookPath, options).Result;
-            m_bookPath = bookPath;
-            m_coverImage = m_epubBook.CoverImage;
-            m_title = m_epubBook.Title;
-            m_author = m_epubBook.Author;
-            m_newBookPath = Path.Combine(Properties.LibrarySettings.Default.LibraryPath, Path.GetFileName(m_bookPath));
+            return options;
         }
 
         public EpubBook EBook {

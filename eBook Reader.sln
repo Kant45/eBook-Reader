@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBook Reader", "eBook Reader\eBook Reader.csproj", "{1F97A296-8BAA-4B2E-852E-2C85121D195A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eBook Reader", "eBook Reader\eBook Reader.csproj", "{1F97A296-8BAA-4B2E-852E-2C85121D195A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBookReader.UnitTests", "eBookReader.UnitTests\eBookReader.UnitTests.csproj", "{C964A0FE-3E7A-4AA6-9C27-95F23F94FA7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{1F97A296-8BAA-4B2E-852E-2C85121D195A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F97A296-8BAA-4B2E-852E-2C85121D195A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F97A296-8BAA-4B2E-852E-2C85121D195A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C964A0FE-3E7A-4AA6-9C27-95F23F94FA7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C964A0FE-3E7A-4AA6-9C27-95F23F94FA7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C964A0FE-3E7A-4AA6-9C27-95F23F94FA7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C964A0FE-3E7A-4AA6-9C27-95F23F94FA7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

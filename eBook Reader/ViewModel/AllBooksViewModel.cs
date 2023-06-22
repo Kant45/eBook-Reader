@@ -135,22 +135,7 @@ namespace eBook_Reader.ViewModel {
                 try {
                     Book book = new Book(fPath);
 
-                    String xmlPath = System.IO.Path.Combine(Environment.CurrentDirectory, "BookList.xml");
-                    XElement xElement = XElement.Load(xmlPath);
-
-                    // We check 'IsFavorite' mark from 'BookList' and change 'IsFavorite' 'Book' instance property value by it.
-
-                    Boolean isFavoriteAttribute = false;
-                    foreach(XElement Xbook in xElement.DescendantsAndSelf("book")) {
-
-                        if(Xbook.Attribute("IsFavorite") != null)
-                        isFavoriteAttribute = Boolean.Parse(Xbook.Attribute("IsFavorite")!.Value);
-
-                        if(Xbook.Attribute("Name")?.Value.Replace('\\', '/') == book.BookPath.Replace("\\", "/")) {
-
-                            book.IsFavorite = isFavoriteAttribute;
-                        }
-                    }
+                    book = InitializeBook(book);
 
                     sortableList.Add(book);
 
@@ -169,6 +154,30 @@ namespace eBook_Reader.ViewModel {
             }
 
             return books;
+        }
+
+        private Book InitializeBook(Book book) {
+
+            String xmlPath = System.IO.Path.Combine(Environment.CurrentDirectory, "BookList.xml");
+            XElement xElement = XElement.Load(xmlPath);
+
+            // We check 'IsFavorite' mark from 'BookList' and change 'IsFavorite' 'Book' instance property value by it.
+
+            Boolean isFavoriteAttribute = false;
+
+            foreach(XElement Xbook in xElement.DescendantsAndSelf("book")) {
+
+                if(Xbook.Attribute("IsFavorite") != null)
+
+                    isFavoriteAttribute = Boolean.Parse(Xbook.Attribute("IsFavorite")!.Value);
+
+                if(Xbook.Attribute("Name")?.Value.Replace('\\', '/') == book.BookPath.Replace("\\", "/")) {
+
+                    book.IsFavorite = isFavoriteAttribute;
+                }
+            }
+
+            return book;
         }
 
         // Method returns instance of last opened book.
