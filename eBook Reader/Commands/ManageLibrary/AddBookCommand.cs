@@ -23,50 +23,49 @@ public class AddBookCommand : CommandBase
 
     private readonly AllBooksViewModel m_viewModel;
 
-    public AddBookCommand(AllBooksViewModel viewModel)
-    {
+    public AddBookCommand(AllBooksViewModel viewModel) {
 
         m_viewModel = viewModel;
     }
 
+    private String GetFilePathFromDialog(ref String fileName) {
 
-    [STAThread]
-    public override void Execute(object? parameter)
-    {
-
-        // Opening file dialog and get path of file, that we need
         OpenFileDialog openFileDialog = new OpenFileDialog();
 
-        string sourceFilePath = "";
-        string fileName = "";
+        String sourceFilePath = "";
 
-        try
-        {
+        try {
             openFileDialog.Filter = "EPUB Files(*.epub)|*.epub|All files (*.*)|*.*";
             openFileDialog.CheckFileExists = true;
             openFileDialog.CheckPathExists = true;
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
+            if(openFileDialog.ShowDialog() == DialogResult.OK) {
+
                 sourceFilePath = openFileDialog.FileName;
                 fileName = Path.GetFileName(sourceFilePath);
             }
 
-        }
-        catch (ArgumentException)
-        {
+        } catch(ArgumentException) {
+
             sourceFilePath = "";
             System.Windows.MessageBox.Show("Invalid file format", "Error", MessageBoxButton.OK, MessageBoxImage.None);
         }
 
+        return sourceFilePath;
+    }
+
+    [STAThread]
+    public override void Execute(object? parameter) {
+
+        String fileName = "";
+        String sourceFilePath = GetFilePathFromDialog(ref fileName);
+
         // Copy the file in new directory and add element in 'BookList.xml'
-        if (sourceFilePath != "")
-        {
+        if (sourceFilePath != "") {
 
             string libraryPath = Properties.LibrarySettings.Default.LibraryPath;
 
-            try
-            {
+            try {
                 File.Copy(sourceFilePath, Path.Combine(libraryPath, fileName), true);
                 Book book = new Book(Path.Combine(libraryPath, fileName));
                 m_viewModel.BookList.Add(book);
@@ -74,8 +73,7 @@ public class AddBookCommand : CommandBase
                 AddToXML(book);
 
             }
-            catch (AggregateException)
-            {
+            catch (AggregateException) {
 
                 File.Delete(Path.Combine(libraryPath, fileName));
                 System.Windows.MessageBox.Show("Something wrong with file", "Error", MessageBoxButton.OK, MessageBoxImage.None);

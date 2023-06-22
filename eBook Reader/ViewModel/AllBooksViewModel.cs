@@ -126,6 +126,19 @@ namespace eBook_Reader.ViewModel {
 
             ObservableCollection<Book> books = new ObservableCollection<Book>();
 
+            List<Book> sortableList = AddBooksToSortableList();
+
+            sortableList = sortableList.OrderBy(book => book.Title).ToList();
+
+            // Add books in 'ObservableCollection<Book>' from 'sortableList' after sorting.
+            for(Int32 i = 0; i < sortableList.Count; i++)
+                books.Add(sortableList[i]);
+
+            return books;
+        }
+
+        private List<Book> AddBooksToSortableList() {
+
             List<Book> sortableList = new List<Book>();
             String libraryPath = Properties.LibrarySettings.Default.LibraryPath;
             String[] filePaths = Directory.GetFiles(libraryPath);
@@ -146,14 +159,7 @@ namespace eBook_Reader.ViewModel {
                 }
             }
 
-            sortableList = sortableList.OrderBy(book => book.Title).ToList();
-
-            // Add books in 'ObservableCollection<Book>' from 'sortableList' after sorting.
-            for(Int32 i = 0; i < sortableList.Count; i++) {
-                books.Add(sortableList[i]);
-            }
-
-            return books;
+            return sortableList;
         }
 
         private Book InitializeBook(Book book) {
