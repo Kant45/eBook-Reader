@@ -28,32 +28,6 @@ public class AddBookCommand : CommandBase
         m_viewModel = viewModel;
     }
 
-    private String GetFilePathFromDialog(ref String fileName) {
-
-        OpenFileDialog openFileDialog = new OpenFileDialog();
-
-        String sourceFilePath = "";
-
-        try {
-            openFileDialog.Filter = "EPUB Files(*.epub)|*.epub|All files (*.*)|*.*";
-            openFileDialog.CheckFileExists = true;
-            openFileDialog.CheckPathExists = true;
-
-            if(openFileDialog.ShowDialog() == DialogResult.OK) {
-
-                sourceFilePath = openFileDialog.FileName;
-                fileName = Path.GetFileName(sourceFilePath);
-            }
-
-        } catch(ArgumentException) {
-
-            sourceFilePath = "";
-            System.Windows.MessageBox.Show("Invalid file format", "Error", MessageBoxButton.OK, MessageBoxImage.None);
-        }
-
-        return sourceFilePath;
-    }
-
     [STAThread]
     public override void Execute(object? parameter) {
 
@@ -81,6 +55,32 @@ public class AddBookCommand : CommandBase
         }
 
         return;
+    }
+
+    private String GetFilePathFromDialog(ref String fileName) {
+
+        OpenFileDialog openFileDialog = new OpenFileDialog();
+
+        String sourceFilePath = "";
+
+        try {
+            openFileDialog.Filter = "EPUB Files(*.epub)|*.epub|All files (*.*)|*.*";
+            openFileDialog.CheckFileExists = true;
+            openFileDialog.CheckPathExists = true;
+
+            if(openFileDialog.ShowDialog() == DialogResult.OK) {
+
+                sourceFilePath = openFileDialog.FileName;
+                fileName = Path.GetFileName(sourceFilePath);
+            }
+
+        } catch(ArgumentException) {
+
+            sourceFilePath = "";
+            System.Windows.MessageBox.Show("Invalid file format", "Error", MessageBoxButton.OK, MessageBoxImage.None);
+        }
+
+        return sourceFilePath;
     }
 
     // Add a line in xml file with attributes:
