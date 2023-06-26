@@ -11,7 +11,7 @@ using System.Xml.Linq;
 
 namespace eBook_Reader.Commands.ManageLibrary
 {
-    internal class EmptyLibraryCommand : CommandBase
+    public class EmptyLibraryCommand : CommandBase
     {
 
         /******************************************
@@ -25,28 +25,37 @@ namespace eBook_Reader.Commands.ManageLibrary
          *****************************************/
 
         private readonly AllBooksViewModel m_allBooksViewModel;
+        private readonly Boolean m_defaultSure;
+        private readonly String? m_path;
 
-        public EmptyLibraryCommand(AllBooksViewModel allBooksViewModel)
-        {
+        public EmptyLibraryCommand(AllBooksViewModel allBooksViewModel, Boolean defaultSure = false, String? path = null) {
             m_allBooksViewModel = allBooksViewModel;
+            m_defaultSure = defaultSure;
+            m_path = path;
         }
 
-        public override void Execute(object? parameter)
-        {
+        public override void Execute(object? parameter) {
 
-            DialogResult dialogResult = MessageBox.Show("Are you sure?",
+            DialogResult dialogResult;
+
+            if(!m_defaultSure) {
+                dialogResult = MessageBox.Show("Are you sure?",
                       "Empty library", MessageBoxButtons.YesNo);
+            } else {
+                dialogResult = DialogResult.Yes;
+            }
+            
 
-            switch (dialogResult)
-            {
+            switch (dialogResult) {
 
                 case DialogResult.Yes:
 
                     // Delete all elements in 'BookList.xml' with the help of a loop
-                    foreach (var book in m_allBooksViewModel.BookList)
-                    {
+                    foreach (var book in m_allBooksViewModel.BookList) {
+
                         File.Delete(book.BookPath);
-                        DeleteFromXML(book);
+
+                        DeleteFromXML(book, m_path);
                     }
 
                     m_allBooksViewModel.BookList.Clear();
@@ -58,10 +67,14 @@ namespace eBook_Reader.Commands.ManageLibrary
         }
 
         // Remove selected book by LINQ to XML
-        private void DeleteFromXML(Book book)
+        private void DeleteFromXML(Book book, String? path = null)
         {
+            XDocument xDoc;
 
-            XDocument xDoc = XDocument.Load("BookList.xml");
+            if(path == null)
+                 xDoc = XDocument.Load("BookList.xml");
+            else
+                xDoc = XDocument.Load(path);
 
             xDoc?.Descendants()
                  .Where(e => e.Name == "book")?

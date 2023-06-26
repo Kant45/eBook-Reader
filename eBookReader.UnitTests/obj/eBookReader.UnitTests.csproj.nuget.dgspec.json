@@ -57,6 +57,10 @@
               "target": "Package",
               "version": "[1.11.46, )"
             },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.4, )"
+            },
             "NServiceBus": {
               "target": "Package",
               "version": "[8.0.3, )"
@@ -153,6 +157,10 @@
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.3.2, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.4, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

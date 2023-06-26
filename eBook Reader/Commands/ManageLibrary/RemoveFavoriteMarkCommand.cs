@@ -20,46 +20,39 @@ namespace eBook_Reader.Commands.ManageLibrary
             m_allBooksViewModel = allBooksViewModel;
             m_favoriteBooksViewModel = favoriteBooksViewModel;
         }
-        public override void Execute(object? parameter)
-        {
+        public override void Execute(object? parameter) {
 
-            string path = Path.Combine(Environment.CurrentDirectory, "BookList.xml");
+            String path = Path.Combine(Environment.CurrentDirectory, "BookList.xml");
             XElement? xElement = XElement.Load(path);
 
-            if (m_favoriteBooksViewModel == null)
-            {
+            if (m_favoriteBooksViewModel == null) {
 
-                foreach (var Xbook in xElement.DescendantsAndSelf("book"))
-                {
-                    if (Xbook.Attribute("Name")?.Value.Replace('\\', '/') == m_allBooksViewModel.SelectedBook!.BookPath.Replace("\\", "/"))
-                    {
+                foreach (var Xbook in xElement.DescendantsAndSelf("book")) {
+
+                    if (Xbook.Attribute("Name")?.Value.Replace('\\', '/') == m_allBooksViewModel.SelectedBook!.BookPath.Replace("\\", "/")) {
 
                         Xbook.SetAttributeValue("IsFavorite", "false");
                         xElement.Save(path);
 
                         m_allBooksViewModel.SelectedBook.IsFavorite = false;
-
                     }
                 }
             }
-            else
-            {
-                foreach (var Xbook in xElement.DescendantsAndSelf("book"))
-                {
-                    if (Xbook.Attribute("Name")?.Value.Replace('\\', '/') == m_favoriteBooksViewModel.SelectedBook.BookPath.Replace("\\", "/"))
-                    {
+            else {
+                foreach (var Xbook in xElement.DescendantsAndSelf("book")) {
+
+                    if (Xbook.Attribute("Name")?.Value.Replace('\\', '/') == m_favoriteBooksViewModel.SelectedBook.BookPath.Replace("\\", "/")) {
 
                         Xbook.SetAttributeValue("IsFavorite", "false");
                         xElement.Save(path);
 
                         m_allBooksViewModel.SelectedBook!.IsFavorite = false;
-
                     }
                 }
-                foreach (var book in m_allBooksViewModel.BookList)
-                {
-                    if (m_favoriteBooksViewModel.SelectedBook.BookPath == book.BookPath)
-                    {
+                foreach (var book in m_allBooksViewModel.BookList) {
+
+                    if (m_favoriteBooksViewModel.SelectedBook.BookPath == book.BookPath) {
+
                         m_favoriteBooksViewModel.SelectedBook.IsFavorite = false;
                         book.IsFavorite = false;
                     }

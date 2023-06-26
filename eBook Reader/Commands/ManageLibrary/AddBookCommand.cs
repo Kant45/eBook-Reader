@@ -40,11 +40,12 @@ public class AddBookCommand : CommandBase
             string libraryPath = Properties.LibrarySettings.Default.LibraryPath;
 
             try {
+
                 File.Copy(sourceFilePath, Path.Combine(libraryPath, fileName), true);
                 Book book = new Book(Path.Combine(libraryPath, fileName));
                 m_viewModel.BookList.Add(book);
 
-                AddToXML(book);
+                AddToXML(book, m_viewModel.LibraryPath);
 
             }
             catch (AggregateException) {
@@ -85,10 +86,10 @@ public class AddBookCommand : CommandBase
 
     // Add a line in xml file with attributes:
     // 'Name', 'IsFavorite', 'LastOpeningTime', 'progress'
-    private static void AddToXML(Book book)
-    {
+    private static void AddToXML(Book book, String? path = null) {
 
-        string path = Path.Combine(Environment.CurrentDirectory, "BookList.xml");
+        if(path == null || path == "Library")
+            path = Path.Combine(Environment.CurrentDirectory, "BookList.xml");
 
         XDocument? xdoc = XDocument.Load(path);
         XElement? root = xdoc?.Root;

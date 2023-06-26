@@ -10,7 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="bin\Debug\net7.0-windows\Resources\AddBookCommandRes\BookList.xml" />
+    <Content Include="bin\Debug\net7.0-windows\Resources\EmptyLibraryCommandRes\BookList.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net7.0-windows\Resources\ValidEpubBook.epub" />
+    <None Include="bin\Debug\net7.0-windows\Resources\UnsuitableBookFile.mobi" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+    <PackageReference Include="Moq" Version="4.18.4" />
     <PackageReference Include="xunit" Version="2.4.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -24,21 +35,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\eBook Reader\eBook Reader.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="TestResource.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>TestResource.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="TestResource.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>TestResource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

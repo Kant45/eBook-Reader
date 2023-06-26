@@ -22,7 +22,7 @@ namespace eBook_Reader.Commands.ManageLibrary {
 
         public override void Execute(object? parameter) {
 
-            string? SelectedSortProperty = m_viewModel.SelectedSortParameter.Name;
+            String? SelectedSortProperty = m_viewModel.SelectedSortParameter.Name;
             ObservableCollection<Book> books = m_viewModel.BookList;
 
             List<Book> tempList;

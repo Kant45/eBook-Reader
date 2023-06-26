@@ -33,15 +33,13 @@ namespace eBook_Reader.Commands.ManageLibrary
         public override void Execute(object? parameter)
         {
 
-            if (m_allBooksViewModel!.SelectedBook != null)
-            {
+            if (m_allBooksViewModel!.SelectedBook != null) {
 
                 m_allBooksViewModel.BookList.Remove(m_allBooksViewModel.SelectedBook);
                 File.Delete(m_allBooksViewModel.SelectedBook.NewBookPath);
                 DeleteFromXML(m_allBooksViewModel.SelectedBook);
 
-                if (m_allBooksViewModel.SelectedBook.BookPath == m_allBooksViewModel.LastOpenedBook!.BookPath)
-                {
+                if (m_allBooksViewModel.SelectedBook.BookPath == m_allBooksViewModel.LastOpenedBook!.BookPath) {
                     m_allBooksViewModel.ContinueReadingVisibility = "Hidden";
                 }
             }

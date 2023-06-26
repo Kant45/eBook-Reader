@@ -38,7 +38,8 @@ namespace eBook_Reader.ViewModel {
         private ICollectionView m_bookListView;
 
         public new ObservableCollection<Book> BookList {
-            get { return base.m_bookList!; }
+            get { return base.BookList!; }
+            set { base.BookList = value; }
         }
         public Book? SelectedBook {
             get { return m_selectedBook; }
@@ -96,9 +97,9 @@ namespace eBook_Reader.ViewModel {
         public ICommand NavigateReadBookCommand { get; protected set; }
         public ICommand SortCommand { get; protected set; }
 
-        public AllBooksViewModel(NavigationStore navigationStore, MenuNavigationStore menuNavigationStore) {
+        public AllBooksViewModel(NavigationStore navigationStore, MenuNavigationStore menuNavigationStore, String libraryPath = null!, String xmlPath = null!) : base(libraryPath) {
 
-            base.m_bookList = InitializeBookList();
+            base.m_bookList = InitializeBookList(libraryPath, xmlPath);
 
             //Search in 'BookList'.
             m_bookListView = CollectionViewSource.GetDefaultView(base.m_bookList);
@@ -107,7 +108,7 @@ namespace eBook_Reader.ViewModel {
             m_continueReadingVisibility = "Hidden";
             m_navigationStore = navigationStore;
             m_menuNavigationStore = menuNavigationStore;
-            LastOpenedBook = GetLastOpenedBook();
+            LastOpenedBook = GetLastOpenedBook(xmlPath);
 
             m_sortParameters = base.SortParameters;
             m_selectedSortParameter = base.SortParameters[0];
@@ -122,11 +123,11 @@ namespace eBook_Reader.ViewModel {
 
         // Method initializes 'Book' collection from chosen in settings directory.
         // We do it in loop by initilizing 'Book' instances from 'Model'.
-        private ObservableCollection<Book> InitializeBookList() {
+        private ObservableCollection<Book> InitializeBookList(String libraryPath = null!, String xmlPath = null!) {
 
             ObservableCollection<Book> books = new ObservableCollection<Book>();
 
-            List<Book> sortableList = AddBooksToSortableList();
+            List<Book> sortableList = AddBooksToSortableList(libraryPath, xmlPath);
 
             sortableList = sortableList.OrderBy(book => book.Title).ToList();
 
@@ -137,10 +138,14 @@ namespace eBook_Reader.ViewModel {
             return books;
         }
 
-        private List<Book> AddBooksToSortableList() {
+        private List<Book> AddBooksToSortableList(String libraryPath = null!, String xmlPath = null!) {
 
             List<Book> sortableList = new List<Book>();
-            String libraryPath = Properties.LibrarySettings.Default.LibraryPath;
+
+            if(libraryPath == null) {
+                libraryPath = Properties.LibrarySettings.Default.LibraryPath;
+            }
+             
             String[] filePaths = Directory.GetFiles(libraryPath);
 
             foreach(String fPath in filePaths) {
@@ -148,7 +153,7 @@ namespace eBook_Reader.ViewModel {
                 try {
                     Book book = new Book(fPath);
 
-                    book = InitializeBook(book);
+                    book = InitializeBook(book, xmlPath);
 
                     sortableList.Add(book);
 
@@ -162,9 +167,12 @@ namespace eBook_Reader.ViewModel {
             return sortableList;
         }
 
-        private Book InitializeBook(Book book) {
+        private Book InitializeBook(Book book, String xmlPath = null!) {
 
-            String xmlPath = System.IO.Path.Combine(Environment.CurrentDirectory, "BookList.xml");
+            if(xmlPath == null) {
+                xmlPath = System.IO.Path.Combine(Environment.CurrentDirectory, "BookList.xml");
+            }
+            
             XElement xElement = XElement.Load(xmlPath);
 
             // We check 'IsFavorite' mark from 'BookList' and change 'IsFavorite' 'Book' instance property value by it.
@@ -186,12 +194,17 @@ namespace eBook_Reader.ViewModel {
             return book;
         }
 
-        // Method returns instance of last opened book.
-        // We do it by comparing 'LastOpeningTime' attribute of 'book' elements and return recently closed book.
-        private Book? GetLastOpenedBook() {
+        // The method returns instance of last opened book.
+        // We receive result by comparing 'LastOpeningTime' attribute of 'book' elements and return recently closed book.
+        private Book? GetLastOpenedBook(String? path = null) {
 
             ContinueReadingVisibility = "Hidden";
-            XElement? xElement = XElement.Load(System.IO.Path.Combine(Environment.CurrentDirectory, "BookList.xml"));
+            XElement? xElement;
+
+            if(path == null)
+                xElement = XElement.Load(System.IO.Path.Combine(Environment.CurrentDirectory, "BookList.xml"));
+            else
+                xElement = XElement.Load(path);
 
             String? newestTime = new DateTime(1, 1, 1, 1, 1, 1).ToString();
             Book? lastOpenedBook = BookList.FirstOrDefault();
