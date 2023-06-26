@@ -25,8 +25,6 @@ namespace eBookReader.UnitTests {
 
             Book book = new Book(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources\\EmptyLibraryCommandRes\\ValidEpubBook.epub"));
             
-            ArrangeBookListXML(allBooksViewModel);
-            
             allBooksViewModel.BookList.Add(book);
 
             ICommand emptyLibraryCommand = new EmptyLibraryCommand(allBooksViewModel, true,
@@ -42,11 +40,5 @@ namespace eBookReader.UnitTests {
         private void ArrangeEmptyLibraryCommandRes() => File.Copy(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources\\ValidEpubBook.epub"),
                                                                   Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources\\EmptyLibraryCommandRes\\ValidEpubBook.epub"), 
                                                                   true);
-
-        private void ArrangeBookListXML(AllBooksViewModel allBooksViewModel) {
-
-            AddBookCommand addBookCommand = new AddBookCommand(allBooksViewModel);
-            
-        }
     }
 }
